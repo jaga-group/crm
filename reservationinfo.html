@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Customer Info</title>
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--Bootstrap Main Theme-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--Local StyleSheet-->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h1>HEADER STUFF</h1>
+    <h2>Goes Here</h2>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title"><strong>Reservation Form</strong></div>
+                </div>
+                <div class="panel-body">
+                    <fieldset><h2>Client Information</h2>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">First name *</label>
+                                <div class="col-lg-8">
+                                    <input id="client-first" class="form-control" type="text" placeholder="Jane">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Last name&nbsp;&nbsp;</label>
+                                <div class="col-lg-8">
+                                    <input id="client-last" class="form-control" type="text" placeholder="Doe">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Email *</label>
+                                <div class="col-lg-8">
+                                    <input id="client-email" class="form-control" type="text"
+                                           placeholder="janedoe@gmail.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Phone *</label>
+                                <div class="col-lg-8">
+                                    <input id="client-phone" class="form-control" type="text"
+                                           placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Address Line 1</label>
+                                <div class="col-lg-8">
+                                    <input id="client-addr1" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Address Line 2</label>
+                                <div class="col-lg-8">
+                                    <input id="client-addr2" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">City</label>
+                                <div class="col-lg-8">
+                                    <input id="client-city" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">State</label>
+                                <div class="col-lg-8">
+                                    <select name="state" class="form-control selectpicker">
+                                        <option value=" "></option>
+                                        <option>Alabama</option>
+                                        <option>Alaska</option>
+                                        <option>Arizona</option>
+                                        <option>Arkansas</option>
+                                        <option>California</option>
+                                        <option>Colorado</option>
+                                        <option>Connecticut</option>
+                                        <option>Delaware</option>
+                                        <option>District of Columbia</option>
+                                        <option> Florida</option>
+                                        <option>Georgia</option>
+                                        <option>Hawaii</option>
+                                        <option>daho</option>
+                                        <option>Illinois</option>
+                                        <option>Indiana</option>
+                                        <option>Iowa</option>
+                                        <option> Kansas</option>
+                                        <option>Kentucky</option>
+                                        <option>Louisiana</option>
+                                        <option>Maine</option>
+                                        <option>Maryland</option>
+                                        <option> Mass</option>
+                                        <option>Michigan</option>
+                                        <option>Minnesota</option>
+                                        <option>Mississippi</option>
+                                        <option>Missouri</option>
+                                        <option>Montana</option>
+                                        <option>Nebraska</option>
+                                        <option>Nevada</option>
+                                        <option>New Hampshire</option>
+                                        <option>New Jersey</option>
+                                        <option>New Mexico</option>
+                                        <option>New York</option>
+                                        <option>North Carolina</option>
+                                        <option>North Dakota</option>
+                                        <option>Ohio</option>
+                                        <option>Oklahoma</option>
+                                        <option>Oregon</option>
+                                        <option>Pennsylvania</option>
+                                        <option>Rhode Island</option>
+                                        <option>South Carolina</option>
+                                        <option>South Dakota</option>
+                                        <option>Tennessee</option>
+                                        <option>Texas</option>
+                                        <option> Uttah</option>
+                                        <option>Vermont</option>
+                                        <option>Virginia</option>
+                                        <option>Washington</option>
+                                        <option>West Virginia</option>
+                                        <option>Wisconsin</option>
+                                        <option>Wyoming</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Zip Code</label>
+                                <div class="col-lg-8">
+                                    <input id="client-zip" class="form-control" type="text" placeholder="">
+                                </div>
+                            </div>
+                        </form>
+                    </fieldset>
+                    <fieldset><h2>Pet Info</h2>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Pet Name *</label>
+                                <div class="col-lg-8">
+                                    <input id="pet-name" class="form-control" type="text" placeholder="Fido">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Pet Type *</label>
+                                <div class="col-lg-8">
+                                    <div class="radio">
+                                        <label>
+                                            <input id="pet-type-dog" type="radio" name="type" value="Dog"/> Dog
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input id="pet-type-cat" type="radio" name="type" value="Cat"/> Cat
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Services Requested *</label>
+                                <div class="col-lg-8">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="service-boarding" type="checkbox" value="Boarding"/> Boarding
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="service-grooming" type="checkbox" value="Grooming"/> Grooming
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="service-daycare" type="checkbox" value="Daycare"/> Daycare
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input id="service-training" type="checkbox" value="Training"/> Training
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Drop-Off Date</label>
+                                <div class="col-lg-8">
+                                    <input id="pet-name" class="form-control" type="text" placeholder="MM/DD/YYYY">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 control-label">Pick-Up Date</label>
+                                <div class="col-lg-8">
+                                    <input id="pet-name" class="form-control" type="text" placeholder="MM/DD/YYYY">
+                                </div>
+                            </div>
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--jQuery-->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<!--Local JS-->
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
