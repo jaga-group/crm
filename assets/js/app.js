@@ -18,20 +18,21 @@ var password = '';
 /*Functions
 ==============================================================*/
 function newUser(){
-	$('#submit').on('click',function(){
+	$('#submit').on('click',function(event){
+		event.preventDefault(event);
 		//Get users email
-		email = $('#userEmail').val();
-		password = $('#userPassword').val();
+		email = $('#user-name').val();
+		password = $('#user-pw').val();
 
 		//Clears input box
-		$('#userEmail').val('');
-		$('#userPassword').val('');
+		$('#user-name').val('');
+		$('#user-pw').val('');
 		//Testing
 		console.log('User email: ' + email);
 		console.log('User password: ' + password);
 
 			//Creates a user in the database
-			firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 				// Handle Errors here.
 				var errorCode = error.code;
 			  	var errorMessage = error.message;
