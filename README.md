@@ -3,11 +3,21 @@
 ### *Built by: Ariel Costa (Back End), Glen Turner (Back End), Joel Roberts (Front End), Adam?*
 *{ We will all likely contribue to the functionality of the program }*
 
-## Project Description: V.I.Pet Resort Customer Relationship Management Tool.  
-Landing page for customers to create a profile, log in for existing customers to view messages and book appointments.
-Business dashboard side to manage appointment calendar, view/manage customers, communicate (marketing blasts?), and eventually collect payments.
+## Project Description: 
+**V.I.Pet Resort Customer Relationship Management Tool.**  
+ - Landing page for customers to create a profile, 
+ - log in for existing customers to view messages and book appointments.
+ - Business dashboard side to manage appointment calendar, 
+ - view/manage customers, 
+ - communicate (marketing blasts?), 
+ - and eventually collect payments.
 
 ## Sketch of Final Product: 
+>
+>
+>
+>
+
 
 ## APIs to be Used:
 Google Maps - to create pick up and delivery routes, mobile grooming routes.
