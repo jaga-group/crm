@@ -14,6 +14,10 @@
     <!--Bootstrap Main Theme-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--JQuery UI Stylesheet-->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!--DatePicker-->
+    <link rel="stylesheet" href="assets/css/datepicker.css">
     <!--Local StyleSheet-->
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -192,16 +196,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div id="dropoffForm" class="form-group hide">
                                 <label class="col-lg-3 control-label">Drop-Off Date</label>
                                 <div class="col-lg-8">
-                                    <input id="pet-name" class="form-control" type="text" placeholder="MM/DD/YYYY">
+                                    <input id="dropoffDate" class="form-control datepicker" type="text" placeholder="mm/dd/yyyy">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div id="pickupForm" class="form-group hide">
                                 <label class="col-lg-3 control-label">Pick-Up Date</label>
                                 <div class="col-lg-8">
-                                    <input id="pet-name" class="form-control" type="text" placeholder="MM/DD/YYYY">
+                                    <input id="pickupDate" class="form-control datepicker" type="text" placeholder="mm/dd/yyyy">
                                 </div>
                             </div>
                         </form>
@@ -215,14 +219,19 @@
 <!--jQuery-->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<!--JQuery UI-->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- Bootstrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+<!--Datepicker-->
+<script src="assets/js/bootstrap-datepicker.js"></script>
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 <!--Local JS-->
 <script src="assets/js/app.js"></script>
+<script src="assets/js/ui-elements.js"></script>
 
 </body>
 </html>
