@@ -44,3 +44,12 @@ $('#service-boarding').on('change',function(){
         $("#pickupForm").addClass('hide');
     }
 });
+
+
+/* Event listener - if menu-toggle button is clicked then
+ ==============================================================*/
+
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
