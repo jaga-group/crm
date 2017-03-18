@@ -41,7 +41,7 @@ function newUser(){
 			  	console.log(errorCode + errorMessage);
 		});
 	});
-    
+
 };  // end newUser()
 
 function existingUser(){
@@ -80,7 +80,7 @@ function logOut(){
 }
 
 // listens for user log in or log out
-
+	// LOAD LOOP - should put this INSIDE newUser() and existingUser() ???
 	auth.onAuthStateChanged(function(firebaseUser){
 		// if user exists
         if(firebaseUser) {
