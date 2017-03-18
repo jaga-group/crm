@@ -10,15 +10,16 @@ $(document).ready(function(){
   };
   firebase.initializeApp(config);
 
-
 /*Global Variables
 ==============================================================*/
 var email = '';
 var password = '';
+const auth = firebase.auth();
+
 /*Functions
 ==============================================================*/
 function newUser(){
-	$('#submit').on('click',function(event){
+	$('#sign-up').on('click',function(event){
 		event.preventDefault(event);
 		//Get users email
 		email = $('#user-name').val();
@@ -31,39 +32,74 @@ function newUser(){
 		console.log('User email: ' + email);
 		console.log('User password: ' + password);
 
+
 			//Creates a user in the database
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
 				// Handle Errors here.
 				var errorCode = error.code;
 			  	var errorMessage = error.message;
+			  	console.log(errorCode + errorMessage);
 		});
 	});
-}
+    
+};  // end newUser()
+
 function existingUser(){
-		$('#existingSubmit').on('click',function(){
+		$('#sign-in').on('click',function(event){
+            event.preventDefault(event);
 			//Get users email
-			email = $('#existingEmail').val();
-			password = $('#existingPassword').val();
+			email = $('#user-name').val();
+			password = $('#user-pw').val();
 			
 			//Clears input box
-			$('#existingEmail').val('');
-			$('#existingPassword').val('');
+			$('#user-name').val('');
+			$('#user-pw').val('');
 			//Testing
 			console.log('User email: ' + email);
 			console.log('User password: ' + password);
 
-			firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+			// signs user in to app
+			auth.signInWithEmailAndPassword(email, password).catch(function(error) {
 			  // Handle Errors here.
-			  alert('Not a user');
+			  console.log('Not a user');
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode + errorMessage);
 			});
 
 		});
 
 
-}	
+}; // end existingUser();
+
+function logOut(){
+	$('#log-out').on('click', function(event){
+		event.preventDefault(event);
+		auth.signOut();
+	})
+}
+
+// listens for user log in or log out
+
+	auth.onAuthStateChanged(function(firebaseUser){
+		// if user exists
+        if(firebaseUser) {
+            console.log(firebaseUser);
+            // redirect to reservationinfo.html
+            window.location = 'reservationinfo.html';
+        } else {
+            $('#log-out').addClass('hide');
+        }
+    });
+
+
+
+
 /*Main
 ==============================================================*/
 existingUser();
 newUser();
+logOut();
+
 
 }); // End of Document Ready // 
