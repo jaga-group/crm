@@ -92,47 +92,49 @@ var clientInfo = {
 } 
 
 database.ref('/client').push(clientInfo);
+  }); // end of #rsvp on click function //
 
- database.ref().on("child_added", function(childSnapshot) {
+database.ref().on("child_added", function(childSnapshot) {
 
-      // Log everything that's coming out of snapshot
-      console.log(childSnapshot.val().clientFirst);
-      console.log(childSnapshot.val().clientLast);
-      console.log(childSnapshot.val().clientEmail);
-      console.log(childSnapshot.val().clientPhone);
-      console.log(childSnapshot.val().clientAddr1);
-      console.log(childSnapshot.val().clientAddr2);
-      console.log(childSnapshot.val().clientCity);
-      console.log(childSnapshot.val().clientState);
-      console.log(childSnapshot.val().clientZip);
-      console.log(childSnapshot.val().clientpetName);
-   
+      var firstName = (childSnapshot.val().clientFirst);
+      var lastName = (childSnapshot.val().clientLast);
+      var email = (childSnapshot.val().clientEmail);
+      var phone = (childSnapshot.val().clientPhone);
+      var addr1 =(childSnapshot.val().clientAddr1);
+      var addr2 = (childSnapshot.val().clientAddr2);
+      var city = (childSnapshot.val().clientCity);
+      var state = (childSnapshot.val().clientState);
+      var zip = (childSnapshot.val().clientZip);
+      var petName = (childSnapshot.val().clientpetName);
 
 
     // Handle the errors
     }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
-    });// end of dataRef // 
+});// end of dataRef // 
 
-
-  }); // end of #rsvp on click function //
-
-$("#customer-view").on("click", function(event) {
-    event.preventDefault(event);
+   
+$("#customer-view").on("click", function(event){
+   event.preventDefault(event);
     console.log("customer view click");
         $(".dashboard-content").empty();
         // full list of items to the well
-      $(".dashboard-content").append("<div class='well'><span id='member-info'> " + childSnapshot.val().clientFirst + clientLast +
-        " </span><span id='email'> " + childSnapshot.val().clientEmail +
-        " </span><span id='phone'> " + childSnapshot.val().clientPhone +
-        " </span><span id='address1'> " + childSnapshot.val().clientAddr1 +
-        " </span><span id='address2'> " + childSnapshot.val().clientAddr2 +
-        " </span><span id='city'> " + childSnapshot.val().clientCity +
-        " </span><span id='state'> " + childSnapshot.val().clientState +
-        " </span><span id='zip'> " + childSnapshot.val().clientZip +
-        " </span><span id='petName'> " + childSnapshot.val().clientpetName + " </span></div>");
+      $(".dashboard-content").append("<div class='well'><span id='member-info'> " + firstName + lastName +
+        " </span><span id='email'> " + email +
+        " </span><span id='phone'> " + phone +
+        " </span><span id='address1'> " + addr1 +
+        " </span><span id='address2'> " + addr2 +
+        " </span><span id='city'> " + city +
+        " </span><span id='state'> " + state +
+        " </span><span id='zip'> " + zip +
+        " </span><span id='petName'> " + petName + " </span></div>");
+
+
+  
 
 });// end of #customer view on click //
+
+
 
 }); // end of document ready // 
 
