@@ -52,21 +52,31 @@ $(document).ready(function(){
                 }
         
         
-
         var serviceDayCare = $('#service-daycare').is(':checked');
 
     			if(serviceDayCare === true){
                     $('#service-daycare').val(); 
                 }
         	
-
         var serviceTraining = $('#service-training').is(':checked');
         
                 if(serviceDayCare === true){
         		    $('#service-training').val();
                 }           
         		
-       
+ // clears input boxes after user presses submit // 
+  $('#client-first').val('');
+  $('#client-last').val('');
+  $('#client-email').val('');
+  $('#client-phone').val('');
+  $('#client-addr1').val('');
+  $('#client-addr2').val('');
+  $('#client-city').val('');
+  $('#client-state').val('');
+  $('#client-zip').val('');
+  $('#pet-name').val('');
+
+
 
 var clientInfo = {
     clientFirst: clientFirst,
@@ -83,6 +93,41 @@ var clientInfo = {
 
 database.ref('/client').push(clientInfo);
 
+ dataRef.ref().on("child_added", function(childSnapshot) {
+
+      // Log everything that's coming out of snapshot
+      console.log(childSnapshot.val().clientFirst);
+      console.log(childSnapshot.val().clientLast);
+      console.log(childSnapshot.val().clientEmail);
+      console.log(childSnapshot.val().clientPhone);
+      console.log(childSnapshot.val().clientAddr1);
+      console.log(childSnapshot.val().clientAddr2);
+      console.log(childSnapshot.val().clientCity);
+      console.log(childSnapshot.val().clientState);
+      console.log(childSnapshot.val().clientZip);
+      console.log(childSnapshot.val().clientpetName);
+   
+
+
+    // Handle the errors
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });// end of dataRef // 
+
+$("#customer-view").on("click", function(event) {
+        $(".dashboard-content").empty();
+        // full list of items to the well
+      $(".dashboard-content").append("<div class='well'><span id='member-info'> " + childSnapshot.val().clientFirst + clientLast +
+        " </span><span id='email'> " + childSnapshot.val().clientEmail +
+        " </span><span id='phone'> " + childSnapshot.val().clientPhone +
+        " </span><span id='address1'> " + childSnapshot.val().clientAddr1 +
+        " </span><span id='address2'> " + childSnapshot.val().clientAddr2 +
+        " </span><span id='city'> " + childSnapshot.val().clientCity +
+        " </span><span id='state'> " + childSnapshot.val().clientState +
+        " </span><span id='zip'> " + childSnapshot.val().clientZip +
+        " </span><span id='petName'> " + childSnapshot.val().clientpetName + " </span></div>");
+
+})// end of customer view on click // 
 
   }); // end of on click function //
 
