@@ -42,7 +42,8 @@ $(document).ready(function(){
                 var photoURL = user.photoURL;
                 var uid = user.uid;
                 var providerData = user.providerData;
-                user.getToken().then(function(accessToken) {
+                user.getToken().then(
+                    function(accessToken) {
                     document.getElementById('sign-in-status').textContent = 'Signed in';
                     document.getElementById('sign-in').textContent = 'Sign out';
                     document.getElementById('account-details').textContent = JSON.stringify({
@@ -54,6 +55,7 @@ $(document).ready(function(){
                         accessToken: accessToken,
                         providerData: providerData
                     }, null, '  ');
+            console.log(JSON.stringify(user));
                 });
             } else {
                 // User is signed out.
