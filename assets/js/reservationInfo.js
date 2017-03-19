@@ -12,7 +12,9 @@ $(document).ready(function(){
 
     var database = firebase.database();
 
-
+// =====================================================================
+    // Reservation Functions //
+// =====================================================================
 
  $("#rsvp").on("click", function(event) {
  // Preventing the buttons default behavior when clicked (which is submitting a form)
@@ -64,17 +66,6 @@ $(document).ready(function(){
         		    $('#service-training').val();
                 }           
         		
- // clears input boxes after user presses submit // 
-  $('#client-first').val('');
-  $('#client-last').val('');
-  $('#client-email').val('');
-  $('#client-phone').val('');
-  $('#client-addr1').val('');
-  $('#client-addr2').val('');
-  $('#client-city').val('');
-  $('#client-state').val('');
-  $('#client-zip').val('');
-  $('#pet-name').val('');
 
 
 
@@ -88,8 +79,8 @@ var clientInfo = {
     clientState: clientState,
     clientZip: clientZip,
     petName: petName,
-    clientPetType: clientPetType     
-} 
+    clientPetType: clientPetType
+}
 
 database.ref('/client').push(clientInfo);
 
@@ -106,16 +97,39 @@ database.ref('/client').push(clientInfo);
       console.log(childSnapshot.val().clientState);
       console.log(childSnapshot.val().clientZip);
       console.log(childSnapshot.val().clientpetName);
-   
+
 
 
     // Handle the errors
     }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
-    });// end of dataRef // 
+    });// end of dataRef //
+
+
+ // clears res form after user presses submit //
+     $('#res-form').empty();
+     $('<div id="thanks">').appendTo('#res-form');
+     $('#thanks').html("Hi " + clientInfo.clientFirst + "! " + clientInfo.petName + " is scheduled for ...  One of our team members will contact you soon!");
+     // adds log out button
+     $('<button id="log-out">').appendTo('#res-form').text("Log Out");
+     // on click of #log-out, user is signed out of firebase
+     $('#log-out').on('click', function(event) {
+         event.preventDefault(event);
+         $('#res-form').html("You have logged out.");
+         firebase.auth().signOut();
+     });
 
 
   }); // end of #rsvp on click function //
+
+
+
+
+
+// =====================================================================
+    // Dashboard Functions //
+// =====================================================================
+
 
 $("#customer-view").on("click", function(event) {
     event.preventDefault(event);
