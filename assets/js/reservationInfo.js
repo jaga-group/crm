@@ -93,7 +93,7 @@ var clientInfo = {
 
 database.ref('/client').push(clientInfo);
 
- dataRef.ref().on("child_added", function(childSnapshot) {
+ database.ref().on("child_added", function(childSnapshot) {
 
       // Log everything that's coming out of snapshot
       console.log(childSnapshot.val().clientFirst);
@@ -114,7 +114,12 @@ database.ref('/client').push(clientInfo);
       console.log("Errors handled: " + errorObject.code);
     });// end of dataRef // 
 
+
+  }); // end of #rsvp on click function //
+
 $("#customer-view").on("click", function(event) {
+    event.preventDefault(event);
+    console.log("customer view click");
         $(".dashboard-content").empty();
         // full list of items to the well
       $(".dashboard-content").append("<div class='well'><span id='member-info'> " + childSnapshot.val().clientFirst + clientLast +
@@ -127,9 +132,7 @@ $("#customer-view").on("click", function(event) {
         " </span><span id='zip'> " + childSnapshot.val().clientZip +
         " </span><span id='petName'> " + childSnapshot.val().clientpetName + " </span></div>");
 
-})// end of customer view on click // 
-
-  }); // end of on click function //
+});// end of #customer view on click //
 
 }); // end of document ready // 
 
