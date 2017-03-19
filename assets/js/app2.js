@@ -18,8 +18,13 @@ $(document).ready(function(){
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
             firebase.auth.EmailAuthProvider.PROVIDER_ID
         ],
-        // Terms of service url.
-        tosUrl: '<your-tos-url>'
+        // callbacks: {
+        //     signInSuccess: function (currentUser, credential, redirectUrl) {
+        //         if (credential = 'tTp327EeymbaXQPv01Kk4MBQBZB3') {
+        //          redirectUrl = 'landing.html'
+        //         }
+        //     }
+        // }
     };
 
     // Initialize the FirebaseUI Widget using Firebase.
