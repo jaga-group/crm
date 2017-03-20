@@ -209,7 +209,7 @@
                                 </div>
                             </div>
                             <div class="text-right">
-                                <button type="submit" id="rsvp" class="btn btn-primary">Make Reservation</button>
+                                <button type="submit" id="rsvp" class="btn btn-primary" onclick='handleAuthClick();'>Make Reservation</button>
                             </div>
                         </form>
                     </fieldset>
@@ -230,6 +230,10 @@
         crossorigin="anonymous"></script>
 <!--Datepicker-->
 <script src="assets/js/bootstrap-datepicker.js"></script>
+<!--Moment.js -->
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+<!--Google Cal Auth-->
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
