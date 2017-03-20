@@ -66,84 +66,33 @@
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Address Line 1</label>
                                 <div class="col-lg-8">
-                                    <input id="client-addr1" class="form-control" type="text" placeholder="">
+                                    <input id="client-addr1" class="form-control" placeholder="Enter your address"
+                                           onFocus="geolocate()" type="text">
+                                    <!--<input id="client-addr1" class="form-control" type="text" placeholder="">-->
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Address Line 2</label>
                                 <div class="col-lg-8">
-                                    <input id="client-addr2" class="form-control" type="text" placeholder="">
+                                    <input id="client-addr2" class="form-control" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">City</label>
                                 <div class="col-lg-8">
-                                    <input id="client-city" class="form-control" type="text" placeholder="">
+                                    <input id="client-city" class="form-control" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">State</label>
                                 <div class="col-lg-8">
-                                    <select id="client-state" name="state" class="form-control selectpicker">
-                                        <option value=" "></option>
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>Arizona</option>
-                                        <option>Arkansas</option>
-                                        <option>California</option>
-                                        <option>Colorado</option>
-                                        <option>Connecticut</option>
-                                        <option>Delaware</option>
-                                        <option>District of Columbia</option>
-                                        <option> Florida</option>
-                                        <option>Georgia</option>
-                                        <option>Hawaii</option>
-                                        <option>daho</option>
-                                        <option>Illinois</option>
-                                        <option>Indiana</option>
-                                        <option>Iowa</option>
-                                        <option> Kansas</option>
-                                        <option>Kentucky</option>
-                                        <option>Louisiana</option>
-                                        <option>Maine</option>
-                                        <option>Maryland</option>
-                                        <option> Mass</option>
-                                        <option>Michigan</option>
-                                        <option>Minnesota</option>
-                                        <option>Mississippi</option>
-                                        <option>Missouri</option>
-                                        <option>Montana</option>
-                                        <option>Nebraska</option>
-                                        <option>Nevada</option>
-                                        <option>New Hampshire</option>
-                                        <option>New Jersey</option>
-                                        <option>New Mexico</option>
-                                        <option>New York</option>
-                                        <option>North Carolina</option>
-                                        <option>North Dakota</option>
-                                        <option>Ohio</option>
-                                        <option>Oklahoma</option>
-                                        <option>Oregon</option>
-                                        <option>Pennsylvania</option>
-                                        <option>Rhode Island</option>
-                                        <option>South Carolina</option>
-                                        <option>South Dakota</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option> Uttah</option>
-                                        <option>Vermont</option>
-                                        <option>Virginia</option>
-                                        <option>Washington</option>
-                                        <option>West Virginia</option>
-                                        <option>Wisconsin</option>
-                                        <option>Wyoming</option>
-                                    </select>
+                                    <input id="client-state" name="state" class="form-control" type="text">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 control-label">Zip Code</label>
                                 <div class="col-lg-8">
-                                    <input id="client-zip" class="form-control" type="text" placeholder="">
+                                    <input id="client-zip" class="form-control" type="text">
                                 </div>
                             </div>
                         </form>
@@ -179,6 +128,14 @@
                                             <input id="service-boarding" type="checkbox" value="Boarding"/> Boarding
                                         </label>
                                     </div>
+                                    <div id="drop-pick">
+                                        <label for="dropoffDate">Drop-Off Date</label>
+                                        <input id="dropoffDate" class="form-control datepicker" type="text"
+                                               placeholder="mm/dd/yyyy">
+                                        <label for="pickupDate">Pick-Up Date</label>
+                                        <input id="pickupDate" class="form-control datepicker" type="text"
+                                               placeholder="mm/dd/yyyy">
+                                    </div>
                                     <div class="checkbox">
                                         <label>
                                             <input id="service-grooming" type="checkbox" value="Grooming"/> Grooming
@@ -194,18 +151,6 @@
                                             <input id="service-training" type="checkbox" value="Training"/> Training
                                         </label>
                                     </div>
-                                </div>
-                            </div>
-                            <div id="dropoffForm" class="form-group hide">
-                                <label class="col-lg-3 control-label">Drop-Off Date</label>
-                                <div class="col-lg-8">
-                                    <input id="dropoffDate" class="form-control datepicker" type="text" placeholder="mm/dd/yyyy">
-                                </div>
-                            </div>
-                            <div id="pickupForm" class="form-group hide">
-                                <label class="col-lg-3 control-label">Pick-Up Date</label>
-                                <div class="col-lg-8">
-                                    <input id="pickupDate" class="form-control datepicker" type="text" placeholder="mm/dd/yyyy">
                                 </div>
                             </div>
                             <div class="text-right">
@@ -237,6 +182,9 @@
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+<!--Google Places-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ&libraries=places&callback=initAutocomplete"
+        async defer></script>
 <!--Local JS-->
 <script src="assets/js/reservationInfo.js"></script>
 <script src="assets/js/ui-elements.js"></script>
