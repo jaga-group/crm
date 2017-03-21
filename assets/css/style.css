@@ -1,13 +1,21 @@
-.sign-in-inputs {
-    font-size: large;
+fieldset {
+    margin-left: 30px;
 }
 
 .hide {
     display: none;
 }
 
+.radio {
+    display: inline;
+}
+
+.sign-in-inputs {
+    font-size: large;
+}
+
 /*=============================================================*/
-    /* Parsley JS Form Validation related styles */
+/* Parsley JS Form Validation related styles */
 /*=============================================================*/
 
 input.parsley-success,
@@ -44,9 +52,63 @@ textarea.parsley-error {
     opacity: 1;
 }
 
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 3px solid #eee;
+}
+
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+
+.bs-callout code {
+    border-radius: 3px;
+}
+
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+
+.bs-callout-success h4 {
+    background-color: #dff0d8;
+    border-color: #5cb85c;
+}
+
+.bs-callout-danger {
+    background-color: #F2DEDE
+    border-color: #d9534f;
+}
+
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+
+.bs-callout-warning {
+    background-color: #fcf8f2;
+    border-color: #f0ad4e;
+}
+
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+
+.bs-callout-info {
+    background-color: #f4f8fa;
+    border-color: #5bc0de;
+}
+
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
 
 /*=============================================================*/
-    /* Dashboard Sidebar */
+/* Dashboard Sidebar */
 /*=============================================================*/
 
 body {
