@@ -117,36 +117,66 @@ $(document).ready(function(){
         var finalPickUpDate = convertedPickUpDate + "T10:00:00.000-07:00";
 
 
-        function handleClientLoad() {
-            gapi.client.setApiKey(apiKey);
-            window.setTimeout(checkAuth, 1);
-            checkAuth();
-        }
+            function start() {
+                // 2. Initialize the JavaScript client library.
+                gapi.client.init({
+                    'apiKey': 'apiKey',
+                    // clientId and scope are optional if auth is not required.
+                    'clientId': 'calendarId',
+                    'scope': 'scopes',
+                }).then(function() {
+                    // 3. Initialize and make the API request.
+                    return gapi.client.request({
+                        'path': 'https://people.googleapis.com/v1/people/me',
+                    })
+                }).then(function(response) {
+                    console.log(response.result);
+                }, function(reason) {
+                    console.log('Error: ' + reason.result.error.message);
+                });
+            };
+// 1. Load the JavaScript client library.
+        gapi.load('client', start);
 
-        function checkAuth() {
-            gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true},
-                handleAuthResult);
-        }
 
-        function handleAuthResult(authResult) {
-            var authorizeButton = document.getElementById('rsvp');
-            if (authResult) {
-                authorizeButton.style.visibility = 'hidden';
-                makeApiCall();
-            } else {
-                authorizeButton.style.visibility = '';
-                authorizeButton.onclick = handleAuthClick;
-            }
-        }
 
-        function handleAuthClick(event) {
-            gapi.auth.authorize(
-                {client_id: clientId, scope: scopes, immediate: false},
-                handleAuthResult);
-            return false;
-        }
 
+
+
+
+
+
+
+        // function handleClientLoad() {
+        //     gapi.client.setApiKey(apiKey);
+        //     window.setTimeout(checkAuth, 1);
+        //     checkAuth();
+        // }
         //
+        // function checkAuth() {
+        //     gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true},
+        //         handleAuthResult);
+        // }
+        //
+        // function handleAuthResult(authResult) {
+        //     var authorizeButton = document.getElementById('rsvp');
+        //     if (authResult) {
+        //         authorizeButton.style.visibility = 'hidden';
+        //         makeApiCall();
+        //     } else {
+        //         authorizeButton.style.visibility = '';
+        //         authorizeButton.onclick = handleAuthClick;
+        //     }
+        // }
+        //
+        // function handleAuthClick(event) {
+        //     gapi.auth.authorize(
+        //         {client_id: clientId, scope: scopes, immediate: false},
+        //         handleAuthResult);
+        //     return false;
+        // }
+
+        //=======================================
         // var resource = {
         //     "summary": "Boarding",
         //     "location": "V.I.Pets Resort",
