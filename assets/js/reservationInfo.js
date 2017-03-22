@@ -121,45 +121,47 @@ $(document).ready(function(){
             $('#res-form').html("You have logged out.");
             firebase.auth().signOut();
 
-            // google maps directions api // 
-    if (navigator.geolocation) { //Checks if browser supports geolocation
-        navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
-     var latitude = position.coords.latitude;                    //users current
-     var longitude = position.coords.longitude;                 //location
-     var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
-     var directionsService = new google.maps.DirectionsService();
-     var directionsDisplay = new google.maps.DirectionsRenderer();
-     var mapOptions = //Sets map options
-     {
-       zoom: 15,  //Sets zoom level (0-21)
-       center: coords, //zoom in on users location
-       mapTypeControl: true, //allows you to select map type eg. map or satellite
-       navigationControlOptions:
-       {
-         style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
-       },
-       mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
-     };
-     map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
-     directionsDisplay.setMap(map);
-     directionsDisplay.setPanel(document.getElementById('panel'));
-     var latLong = {lat: 28.455022, lng: -81.438414};
-     var request = {
-       origin: coords,
-       destination: latLong,
-       travelMode: google.maps.DirectionsTravelMode.DRIVING
-     };
+   function initMap() {
+                // google maps directions api //
+        if (navigator.geolocation) { //Checks if browser supports geolocation
+            navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
+         var latitude = position.coords.latitude;                    //users current
+         var longitude = position.coords.longitude;                 //location
+         var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
+         var directionsService = new google.maps.DirectionsService();
+         var directionsDisplay = new google.maps.DirectionsRenderer();
+         var mapOptions = //Sets map options
+         {
+           zoom: 15,  //Sets zoom level (0-21)
+           center: coords, //zoom in on users location
+           mapTypeControl: true, //allows you to select map type eg. map or satellite
+           navigationControlOptions:
+           {
+             style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
+           },
+           mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
+         };
+         map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
+         directionsDisplay.setMap(map);
+         directionsDisplay.setPanel(document.getElementById('panel'));
+         var latLong = {lat: 28.455022, lng: -81.438414};
+         var request = {
+           origin: coords,
+           destination: latLong,
+           travelMode: google.maps.DirectionsTravelMode.DRIVING
+         };
 
-     directionsService.route(request, function (response, status) {
-       if (status == google.maps.DirectionsStatus.OK) {
-         directionsDisplay.setDirections(response);
-       }
-     });
-   });
- }
+         directionsService.route(request, function (response, status) {
+           if (status == google.maps.DirectionsStatus.OK) {
+             directionsDisplay.setDirections(response);
+           }
+         });
+       });
+     }
+            };
 
 
-       
+
         }); // end #log-out click function
 
 
@@ -232,25 +234,7 @@ $(document).ready(function(){
         //         handleAuthResult);
         //     return false;
         // }
-
-        //=======================================
-        // var resource = {
-        //     "summary": "Boarding",
-        //     "location": "V.I.Pets Resort",
-        //     "start": {
-        //         "dateTime": finalDropOffDate
-        //     },
-        //     "end": {
-        //         "dateTime": finalPickUpDate
-        //     }
-        // };
-        // var request = gapi.client.calendar.events.insert({
-        //     'calendarId': calendarId,
-        //     'resource': resource
-        // });
-        // request.execute(function(resp) {
-        //     console.log(resp);
-        // });
+                
 
         var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events?access_token=' + apiKey;
         var data = {
@@ -274,7 +258,7 @@ $(document).ready(function(){
         function makeApiCall() {
             console.log('make api call function');
             gapi.client.load('calendar', 'v3', function () {
-                var request = gapi.client.calendar.events.list({
+                var request = gapi.client.calendar.events.insert({
                     'calendarId': 'primary',
                     'resource': data
                 });
