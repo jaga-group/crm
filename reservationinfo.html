@@ -32,7 +32,7 @@
     <h2 class="hello"> Goes Here </h2>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row" id="res-form-container">
         <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -186,6 +186,11 @@
             </div>  <!--end main panel-->
         </div> <!--end main column-->
     </div>  <!--end main row-->
+    <div class="row">
+        <div id="firebaseui-auth-container">
+            <button id="admin">Administrator</button>
+        </div> <!-- end firebaseui-auth-container-->
+    </div> <!-- end admin row-->
 </div>  <!--end main container-->
 
 
@@ -215,6 +220,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ&libraries=places&callback=initAutocomplete"
         async defer></script>
 <!--Local JS-->
+<script src="assets/js/firebaseInit.js"></script>
 <script src="assets/js/app2.js"></script>
 <script src="assets/js/reservationInfo.js"></script>
 <script src="assets/js/ui-elements.js"></script>
