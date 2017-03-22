@@ -1,7 +1,8 @@
+var clientInfo;
 $(document).ready(function(){
 
     database = firebase.database();
-    var clientInfo;
+    
 
 
 
@@ -90,7 +91,8 @@ $(document).ready(function(){
             clientZip: clientZip,
             petName: petName,
             clientPetType: clientPetType,
-            service: service
+            service: service,
+            notes: " "
         };
 
         if(dropOffDate) {
@@ -103,6 +105,8 @@ $(document).ready(function(){
 
         database.ref('/client').push(clientInfo);
         console.log('db.ref ' + clientInfo.clientFirst);
+
+
 
         // clears res form after user presses submit //
         $('#res-form').empty();
@@ -291,7 +295,7 @@ $(document).ready(function(){
         event.preventDefault(event);
         console.log("customer view click");
         $("#dashboard-content").empty();
-$('#table').append("<thead>" + "<tr>" + "<th>Client Name</th>" + "<th>Email</th>" + "<th>Phone</th>" + "<th>Address</th>" + "<th>Address</th>" + "<th>City</th>" + "<th>State</th>" + "<th>Zip Code</th>" + "<th>Pet Name</th>" + "<thead>" + "<tr>");
+/*$('#table').append("<thead>" + "<tr>" + "<th>Client Name</th>" + "<th>Email</th>" + "<th>Phone</th>" + "<th>Address</th>" + "<th>Address</th>" + "<th>City</th>" + "<th>State</th>" + "<th>Zip Code</th>" + "<th>Pet Name</th>" + "<thead>" + "<tr>");*/
 
         database.ref('/client').on("child_added", function(childSnapshot) {
             console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
@@ -335,8 +339,8 @@ $('#table').append("<thead>" + "<tr>" + "<th>Client Name</th>" + "<th>Email</th>
         
 
 
-
-$("#table").append("<tr><td>" + firstName + lastName + "<td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + petName + "</td></td>");
+ 
+$("#table").append("<tr><td>" + firstName + " " lastName + "</td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + zip + "</td><td>" + petName + "</td></td>");
 
             // Handle the errors
         }, function(errorObject) {
@@ -344,8 +348,21 @@ $("#table").append("<tr><td>" + firstName + lastName + "<td><td>" + email + "</t
 
         });// end of dataRef //
 
-
-
+   $('#table').DataTable( {
+        data: JSON.stringify(clientInfo),
+        columns: [
+            { title: "Client Name" },
+            { title: "Email" },
+            { title: "Phone" },
+            { title: "Address" },
+            { title: "Address ext" },
+            { title: "City" },
+            { title: "State" },
+            { title: "Zip Code" },
+            { title: "Pet Name" }
+        ]
+    } );
+ 
     }); // end of #customer view on click //
 
 
