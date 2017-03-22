@@ -291,7 +291,7 @@ $(document).ready(function(){
         event.preventDefault(event);
         console.log("customer view click");
         $("#dashboard-content").empty();
-
+$('#table').append("<thead>" + "<tr>" + "<th>Client Name</th>" + "<th>Email</th>" + "<th>Phone</th>" + "<th>Address</th>" + "<th>Address</th>" + "<th>City</th>" + "<th>State</th>" + "<th>Zip Code</th>" + "<th>Pet Name</th>" + "<thead>" + "<tr>");
 
         database.ref('/client').on("child_added", function(childSnapshot) {
             console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
@@ -322,6 +322,8 @@ $(document).ready(function(){
 
         $("#table").append(
             "<tr><td>" + firstName + " " + lastName + "<td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + petName + "</td></td>");
+
+        
 
 
             // Handle the errors
