@@ -20,15 +20,19 @@
     <link rel="stylesheet" href="assets/css/datepicker.css">
     <!--Local StyleSheet-->
     <link rel="stylesheet" href="assets/css/style.css">
+<!--&lt;!&ndash;Google Maps&ndash;&gt;-->
+<!--<script async defer-->
+        <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>-->
+
 
 </head>
 <body>
 <div class="jumbotron text-center">
     <h1>HEADER STUFF</h1>
-    <h2>Goes Here</h2>
+    <h2 class="hello"> Goes Here </h2>
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row" id="res-form-container">
         <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -72,7 +76,7 @@
                                 <label for="client-email" class="col-md-3 control-label">Email *</label>
                                 <div class="col-md-8">
                                     <input type="email" name="client-email" id="client-email" class="form-control"
-                                           data-parsley-trigger="change" required="" placeholder="janedoe@mail.com">
+                                           required="" placeholder="janedoe@mail.com">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -172,8 +176,9 @@
                                 <div class="col-md-6"></div>
                             </div>
                             <div class="text-right">
-                                <button type="submit" class="btn btn-primary" value="Testing" onclick=""handleAuthClick();">Make Reservation</button>
-                                <!--<input type="submit" class="btn btn-primary rsvp" value="Make Reservation" onclick="handleAuthClick();">-->
+
+                                <input type="submit" class="btn btn-primary">Make Reservation</input>
+
                             </div>
                         </fieldset>
                     </form>
@@ -181,10 +186,13 @@
             </div>  <!--end main panel-->
         </div> <!--end main column-->
     </div>  <!--end main row-->
+    <div class="row">
+        <div id="firebaseui-auth-container">
+            <button id="admin">Administrator</button>
+        </div> <!-- end firebaseui-auth-container-->
+    </div> <!-- end admin row-->
 </div>  <!--end main container-->
 
-
-<!--&lt;!&ndash;<button type="submit" id="rsvp" class="btn btn-primary" onclick='handleAuthClick();'>Make Reservation</button>&ndash;&gt;-->
 
 
 <!--jQuery-->
@@ -212,12 +220,13 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ&libraries=places&callback=initAutocomplete"
         async defer></script>
 <!--Local JS-->
+<script src="assets/js/firebaseInit.js"></script>
+<script src="assets/js/app2.js"></script>
 <script src="assets/js/reservationInfo.js"></script>
 <script src="assets/js/ui-elements.js"></script>
 
 </body>
 </html>
-
 
 
 
