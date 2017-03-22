@@ -141,4 +141,3 @@ function geolocate() {
 // Hide dropoff and pickup date fields on page load
 $('#drop-pick').hide();
 
-

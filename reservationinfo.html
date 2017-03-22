@@ -20,12 +20,16 @@
     <link rel="stylesheet" href="assets/css/datepicker.css">
     <!--Local StyleSheet-->
     <link rel="stylesheet" href="assets/css/style.css">
+<!--&lt;!&ndash;Google Maps&ndash;&gt;-->
+<!--<script async defer-->
+        <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>-->
+
 
 </head>
 <body>
 <div class="jumbotron text-center">
     <h1>HEADER STUFF</h1>
-    <h2>Goes Here</h2>
+    <h2 class="hello"> Goes Here </h2>
 </div>
 <div class="container">
     <div class="row">
@@ -172,9 +176,9 @@
                                 <div class="col-md-6"></div>
                             </div>
                             <div class="text-right">
-                                <!--<button type="submit" class="btn btn-primary" value="Testing" onsubmit="handleAuthClick();">Make Reservation</button>-->
-                                <!--<input type="submit" class="btn btn-primary rsvp" value="Make Reservation" onclick="handleAuthClick();">-->
-                                <input type="submit" class="btn btn-primary" value="Make Reservation" />
+
+                                <input type="submit" class="btn btn-primary">Make Reservation</input>
+
                             </div>
                         </fieldset>
                     </form>
@@ -184,8 +188,6 @@
     </div>  <!--end main row-->
 </div>  <!--end main container-->
 
-
-<!--&lt;!&ndash;<button type="submit" id="rsvp" class="btn btn-primary" onclick='handleAuthClick();'>Make Reservation</button>&ndash;&gt;-->
 
 
 <!--jQuery-->
@@ -205,6 +207,7 @@
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 <!--Google Cal Auth-->
 <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<script src="https://apis.google.com/js/api.js"></script>
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
@@ -212,6 +215,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ&libraries=places&callback=initAutocomplete"
         async defer></script>
 <!--Local JS-->
+<script src="assets/js/app2.js"></script>
 <script src="assets/js/reservationInfo.js"></script>
 <script src="assets/js/ui-elements.js"></script>
 
