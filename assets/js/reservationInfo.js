@@ -14,6 +14,7 @@ $(document).ready(function(){
 
 
 
+
     // =====================================================================
 // ParsleyJS Validation //
 // =====================================================================
@@ -26,6 +27,7 @@ $(document).ready(function(){
         })
             .on('form:submit', function() {
                 // alert('this fucking sucks!!!');
+
 
 
 // =====================================================================
@@ -105,6 +107,7 @@ $(document).ready(function(){
         };
 
         database.ref('/client').push(clientInfo);
+        console.log('db.ref ' + clientInfo.clientFirst);
 
         // clears res form after user presses submit //
         $('#res-form').empty();
@@ -118,45 +121,47 @@ $(document).ready(function(){
             $('#res-form').html("You have logged out.");
             firebase.auth().signOut();
 
-            // google maps directions api // 
-    if (navigator.geolocation) { //Checks if browser supports geolocation
-        navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
-     var latitude = position.coords.latitude;                    //users current
-     var longitude = position.coords.longitude;                 //location
-     var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
-     var directionsService = new google.maps.DirectionsService();
-     var directionsDisplay = new google.maps.DirectionsRenderer();
-     var mapOptions = //Sets map options
-     {
-       zoom: 15,  //Sets zoom level (0-21)
-       center: coords, //zoom in on users location
-       mapTypeControl: true, //allows you to select map type eg. map or satellite
-       navigationControlOptions:
-       {
-         style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
-       },
-       mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
-     };
-     map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
-     directionsDisplay.setMap(map);
-     directionsDisplay.setPanel(document.getElementById('panel'));
-     var latLong = {lat: 28.455022, lng: -81.438414};
-     var request = {
-       origin: coords,
-       destination: latLong,
-       travelMode: google.maps.DirectionsTravelMode.DRIVING
-     };
+   function initMap() {
+                // google maps directions api //
+        if (navigator.geolocation) { //Checks if browser supports geolocation
+            navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
+         var latitude = position.coords.latitude;                    //users current
+         var longitude = position.coords.longitude;                 //location
+         var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
+         var directionsService = new google.maps.DirectionsService();
+         var directionsDisplay = new google.maps.DirectionsRenderer();
+         var mapOptions = //Sets map options
+         {
+           zoom: 15,  //Sets zoom level (0-21)
+           center: coords, //zoom in on users location
+           mapTypeControl: true, //allows you to select map type eg. map or satellite
+           navigationControlOptions:
+           {
+             style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
+           },
+           mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
+         };
+         map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
+         directionsDisplay.setMap(map);
+         directionsDisplay.setPanel(document.getElementById('panel'));
+         var latLong = {lat: 28.455022, lng: -81.438414};
+         var request = {
+           origin: coords,
+           destination: latLong,
+           travelMode: google.maps.DirectionsTravelMode.DRIVING
+         };
 
-     directionsService.route(request, function (response, status) {
-       if (status == google.maps.DirectionsStatus.OK) {
-         directionsDisplay.setDirections(response);
-       }
-     });
-   });
- }
+         directionsService.route(request, function (response, status) {
+           if (status == google.maps.DirectionsStatus.OK) {
+             directionsDisplay.setDirections(response);
+           }
+         });
+       });
+     }
+            };
 
 
-       
+
         }); // end #log-out click function
 
 
@@ -172,36 +177,33 @@ $(document).ready(function(){
         var cPickUpDate = clientInfo.pickUpDate;
         var convertedPickUpDate = moment(cPickUpDate).format('YYYY-MM-DD');
         var finalPickUpDate = convertedPickUpDate + "T10:00:00.000-07:00";
+        var accessToken = user.accessToken;
 
 
-            function start() {
-                // 2. Initialize the JavaScript client library.
-                gapi.client.init({
-                    'apiKey': 'apiKey',
-                    // clientId and scope are optional if auth is not required.
-                    'clientId': 'calendarId',
-                    'scope': 'scopes',
-                }).then(function() {
-                    // 3. Initialize and make the API request.
-                    return gapi.client.request({
-                        'path': 'https://people.googleapis.com/v1/people/me',
-                    })
-                }).then(function(response) {
-                    console.log(response.result);
-                }, function(reason) {
-                    console.log('Error: ' + reason.result.error.message);
-                });
-            };
+        function start() {
+            console.log('start');
+            // 2. Initialize the JavaScript client library.
+            gapi.client.init({
+                'apiKey': 'apiKey',
+                // clientId and scope are optional if auth is not required.
+                'clientId': 'calendarId',
+                'scope': 'scopes',
+                'token': 'accessToken'
+            }).then(function () {
+                console.log('then');
+                // 3. Initialize and make the API request.
+                return gapi.client.request({
+                    'path': 'https://people.googleapis.com/v1/people/me',
+                })
+            }).then(function (response) {
+                console.log(response.result);
+                makeApiCall();
+            }, function (reason) {
+                console.log('Error: ' + reason.result.error.message);
+            });
+        };
 // 1. Load the JavaScript client library.
         gapi.load('client', start);
-
-
-
-
-
-
-
-
 
 
         // function handleClientLoad() {
@@ -232,49 +234,47 @@ $(document).ready(function(){
         //         handleAuthResult);
         //     return false;
         // }
+                
 
-        //=======================================
-        // var resource = {
-        //     "summary": "Boarding",
-        //     "location": "V.I.Pets Resort",
-        //     "start": {
-        //         "dateTime": finalDropOffDate
-        //     },
-        //     "end": {
-        //         "dateTime": finalPickUpDate
-        //     }
-        // };
-        // var request = gapi.client.calendar.events.insert({
-        //     'calendarId': calendarId,
-        //     'resource': resource
-        // });
-        // request.execute(function(resp) {
-        //     console.log(resp);
-        // });
-
-        var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events?sendNotifications=false&access_token=' + apiKey;
+        var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events?access_token=' + apiKey;
         var data = {
             end: {dateTime: finalDropOffDate}
             , start: {dateTime: finalPickUpDate}
             , summary: "New Calendar Event from API"
         };
 
-        var ajax = $.ajax({
-            url: url,
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            method: 'POST',
-        }).done(function (response) {
-            console.log('ajax call success' + response);
-        }).fail(function (jqHXR, textStatus) {
-                console.log("addEvent(): ajax failed = " + jqHXR.responseText);
-                console.log(jqHXR);
+        // var ajax = $.ajax({
+        //     url: url,
+        //     contentType: "application/json",
+        //     data: JSON.stringify(data),
+        //     method: 'POST',
+        // }).done(function (response) {
+        //     console.log('ajax call success' + response);
+        // }).fail(function (jqHXR, textStatus) {
+        //         console.log("addEvent(): ajax failed = " + jqHXR.responseText);
+        //         console.log(jqHXR);
+        //     });
+
+        function makeApiCall() {
+            console.log('make api call function');
+            gapi.client.load('calendar', 'v3', function () {
+                var request = gapi.client.calendar.events.insert({
+                    'calendarId': 'primary',
+                    'resource': data
+                });
+
+                request.execute(function (resp) {
+                        console.log(resp);
+                    }
+                );
             });
+        } // end makeApiCall();
 
 
 
-    }); // end of #rsvp on click function //
-
+        return false; // Don't submit form for this demo
+    });
+            });
 
 // =====================================================================
     // Dashboard Functions - Customer View //
