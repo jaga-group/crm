@@ -91,7 +91,8 @@ $(document).ready(function(){
             clientZip: clientZip,
             petName: petName,
             clientPetType: clientPetType,
-            service: service
+            service: service,
+            notes: " "
         };
 
         if(dropOffDate) {
@@ -339,7 +340,7 @@ $(document).ready(function(){
 
 
  
-$("#table").append("<tr><td>" + firstName + lastName + "</td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + zip + "</td><td>" + petName + "</td></td>");
+$("#table").append("<tr><td>" + firstName + " " lastName + "</td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + zip + "</td><td>" + petName + "</td></td>");
 
             // Handle the errors
         }, function(errorObject) {
