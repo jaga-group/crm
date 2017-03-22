@@ -13,11 +13,28 @@ $(document).ready(function(){
     var database = firebase.database();
 
 
+
+
+    // =====================================================================
+// ParsleyJS Validation //
+// =====================================================================
+
+    $(function () {
+        $('#res-info').parsley().on('field:validated', function() {
+            var ok = $('.parsley-error').length === 0;
+            $('.bs-callout-info').toggleClass('hidden', !ok);
+            $('.bs-callout-warning').toggleClass('hidden', ok);
+        })
+            .on('form:submit', function() {
+                // alert('this fucking sucks!!!');
+
+
+
 // =====================================================================
     // Reservation Functions //
 // =====================================================================
 
-    $("#rsvp").on("click", function(event) {
+    // $("#rsvp").on("click", function(event) {
         // Preventing the buttons default behavior when clicked (which is submitting a form)
         event.preventDefault();
 
@@ -103,7 +120,12 @@ $(document).ready(function(){
             event.preventDefault(event);
             $('#res-form').html("You have logged out.");
             firebase.auth().signOut();
+       
         }); // end #log-out click function
+
+        return false; // Don't submit form for this demo
+    });
+            });
 
 // =====================================================================
         // Adding Event to Google Calendar //
@@ -232,6 +254,7 @@ $(document).ready(function(){
     }); // end of #rsvp on click function //
 
 
+   
 
 
 
@@ -331,5 +354,3 @@ $(document).ready(function(){
     }); // end of #snapshot-view on click
 
 }); // end of document ready //
-
-

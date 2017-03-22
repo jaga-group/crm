@@ -153,6 +153,8 @@ $(function () {
         $('.bs-callout-warning').toggleClass('hidden', ok);
     })
         .on('form:submit', function() {
+            alert('this fucking sucks!!!');
             return false; // Don't submit form for this demo
         });
 });
+
