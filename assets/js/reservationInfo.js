@@ -1,9 +1,12 @@
 $(document).ready(function(){
 
     database = firebase.database();
+    var clientInfo;
+
+
 
 // =====================================================================
-// ParsleyJS Validation //
+    // ParsleyJS Validation //
 // =====================================================================
 
     $(function () {
@@ -13,15 +16,14 @@ $(document).ready(function(){
             $('.bs-callout-warning').toggleClass('hidden', ok);
         })
             .on('form:submit', function() {
-                // alert('this fucking sucks!!!');
 
 
 
-// =====================================================================
-    // Reservation Functions //
-// =====================================================================
+        // =====================================================================
+            // Reservation Functions //
+        // =====================================================================
 
-    // $("#rsvp").on("click", function(event) {
+
         // Preventing the buttons default behavior when clicked (which is submitting a form)
         event.preventDefault();
 
@@ -76,7 +78,7 @@ $(document).ready(function(){
         ;
 
 
-        var clientInfo = {
+        clientInfo = {
             clientFirst: clientFirst,
             clientLast: clientLast,
             clientEmail: clientEmail,
@@ -88,10 +90,16 @@ $(document).ready(function(){
             clientZip: clientZip,
             petName: petName,
             clientPetType: clientPetType,
-            service: service,
-            dropOffDate: dropOffDate,
-            pickUpDate: pickUpDate
+            service: service
         };
+
+        if(dropOffDate) {
+            clientInfo.dropOffDate = dropOffDate;
+        }
+
+        if(pickUpDate) {
+            clientInfo.pickUpDate = pickUpDate;
+        }
 
         database.ref('/client').push(clientInfo);
         console.log('db.ref ' + clientInfo.clientFirst);
@@ -155,6 +163,7 @@ $(document).ready(function(){
 // =====================================================================
         // Adding Event to Google Calendar //
 // =====================================================================
+
         var calendarId = '801684809525-2vmlj173668rqofkkc1bpmnoahuais2h.apps.googleusercontent.com';
         var apiKey = 'AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ';
         var scopes = 'https://www.googleapis.com/auth/calendar';
@@ -359,8 +368,6 @@ $("#table").append("<tr><td>" + firstName + lastName + "<td><td>" + email + "</t
             }
         });
 
-
-
     }); // end of #snapshot-view on click
 
-}); // end of document ready //
+// }); // end of document ready //

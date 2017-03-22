@@ -32,7 +32,7 @@ var checkout = $('#pickupDate').datepicker({
 
 
 // =====================================================================
-// Show date range inputs if Boarding is checked //
+    // Show date range inputs if Boarding is checked //
 // =====================================================================
 
 $('#service-boarding').on('change', function () {
@@ -51,7 +51,7 @@ $('#service-boarding').on('change', function () {
 });
 
 // =====================================================================
-// Sidebar Toggle //
+    // Sidebar Toggle //
 // =====================================================================
 
 $("#menu-toggle").click(function (e) {
@@ -140,6 +140,4 @@ function geolocate() {
 
 // Hide dropoff and pickup date fields on page load
 $('#drop-pick').hide();
-
-
 
