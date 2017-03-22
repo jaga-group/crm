@@ -320,21 +320,9 @@ $(document).ready(function(){
             console.log(petName);
 
 
-       
-        // full list of items to the well
-     /*   $("#dashboard-content").append("<div class='well'><div id='member-info'> " + firstName + lastName + "<br>" +
-            " </span><span id='email'> " + email + "<br>" +
-            " </span><span id='phone'> " + phone + "<br>" +
-            " </span><span id='address1'> " + addr1 + "<br>" +
-            " </span><span id='address2'> " + addr2 + "<br>" +
-            " </span><span id='city'> " + city + "<br>" +
-            " </span><span id='state'> " + state + "<br>" +
-            " </span><span id='zip'> " + zip + "<br>" +
-            " </span><span id='petName'> " + petName + " </span></div>");*/
+        $("#table").append(
+            "<tr><td>" + firstName + " " + lastName + "<td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + petName + "</td></td>");
 
-
-
-$("#table").append("<tr><td>" + firstName + lastName + "<td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + petName + "</td></td>");
 
             // Handle the errors
         }, function(errorObject) {
@@ -345,6 +333,13 @@ $("#table").append("<tr><td>" + firstName + lastName + "<td><td>" + email + "</t
 
 
     }); // end of #customer view on click //
+
+
+    $('td').on('click', function() {
+       console.log(this);
+    });
+
+
 
 
 // =====================================================================
@@ -370,4 +365,4 @@ $("#table").append("<tr><td>" + firstName + lastName + "<td><td>" + email + "</t
 
     }); // end of #snapshot-view on click
 
-// }); // end of document ready //
+}); // end of document ready //
