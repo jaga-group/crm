@@ -117,12 +117,48 @@ $(document).ready(function(){
             event.preventDefault(event);
             $('#res-form').html("You have logged out.");
             firebase.auth().signOut();
+
+            // google maps directions api // 
+    if (navigator.geolocation) { //Checks if browser supports geolocation
+        navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
+     var latitude = position.coords.latitude;                    //users current
+     var longitude = position.coords.longitude;                 //location
+     var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
+     var directionsService = new google.maps.DirectionsService();
+     var directionsDisplay = new google.maps.DirectionsRenderer();
+     var mapOptions = //Sets map options
+     {
+       zoom: 15,  //Sets zoom level (0-21)
+       center: coords, //zoom in on users location
+       mapTypeControl: true, //allows you to select map type eg. map or satellite
+       navigationControlOptions:
+       {
+         style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
+       },
+       mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
+     };
+     map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
+     directionsDisplay.setMap(map);
+     directionsDisplay.setPanel(document.getElementById('panel'));
+     var latLong = {lat: 28.455022, lng: -81.438414};
+     var request = {
+       origin: coords,
+       destination: latLong,
+       travelMode: google.maps.DirectionsTravelMode.DRIVING
+     };
+
+     directionsService.route(request, function (response, status) {
+       if (status == google.maps.DirectionsStatus.OK) {
+         directionsDisplay.setDirections(response);
+       }
+     });
+   });
+ }
+
+
        
         }); // end #log-out click function
 
-        return false; // Don't submit form for this demo
-    });
-            });
 
 // =====================================================================
         // Adding Event to Google Calendar //
@@ -240,10 +276,6 @@ $(document).ready(function(){
     }); // end of #rsvp on click function //
 
 
-   
-
-
-
 // =====================================================================
     // Dashboard Functions - Customer View //
 // =====================================================================
@@ -292,8 +324,9 @@ $(document).ready(function(){
             console.log(petName);
 
 
+       
         // full list of items to the well
-        $("#dashboard-content").append("<div class='well'><span id='member-info'> " + firstName + lastName + "<br>" +
+     /*   $("#dashboard-content").append("<div class='well'><div id='member-info'> " + firstName + lastName + "<br>" +
             " </span><span id='email'> " + email + "<br>" +
             " </span><span id='phone'> " + phone + "<br>" +
             " </span><span id='address1'> " + addr1 + "<br>" +
@@ -301,7 +334,11 @@ $(document).ready(function(){
             " </span><span id='city'> " + city + "<br>" +
             " </span><span id='state'> " + state + "<br>" +
             " </span><span id='zip'> " + zip + "<br>" +
-            " </span><span id='petName'> " + petName + " </span></div>");
+            " </span><span id='petName'> " + petName + " </span></div>");*/
+
+
+
+$("#table").append("<tr><td>" + firstName + lastName + "<td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + petName + "</td></td>");
 
             // Handle the errors
         }, function(errorObject) {
