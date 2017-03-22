@@ -90,7 +90,8 @@ $(document).ready(function(){
             clientZip: clientZip,
             petName: petName,
             clientPetType: clientPetType,
-            service: service
+            service: service,
+            note: " "
         };
 
         if(dropOffDate) {
@@ -104,6 +105,8 @@ $(document).ready(function(){
         database.ref('/client').push(clientInfo);
         console.log('db.ref ' + clientInfo.clientFirst);
 
+        handleClientLoad();
+
         // clears res form after user presses submit //
         $('#res-form').empty();
         $('<div id="thanks">').appendTo('#res-form');
@@ -115,6 +118,9 @@ $(document).ready(function(){
             event.preventDefault(event);
             $('#res-form').html("You have logged out.");
             firebase.auth().signOut();
+        }); // end #log-out click function
+
+
 
    function initMap() {
                 // google maps directions api //
@@ -157,7 +163,13 @@ $(document).ready(function(){
 
 
 
-        }); // end #log-out click function
+
+//===================CLOSING PARSLEY STUFF==============================
+        return false; // Don't submit form for this demo
+    });
+            }); // end parsley validation wrapper for all functions linked to rsvp button click
+
+
 
 
 // =====================================================================
@@ -176,101 +188,177 @@ $(document).ready(function(){
         var accessToken = user.accessToken;
 
 
-        function start() {
-            console.log('start');
-            // 2. Initialize the JavaScript client library.
-            gapi.client.init({
-                'apiKey': 'apiKey',
-                // clientId and scope are optional if auth is not required.
-                'clientId': 'calendarId',
-                'scope': 'scopes',
-                'token': 'accessToken'
-            }).then(function () {
-                console.log('then');
-                // 3. Initialize and make the API request.
-                return gapi.client.request({
-                    'path': 'https://people.googleapis.com/v1/people/me',
-                })
-            }).then(function (response) {
-                console.log(response.result);
-                makeApiCall();
-            }, function (reason) {
-                console.log('Error: ' + reason.result.error.message);
-            });
-        };
-// 1. Load the JavaScript client library.
-        gapi.load('client', start);
+                // Client ID and API key from the Developer Console
+                var CLIENT_ID = calendarId;
 
+                // Array of API discovery doc URLs for APIs used by the quickstart
+                var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 
-        // function handleClientLoad() {
-        //     gapi.client.setApiKey(apiKey);
-        //     window.setTimeout(checkAuth, 1);
-        //     checkAuth();
-        // }
-        //
-        // function checkAuth() {
-        //     gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true},
-        //         handleAuthResult);
-        // }
-        //
-        // function handleAuthResult(authResult) {
-        //     var authorizeButton = document.getElementById('rsvp');
-        //     if (authResult) {
-        //         authorizeButton.style.visibility = 'hidden';
-        //         makeApiCall();
-        //     } else {
-        //         authorizeButton.style.visibility = '';
-        //         authorizeButton.onclick = handleAuthClick;
-        //     }
-        // }
-        //
-        // function handleAuthClick(event) {
-        //     gapi.auth.authorize(
-        //         {client_id: clientId, scope: scopes, immediate: false},
-        //         handleAuthResult);
-        //     return false;
-        // }
-                
+                // Authorization scopes required by the API; multiple scopes can be
+                // included, separated by spaces.
+                var SCOPES = scopes;
 
-        var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events?access_token=' + apiKey;
-        var data = {
-            end: {dateTime: finalDropOffDate}
-            , start: {dateTime: finalPickUpDate}
-            , summary: "New Calendar Event from API"
-        };
+                var authorizeButton = $('#authorize-button');
+                var signoutButton = $('#signout-button');
+                /**
+                 *  On load, called to load the auth2 library and API client library.
+                 */
+                function handleClientLoad() {
+                    gapi.load('client:auth2', initClient);
+                }
 
-        // var ajax = $.ajax({
-        //     url: url,
-        //     contentType: "application/json",
-        //     data: JSON.stringify(data),
-        //     method: 'POST',
-        // }).done(function (response) {
-        //     console.log('ajax call success' + response);
-        // }).fail(function (jqHXR, textStatus) {
-        //         console.log("addEvent(): ajax failed = " + jqHXR.responseText);
-        //         console.log(jqHXR);
-        //     });
+                /**
+                 *  Initializes the API client library and sets up sign-in state
+                 *  listeners.
+                 */
+                function initClient() {
+                    gapi.client.init({
+                        discoveryDocs: DISCOVERY_DOCS,
+                        clientId: CLIENT_ID,
+                        scope: SCOPES
+                    }).then(function () {
+                        // Listen for sign-in state changes.
+                        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+                        // Handle the initial sign-in state.
+                        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                        authorizeButton.onclick = handleAuthClick;
+                        signoutButton.onclick = handleSignoutClick;
+                    });
+                }
 
-        function makeApiCall() {
-            console.log('make api call function');
-            gapi.client.load('calendar', 'v3', function () {
-                var request = gapi.client.calendar.events.insert({
-                    'calendarId': 'primary',
-                    'resource': data
-                });
-
-                request.execute(function (resp) {
-                        console.log(resp);
+                /**
+                 *  Called when the signed in status changes, to update the UI
+                 *  appropriately. After a sign-in, the API is called.
+                 */
+                function updateSigninStatus(isSignedIn) {
+                    if (isSignedIn) {
+                        authorizeButton.style.display = 'none';
+                        signoutButton.style.display = 'block';
+                        listUpcomingEvents();
+                    } else {
+                        authorizeButton.style.display = 'block';
+                        signoutButton.style.display = 'none';
                     }
-                );
-            });
-        } // end makeApiCall();
+                }
+
+                /**
+                 *  Sign in the user upon button click.
+                 */
+                function handleAuthClick(event) {
+                    gapi.auth2.getAuthInstance().signIn();
+                }
+
+                /**
+                 *  Sign out the user upon button click.
+                 */
+                function handleSignoutClick(event) {
+                    gapi.auth2.getAuthInstance().signOut();
+                }
+
+                /**
+                 * Append a pre element to the body containing the given message
+                 * as its text node. Used to display the results of the API call.
+                 *
+                 * @param {string} message Text to be placed in pre element.
+                 */
+                function appendPre(message) {
+                    var pre = $('#content');
+                    var textContent = document.createTextNode(message + '\n');
+                    pre.appendChild(textContent);
+                }
+                /**
+                 * Print the summary and start datetime/date of the next ten events in
+                 * the authorized user's calendar. If no events are found an
+                 * appropriate message is printed.
+                 */
+                function listUpcomingEvents() {
+                    gapi.client.calendar.events.list({
+                        'calendarId': 'primary',
+                        'timeMin': (new Date()).toISOString(),
+                        'showDeleted': false,
+                        'singleEvents': true,
+                        'maxResults': 10,
+                        'orderBy': 'startTime'
+                    }).then(function(response) {
+                        var events = response.result.items;
+                        appendPre('Upcoming events:');
+
+                        if (events.length > 0) {
+                            for (i = 0; i < events.length; i++) {
+                                var event = events[i];
+                                var when = event.start.dateTime;
+                                if (!when) {
+                                    when = event.start.date;
+                                }
+                                appendPre(event.summary + ' (' + when + ')')
+                            }
+                        } else {
+                            appendPre('No upcoming events found.');
+                        }
+                    });
+                }
 
 
+        // COMMENTED OUT STUFF FROM YESTERDAY //
+//         function start() {
+//             console.log('start');
+//             // 2. Initialize the JavaScript client library.
+//             gapi.client.init({
+//                 'apiKey': 'apiKey',
+//                 // clientId and scope are optional if auth is not required.
+//                 'clientId': 'calendarId',
+//                 'scope': 'scopes',
+//                 'token': 'accessToken'
+//             }).then(function () {
+//                 console.log('then');
+//                 // 3. Initialize and make the API request.
+//                 return gapi.client.request({
+//                     'path': 'https://people.googleapis.com/v1/people/me',
+//                 })
+//             }).then(function (response) {
+//                 console.log(response.result);
+//                 makeApiCall();
+//             }, function (reason) {
+//                 console.log('Error: ' + reason.result.error.message);
+//             });
+//         };
+// // 1. Load the JavaScript client library.
+//         gapi.load('client', start);
+//
+//         var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events?access_token=' + apiKey;
+//         var data = {
+//             end: {dateTime: finalDropOffDate}
+//             , start: {dateTime: finalPickUpDate}
+//             , summary: "New Calendar Event from API"
+//         };
+//
+//         // var ajax = $.ajax({
+//         //     url: url,
+//         //     contentType: "application/json",
+//         //     data: JSON.stringify(data),
+//         //     method: 'POST',
+//         // }).done(function (response) {
+//         //     console.log('ajax call success' + response);
+//         // }).fail(function (jqHXR, textStatus) {
+//         //         console.log("addEvent(): ajax failed = " + jqHXR.responseText);
+//         //         console.log(jqHXR);
+//         //     });
+//
+//         function makeApiCall() {
+//             console.log('make api call function');
+//             gapi.client.load('calendar', 'v3', function () {
+//                 var request = gapi.client.calendar.events.insert({
+//                     'calendarId': 'primary',
+//                     'resource': data
+//                 });
+//
+//                 request.execute(function (resp) {
+//                         console.log(resp);
+//                     }
+//                 );
+//             });
+//         } // end makeApiCall();
 
-        return false; // Don't submit form for this demo
-    });
-            });
 
 // =====================================================================
     // Dashboard Functions - Customer View //
