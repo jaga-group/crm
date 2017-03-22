@@ -29,140 +29,164 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
+        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title"><strong>Reservation Form</strong></div>
                 </div>
                 <div class="panel-body" id="res-form">
-                    <fieldset><h2>Client Information</h2>
-                        <form class="form-horizontal" role="form">
+                    <div class="bs-callout bs-callout-warning hidden">
+                        <h4>Oh snap!</h4>
+                        <p>This form seems to be invalid :(</p>
+                    </div>
+
+                    <div class="bs-callout bs-callout-info hidden">
+                        <h4>Yay!</h4>
+                        <p>Everything seems to be ok :)</p>
+                    </div>
+
+                    <!--===================================================-->
+                    <!-- FORM DECLARATION -->
+                    <!--===================================================-->
+                    <form id="res-info" class="form-horizontal" data-parsley-validate="">
+
+                        <!--===================================================-->
+                        <!--CLIENT INFO-->
+                        <!--===================================================-->
+                        <fieldset><h2>Client Information</h2>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">First name *</label>
-                                <div class="col-lg-8">
-                                    <input id="client-first" class="form-control" type="text" placeholder="Jane">
+                                <label for="client-first" class="col-md-3 control-label">First name *</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="client-first" id="client-first" class="form-control"
+                                           required="" placeholder="Jane">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Last name&nbsp;&nbsp;</label>
-                                <div class="col-lg-8">
-                                    <input id="client-last" class="form-control" type="text" placeholder="Doe">
+                                <label for="client-last" class="col-md-3 control-label">Last name *</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="client-last" id="client-last" class="form-control"
+                                           required="" placeholder="Doe">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Email *</label>
-                                <div class="col-lg-8">
-                                    <input id="client-email" class="form-control" type="text"
-                                           placeholder="janedoe@gmail.com">
+                                <label for="client-email" class="col-md-3 control-label">Email *</label>
+                                <div class="col-md-8">
+                                    <input type="email" name="client-email" id="client-email" class="form-control"
+                                           required="" placeholder="janedoe@mail.com">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Phone *</label>
-                                <div class="col-lg-8">
-                                    <input id="client-phone" class="form-control" type="text"
-                                           placeholder="">
+                                <label for="client-phone" class="col-md-3 control-label">Phone *</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="client-phone" id="client-phone" class="form-control"
+                                           data-parsley-minlength="10" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$"
+                                           required="" placeholder="407-123-4567">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Address Line 1</label>
-                                <div class="col-lg-8">
-                                    <input id="client-addr1" class="form-control" placeholder="Enter your address"
-                                           onFocus="geolocate()" type="text">
-                                    <!--<input id="client-addr1" class="form-control" type="text" placeholder="">-->
+                                <label for="client-addr1" class="col-md-3 control-label">Address Line 1</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="client-addr1" id="client-addr1" class="form-control"
+                                           placeholder="Enter your address" onFocus="geolocate()">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Address Line 2</label>
-                                <div class="col-lg-8">
-                                    <input id="client-addr2" class="form-control" type="text">
+                                <label for="client-addr2" class="col-md-3 control-label">Address Line 2</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="client-addr2" id="client-addr2" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">City</label>
-                                <div class="col-lg-8">
-                                    <input id="client-city" class="form-control" type="text">
+                                <label for="client-city" class="col-md-3 control-label">City</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="client-city" id="client-city" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">State</label>
-                                <div class="col-lg-8">
-                                    <input id="client-state" name="state" class="form-control" type="text">
+                                <label for="client-state" class="col-md-3 control-label">State</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="client-state" id="client-state" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Zip Code</label>
-                                <div class="col-lg-8">
-                                    <input id="client-zip" class="form-control" type="text">
+                                <label for="client-zip" class="col-md-3 control-label">Zip Code</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="client-zip" id="client-zip" class="form-control">
                                 </div>
                             </div>
-                        </form>
-                    </fieldset>
-                    <fieldset><h2>Pet Info</h2>
-                        <form class="form-horizontal" role="form">
+                        </fieldset>
+
+                        <!--===================================================-->
+                        <!--PET INFO-->
+                        <!--===================================================-->
+                        <fieldset><h2>Pet Information</h2>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Pet Name *</label>
-                                <div class="col-lg-8">
-                                    <input id="pet-name" class="form-control" type="text" placeholder="Fido">
+                                <label for="pet-name" class="col-md-3 control-label">Pet Name *</label>
+                                <div class="col-md-8">
+                                    <input type="text" name="pet-name" id="pet-name" class="form-control"
+                                           required="" placeholder="Fido">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-3 control-label">Pet Type *</label>
-                                <div class="col-lg-8">
-                                    <div class="radio">
-                                        <label>
-                                            <input id="pet-type-dog" type="radio" name="type" value="Dog"/> Dog
-                                        </label>
+                                <label class="col-md-3 control-label">Pet Type *</label>
+                                <div class="col-md-3">
+                                    <input type="radio" name="type" id="pet-type-dog" class="radio"
+                                           value="Dog" required=""> &nbsp;Dog
+                                    <br>
+                                    <input type="radio" name="type" id="pet-type-cat" class="radio"
+                                           value="Cat"> &nbsp;Cat
+                                </div>
+                                <div class="col-md-6"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Services Requested *</label>
+                                <div class="col-md-9">
+                                    <input type="checkbox" name="service" id="service-boarding"
+                                           value="Boarding" data-parsley-mincheck="1"> &nbsp;Boarding
+                                    <div id="drop-pick" class=form-horizontal">
+                                        <div>
+                                            <label class="col-md-4 control-label">Drop-Off Date</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input id="dropoffDate" class="form-control datepicker" type="text"
+                                                   placeholder="mm/dd/yyyy">
+                                        </div>
+                                        <div>
+                                            <label class="col-md-4 control-label">Pick-Up Date</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input id="pickupDate" class="form-control datepicker" type="text"
+                                                   placeholder="mm/dd/yyyy">
+                                        </div>
                                     </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input id="pet-type-cat" type="radio" name="type" value="Cat"/> Cat
-                                        </label>
-                                    </div>
+                                    <br>
+                                    <input type="checkbox" name="service" id="service-grooming"
+                                           value="Grooming"> &nbsp;Grooming
+                                    <br>
+                                    <input type="checkbox" name="service" id="service-daycare"
+                                           value="Daycare"> &nbsp;Daycare
+                                    <br>
+                                    <input type="checkbox" name="service" id="service-training"
+                                           value="Training"> &nbsp;Training
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-3 control-label">Services Requested *</label>
-                                <div class="col-lg-8">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input id="service-boarding" type="checkbox" value="Boarding"/> Boarding
-                                        </label>
-                                    </div>
-                                    <div id="drop-pick">
-                                        <label for="dropoffDate">Drop-Off Date</label>
-                                        <input id="dropoffDate" class="form-control datepicker" type="text"
-                                               placeholder="mm/dd/yyyy">
-                                        <label for="pickupDate">Pick-Up Date</label>
-                                        <input id="pickupDate" class="form-control datepicker" type="text"
-                                               placeholder="mm/dd/yyyy">
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input id="service-grooming" type="checkbox" value="Grooming"/> Grooming
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input id="service-daycare" type="checkbox" value="Daycare"/> Daycare
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input id="service-training" type="checkbox" value="Training"/> Training
-                                        </label>
-                                    </div>
-                                </div>
+                                <div class="col-md-6"></div>
                             </div>
                             <div class="text-right">
-                                <button type="submit" id="rsvp" class="btn btn-primary" onclick='handleAuthClick();'>Make Reservation</button>
+                                <!--<button type="submit" class="btn btn-primary" value="Testing" onsubmit="handleAuthClick();">Make Reservation</button>-->
+                                <!--<input type="submit" class="btn btn-primary rsvp" value="Make Reservation" onclick="handleAuthClick();">-->
+                                <input type="submit" class="btn btn-primary" value="Make Reservation" />
                             </div>
-                        </form>
-                    </fieldset>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                        </fieldset>
+                    </form>
+                </div>  <!--end main panel body-->
+            </div>  <!--end main panel-->
+        </div> <!--end main column-->
+    </div>  <!--end main row-->
+</div>  <!--end main container-->
+
+
+<!--&lt;!&ndash;<button type="submit" id="rsvp" class="btn btn-primary" onclick='handleAuthClick();'>Make Reservation</button>&ndash;&gt;-->
+
 
 <!--jQuery-->
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -173,6 +197,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+<!--ParsleyJS Validation-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.js"></script>
 <!--Datepicker-->
 <script src="assets/js/bootstrap-datepicker.js"></script>
 <!--Moment.js -->
@@ -192,4 +218,11 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
 
