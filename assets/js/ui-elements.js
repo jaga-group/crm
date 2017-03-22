@@ -37,16 +37,36 @@ var checkout = $('#pickupDate').datepicker({
 
 $('#service-boarding').on('change', function () {
     if ($(this).is(':checked')) {
-        $("#drop-pick").slideDown(500);
-        // $("#pickupForm").slideDown();
-        // $("#dropoffForm").removeClass('hide');
-        // $("#pickupForm").removeClass('hide');
+        $("#drop-board").slideDown(500);
     }
     else {
-        $("#drop-pick").slideUp(500);
-        // $("#pickupForm").slideUp();
-        // $("#dropoffForm").addClass('hide');
-        // $("#pickupForm").addClass('hide');
+        $("#drop-board").slideUp(500);
+    }
+});
+
+// =====================================================================
+// Show option for Mobile Service if Grooming is checked //
+// =====================================================================
+
+$('#service-grooming').on('change', function () {
+    if ($(this).is(':checked')) {
+        $("#drop-groom").slideDown(500);
+    }
+    else {
+        $("#drop-groom").slideUp(500);
+    }
+});
+
+// =====================================================================
+// Show date range inputs if Mobile is checked //
+// =====================================================================
+
+$('#mobile-grooming').on('change', function () {
+    if ($(this).is(':checked')) {
+        $("#drop-mobile").slideDown(500);
+    }
+    else {
+        $("#drop-mobile").slideUp(500);
     }
 });
 
@@ -139,5 +159,6 @@ function geolocate() {
 }
 
 // Hide dropoff and pickup date fields on page load
-$('#drop-pick').hide();
-
+$('#drop-board').hide();
+$('#drop-groom').hide();
+$('#drop-mobile').hide();
