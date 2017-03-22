@@ -123,9 +123,6 @@ $(document).ready(function(){
        
         }); // end #log-out click function
 
-        return false; // Don't submit form for this demo
-    });
-            });
 
 // =====================================================================
         // Adding Event to Google Calendar //
@@ -248,14 +245,13 @@ $(document).ready(function(){
                     }
                 );
             });
+        } // end makeApiCall();
 
 
-        }
-    }); // end of #rsvp on click function //
 
-
-   
-
+        return false; // Don't submit form for this demo
+    });
+            });
 
 
 // =====================================================================
