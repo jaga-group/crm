@@ -12,6 +12,7 @@ $(document).ready(function(){
 
     var database = firebase.database();
 
+
 // =====================================================================
     // Reservation Functions //
 // =====================================================================
@@ -89,6 +90,7 @@ $(document).ready(function(){
         };
 
         database.ref('/client').push(clientInfo);
+        console.log('db.ref ' + clientInfo.clientFirst);
 
         // clears res form after user presses submit //
         $('#res-form').empty();
@@ -115,36 +117,33 @@ $(document).ready(function(){
         var cPickUpDate = clientInfo.pickUpDate;
         var convertedPickUpDate = moment(cPickUpDate).format('YYYY-MM-DD');
         var finalPickUpDate = convertedPickUpDate + "T10:00:00.000-07:00";
+        var accessToken = user.accessToken;
 
 
-            function start() {
-                // 2. Initialize the JavaScript client library.
-                gapi.client.init({
-                    'apiKey': 'apiKey',
-                    // clientId and scope are optional if auth is not required.
-                    'clientId': 'calendarId',
-                    'scope': 'scopes',
-                }).then(function() {
-                    // 3. Initialize and make the API request.
-                    return gapi.client.request({
-                        'path': 'https://people.googleapis.com/v1/people/me',
-                    })
-                }).then(function(response) {
-                    console.log(response.result);
-                }, function(reason) {
-                    console.log('Error: ' + reason.result.error.message);
-                });
-            };
+        function start() {
+            console.log('start');
+            // 2. Initialize the JavaScript client library.
+            gapi.client.init({
+                'apiKey': 'apiKey',
+                // clientId and scope are optional if auth is not required.
+                'clientId': 'calendarId',
+                'scope': 'scopes',
+                'token': 'accessToken'
+            }).then(function () {
+                console.log('then');
+                // 3. Initialize and make the API request.
+                return gapi.client.request({
+                    'path': 'https://people.googleapis.com/v1/people/me',
+                })
+            }).then(function (response) {
+                console.log(response.result);
+                makeApiCall();
+            }, function (reason) {
+                console.log('Error: ' + reason.result.error.message);
+            });
+        };
 // 1. Load the JavaScript client library.
         gapi.load('client', start);
-
-
-
-
-
-
-
-
 
 
         // function handleClientLoad() {
@@ -195,27 +194,41 @@ $(document).ready(function(){
         //     console.log(resp);
         // });
 
-        var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events?sendNotifications=false&access_token=' + apiKey;
+        var url = 'https://www.googleapis.com/calendar/v3/calendars/' + calendarId + '/events?access_token=' + apiKey;
         var data = {
             end: {dateTime: finalDropOffDate}
             , start: {dateTime: finalPickUpDate}
             , summary: "New Calendar Event from API"
         };
 
-        var ajax = $.ajax({
-            url: url,
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            method: 'POST',
-        }).done(function (response) {
-            console.log('ajax call success' + response);
-        }).fail(function (jqHXR, textStatus) {
-                console.log("addEvent(): ajax failed = " + jqHXR.responseText);
-                console.log(jqHXR);
+        // var ajax = $.ajax({
+        //     url: url,
+        //     contentType: "application/json",
+        //     data: JSON.stringify(data),
+        //     method: 'POST',
+        // }).done(function (response) {
+        //     console.log('ajax call success' + response);
+        // }).fail(function (jqHXR, textStatus) {
+        //         console.log("addEvent(): ajax failed = " + jqHXR.responseText);
+        //         console.log(jqHXR);
+        //     });
+
+        function makeApiCall() {
+            console.log('make api call function');
+            gapi.client.load('calendar', 'v3', function () {
+                var request = gapi.client.calendar.events.list({
+                    'calendarId': 'primary',
+                    'resource': data
+                });
+
+                request.execute(function (resp) {
+                        console.log(resp);
+                    }
+                );
             });
 
 
-
+        }
     }); // end of #rsvp on click function //
 
 
