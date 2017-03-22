@@ -101,6 +101,8 @@ $(document).ready(function(){
             event.preventDefault(event);
             $('#res-form').html("You have logged out.");
             firebase.auth().signOut();
+
+           
         }); // end #log-out click function
 
 // =====================================================================
