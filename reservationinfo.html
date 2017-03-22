@@ -20,9 +20,9 @@
     <link rel="stylesheet" href="assets/css/datepicker.css">
     <!--Local StyleSheet-->
     <link rel="stylesheet" href="assets/css/style.css">
-<!--&lt;!&ndash;Google Maps&ndash;&gt;-->
-<!--<script async defer-->
-        <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>-->
+    <!--&lt;!&ndash;Google Maps&ndash;&gt;-->
+    <!--<script async defer-->
+    <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>-->
 
 
 </head>
@@ -147,7 +147,7 @@
                                 <div class="col-md-9">
                                     <input type="checkbox" name="service" id="service-boarding"
                                            value="Boarding" data-parsley-mincheck="1"> &nbsp;Boarding
-                                    <div id="drop-pick" class=form-horizontal">
+                                    <div id="drop-board" class=form-horizontal">
                                         <div>
                                             <label class="col-md-4 control-label">Drop-Off Date</label>
                                         </div>
@@ -166,6 +166,22 @@
                                     <br>
                                     <input type="checkbox" name="service" id="service-grooming"
                                            value="Grooming"> &nbsp;Grooming
+                                    <div id="drop-groom" class=form-horizontal">
+                                        <div class="col-md-11 col-md-offset-1">
+                                            <strong>Mobile Service?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><input
+                                                type="checkbox" name="mobile" id="mobile-grooming"
+                                                value="mobile-grooming">
+                                        </div>
+                                        <div id="drop-mobile">
+                                            <div>
+                                                <label class="col-md-4 control-label">Date of Service</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input id="mobileDate" class="form-control datepicker" type="text"
+                                                       placeholder="mm/dd/yyyy">
+                                            </div>
+                                        </div>
+                                    </div>
                                     <br>
                                     <input type="checkbox" name="service" id="service-daycare"
                                            value="Daycare"> &nbsp;Daycare
@@ -192,7 +208,6 @@
         </div> <!-- end firebaseui-auth-container-->
     </div> <!-- end admin row-->
 </div>  <!--end main container-->
-
 
 
 <!--jQuery-->
