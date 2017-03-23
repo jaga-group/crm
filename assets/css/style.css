@@ -1,18 +1,125 @@
-fieldset {
-    margin-left: 30px;
+html,
+body {
+    height: 100%;
 }
 
-.hide {
-    display: none;
+.navbar {
+    background-color: transparent;
 }
 
-.radio {
-    display: inline;
+.top-nav-collapse {
+    background-color: #263238;
 }
 
-.sign-in-inputs {
-    font-size: large;
+footer.page-footer {
+    background-color: #263238;
 }
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #4285F4;
+    }
+}
+
+.scrolling-navbar {
+    -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+    transition: background .5s ease-in-out, padding .5s ease-in-out;
+}
+
+/* Carousel*/
+
+.carousel {
+    height: 50%;
+}
+
+@media (max-width: 776px) {
+    .carousel {
+        height: 100%;
+    }
+}
+
+.carousel-item,
+.active {
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+/*Caption*/
+
+.flex-center {
+    color: #fff;
+}
+
+
+
+
+
+.md-form label.active {
+    font-size: .8rem;
+    -webkit-transform: translateY(-45%);
+    -moz-transform: translateY(-45%);
+    -ms-transform: translateY(-45%);
+    -o-transform: translateY(-45%);
+    transform: translateY(-80%);
+    color: #dddddd;
+}
+
+.form-control {
+    /*padding: .4rem 0 0.4rem;*/
+    padding: 0;
+}
+
+h4 {
+    margin-bottom: 1.5rem;
+}
+
+#res-form {
+    margin-top: 10px;
+}
+
+#res-card {
+    margin-top: 25px;
+}
+
+
+
+
+
+
+/*.jumbotron {*/
+    /*font-family: 'Monoton', cursive;*/
+    /*background: url("../images/dog3.jpg") no-repeat center top/100% auto fixed;*/
+    /*color: #fff;*/
+    /*margin-bottom: 10px;*/
+/*}*/
+
+/*.title {*/
+    /*font-family: 'Monoton', cursive;*/
+    /*font-size: 5vw;*/
+    /*position: relative;*/
+    /*top: 1vw;*/
+    /*left: -5vw;*/
+/*}*/
+
+/*fieldset {*/
+    /*margin-left: 30px;*/
+/*}*/
+
+/*.hide {*/
+    /*display: none;*/
+/*}*/
+
+/*.radio {*/
+    /*display: inline;*/
+/*}*/
+
+/*.sign-in-inputs {*/
+    /*font-size: large;*/
+/*}*/
 
 /*=============================================================*/
 /* Parsley JS Form Validation related styles */
@@ -81,7 +188,7 @@ textarea.parsley-error {
 }
 
 .bs-callout-danger {
-    background-color: #F2DEDE
+    background-color: #F2DEDE;
     border-color: #d9534f;
 }
 
@@ -167,7 +274,6 @@ body {
 #panel {
     width: 300px; 
     float: right;
-    font-family: Arial; 
     font-size: 16px;
 }
 

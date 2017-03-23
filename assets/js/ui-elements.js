@@ -6,30 +6,8 @@
     // Daterange controls for Dropoff / Pickup inputs //
 // =====================================================================
 
-var nowTemp = new Date();
-var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-
-var checkin = $('#dropoffDate').datepicker({
-    onRender: function (date) {
-        return date.valueOf() < now.valueOf() ? 'disabled' : '';
-    }
-}).on('changeDate', function (ev) {
-    if (ev.date.valueOf() > checkout.date.valueOf()) {
-        var newDate = new Date(ev.date)
-        newDate.setDate(newDate.getDate() + 1);
-        checkout.setValue(newDate);
-    }
-    checkin.hide();
-    $('#pickupDate')[0].focus();
-}).data('datepicker');
-var checkout = $('#pickupDate').datepicker({
-    onRender: function (date) {
-        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-    }
-}).on('changeDate', function (ev) {
-    checkout.hide();
-}).data('datepicker');
-
+// Data Picker Initialization
+$('.datepicker').pickadate();
 
 // =====================================================================
     // Show date range inputs if Boarding is checked //
@@ -63,10 +41,15 @@ $('#service-grooming').on('change', function () {
 
 $('#mobile-grooming').on('change', function () {
     if ($(this).is(':checked')) {
-        $("#drop-mobile").slideDown(500);
+        let mobileD = $('#mobileDate');
+        mobileD.removeAttr('disabled')
+            .removeClass('disabled');
     }
     else {
-        $("#drop-mobile").slideUp(500);
+        let mobileD = $('#mobileDate');
+        mobileD.addClass('disabled');
+        mobileD.attr('disabled', 'disabled');
+
     }
 });
 
@@ -109,6 +92,7 @@ function fillInAddress() {
     var city = $('#client-city');
     var state = $('#client-state');
     var zip = $('#client-zip');
+    var citylabel = $('#city-label');
 
     // clear all address input fields
     addy1.val(' ');
@@ -117,7 +101,7 @@ function fillInAddress() {
     state.val(' ');
     zip.val(' ');
 
-    // assign autoompleted address components to the input fields
+    // assign autocompleted address components to the input fields
     for (var i = 0; i < place.address_components.length; i++) {
         var component = place.address_components[i],
             componentType = component.types[0];
@@ -127,15 +111,19 @@ function fillInAddress() {
         }
         else if (componentType === 'route') {
             addy1.val(addy1.val() + ' ' + component.long_name);
+            $('#addr1-label').addClass('active');
         }
         else if (componentType === 'locality') {
             city.val(component.long_name);
+            $('#city-label').addClass('active');
         }
         else if (componentType === 'administrative_area_level_1') {
             state.val(component.short_name);
+            $('#state-label').addClass('active');
         }
         else if (componentType === 'postal_code') {
             zip.val(component.short_name);
+            $('#zip-label').addClass('active');
         }
     }
 }
@@ -161,4 +149,7 @@ function geolocate() {
 // Hide dropoff and pickup date fields on page load
 $('#drop-board').hide();
 $('#drop-groom').hide();
+$('.bs-callout-warning').hide();
+$('.bs-callout-info').hide();
 $('#drop-mobile').hide();
+
