@@ -410,8 +410,13 @@ $(document).ready(function(){
             console.log(petName);
 
 
-        $("#table").append(
-            "<tr><td>" + firstName + " " + lastName + "<td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + petName + "</td></td>");
+
+
+        
+
+
+ 
+$("#table").append("<tr><td>" + firstName + " " + lastName + "</td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + zip + "</td><td>" + petName + "</td></td>");
 
 
             // Handle the errors
@@ -431,7 +436,8 @@ $(document).ready(function(){
             { title: "City" },
             { title: "State" },
             { title: "Zip Code" },
-            { title: "Pet Name" }
+            { title: "Pet Name" },
+            { title: "Notes" }
         ]
     } );
  
