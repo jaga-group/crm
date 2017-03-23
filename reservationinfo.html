@@ -206,6 +206,10 @@
         <div id="firebaseui-auth-container">
             <button id="admin">Administrator</button>
         </div> <!-- end firebaseui-auth-container-->
+        <button id="authorize-button" style="display: none;">Authorize</button>
+        <button id="signout-button" style="display: none;">Sign Out</button>
+
+        <pre id="content"></pre>
     </div> <!-- end admin row-->
 </div>  <!--end main container-->
 
@@ -226,7 +230,10 @@
 <!--Moment.js -->
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 <!--Google Cal Auth-->
-<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<script async defer src="https://apis.google.com/js/api.js"></script>
+        <!--onload="this.onload=function(){};handleClientLoad()"-->
+        <!--onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
+<!--</script>-->
 <script src="https://apis.google.com/js/api.js"></script>
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>

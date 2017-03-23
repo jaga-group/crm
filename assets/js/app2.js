@@ -45,6 +45,8 @@ $(document).ready(function(){
                         providerData: providerData
                     }, null, '  ');
             console.log(JSON.stringify(user));
+            console.log('access token: ' + user.accessToken);
+            var nAccessToken = user.accessToken;
                 });
             } else {
                 // User is signed out.
