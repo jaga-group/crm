@@ -1,7 +1,12 @@
 var clientInfoArray = [];
+var addressArray = [];
+var userAddress = [];
+
 $(document).ready(function () {
 
-    database = firebase.database();
+
+
+database = firebase.database();
 
 
 // =====================================================================
@@ -121,50 +126,13 @@ $(document).ready(function () {
                 }); // end #log-out click function
 
 
-                function initMap() {
-                    // google maps directions api //
-                    if (navigator.geolocation) { //Checks if browser supports geolocation
-                        navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
-                            var latitude = position.coords.latitude;                    //users current
-                            var longitude = position.coords.longitude;                 //location
-                            var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
-                            var directionsService = new google.maps.DirectionsService();
-                            var directionsDisplay = new google.maps.DirectionsRenderer();
-                            var mapOptions = //Sets map options
-                                {
-                                    zoom: 15,  //Sets zoom level (0-21)
-                                    center: coords, //zoom in on users location
-                                    mapTypeControl: true, //allows you to select map type eg. map or satellite
-                                    navigationControlOptions: {
-                                        style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
-                                    },
-                                    mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
-                                };
-                            map = new google.maps.Map(/*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
-                            directionsDisplay.setMap(map);
-                            directionsDisplay.setPanel(document.getElementById('panel'));
-                            var latLong = {lat: 28.455022, lng: -81.438414};
-                            var request = {
-                                origin: coords,
-                                destination: latLong,
-                                travelMode: google.maps.DirectionsTravelMode.DRIVING
-                            };
-
-                            directionsService.route(request, function (response, status) {
-                                if (status == google.maps.DirectionsStatus.OK) {
-                                    directionsDisplay.setDirections(response);
-                                }
-                            });
-                        });
-                    }
-                };
+                
 
 
 //===================CLOSING PARSLEY STUFF==============================
                 return false; // Don't submit form for this demo
             });
     }); // end parsley validation wrapper for all functions linked to rsvp button click
-
 
 // =====================================================================
     // Dashboard Functions - Customer View //
@@ -213,9 +181,10 @@ $(document).ready(function () {
                 // }
             clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
             clientInfoArray.push(clientInfo);
-
+            userAddress = [addr1, addr2, city, state, zip];
+            addressArray.push(userAddress);
             // Log everything that's coming out of snapshot
-            console.log(clientInfo);
+            console.log(addressArray);
 
 
     // This needs to be inside of the .on child_added function, but needs to delay until db is finished loading each child.
@@ -249,6 +218,100 @@ $(document).ready(function () {
 
     }); // end of #customer view on click //
 
+    // =====================================================================
+    // Dashboard Functions - Snapshot View //
+    // =====================================================================
+
+
+$('#maps-view').on('click', function (event) {
+        event.preventDefault(event);
+        console.log('maps view click');
+        $('#dashboard-content').empty();
+        $('#dashboard-content').append('<div id="map">');
+// first example // 
+      var map;
+      var latLong = {lat: 28.455022, lng: -81.438414};
+    var elevator;
+    var myOptions = {
+        zoom: 1,
+        center: latLong,
+        mapTypeId: 'terrain'
+    };
+    map = new google.maps.Map($('#map')[0], myOptions);
+
+        var marker = new google.maps.Marker({
+          position: latLong,
+          map: map,
+          title: 'Hello World!'
+        });
+        for (var x = 0; x < addressArray.length; x++) {
+            console.log("hey");
+        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addressArray[x]+'&sensor=false', null, function (data) {
+            console.log(data);
+            var p = data.results[0].geometry.location
+            var latlng = new google.maps.LatLng(p.lat, p.lng);
+            new google.maps.Marker({
+                position: latlng,
+                map: map
+            });
+
+        });
+    }
+
+  /*  for (var x = 0; x < addressArray.length; x++) {
+        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+address.Array[x]+'&sensor=false', null, function (data) {
+            var p = data.results[0].geometry.location
+            var latlng = new google.maps.LatLng(p.lat, p.lng);
+            new google.maps.Marker({
+                position: latlng,
+                map: map
+            });
+
+        });
+    }*/
+
+});
+
+
+
+
+
+                    // // google maps directions api //
+                    // if (navigator.geolocation) { //Checks if browser supports geolocation
+                    //     navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
+                    //         var latitude = position.coords.latitude;                    //users current
+                    //         var longitude = position.coords.longitude;                 //location
+                    //         var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
+                    //         var directionsService = new google.maps.DirectionsService();
+                    //         var directionsDisplay = new google.maps.DirectionsRenderer();
+                    //         var mapOptions = //Sets map options
+                    //             {
+                    //                 zoom: 15,  //Sets zoom level (0-21)
+                    //                 center: coords, //zoom in on users location
+                    //                 mapTypeControl: true, //allows you to select map type eg. map or satellite
+                    //                 navigationControlOptions: {
+                    //                     style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
+                    //                 },
+                    //                 mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
+                    //             };
+                    //         map = new google.maps.Map(/*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
+                    //         directionsDisplay.setMap(map);
+                    //         directionsDisplay.setPanel(document.getElementById('panel'));
+                    //         var latLong = {lat: 28.455022, lng: -81.438414};
+                    //         var request = {
+                    //             origin: coords,
+                    //             destination: latLong,
+                    //             travelMode: google.maps.DirectionsTravelMode.DRIVING
+                    //         };
+
+                    //         directionsService.route(request, function (response, status) {
+                    //             if (status == google.maps.DirectionsStatus.OK) {
+                    //                 directionsDisplay.setDirections(response);
+                    //             }
+                    //         });
+                    //     });
+                    // }
+                
 
 
 // =====================================================================
