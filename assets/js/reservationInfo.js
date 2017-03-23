@@ -171,134 +171,134 @@ $(document).ready(function(){
     });
             }); // end parsley validation wrapper for all functions linked to rsvp button click
 
-
-
-
-// =====================================================================
-        // Adding Event to Google Calendar //
-// =====================================================================
-
-        var calendarId = '801684809525-2vmlj173668rqofkkc1bpmnoahuais2h.apps.googleusercontent.com';
-        var apiKey = 'AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ';
-        var scopes = 'https://www.googleapis.com/auth/calendar';
-        var cDropOffDate = clientInfo.dropOffDate;
-        var convertedDropOffDate = moment(cDropOffDate).format('YYYY-MM-DD');
-        var finalDropOffDate = convertedDropOffDate + "T10:00:00.000-07:00";
-        var cPickUpDate = clientInfo.pickUpDate;
-        var convertedPickUpDate = moment(cPickUpDate).format('YYYY-MM-DD');
-        var finalPickUpDate = convertedPickUpDate + "T10:00:00.000-07:00";
-        var accessToken = user.accessToken;
-
-
-                // Client ID and API key from the Developer Console
-                var CLIENT_ID = calendarId;
-
-                // Array of API discovery doc URLs for APIs used by the quickstart
-                var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
-
-                // Authorization scopes required by the API; multiple scopes can be
-                // included, separated by spaces.
-                var SCOPES = scopes;
-
-                var authorizeButton = $('#authorize-button');
-                var signoutButton = $('#signout-button');
-                /**
-                 *  On load, called to load the auth2 library and API client library.
-                 */
-                function handleClientLoad() {
-                    gapi.load('client:auth2', initClient);
-                }
-
-                /**
-                 *  Initializes the API client library and sets up sign-in state
-                 *  listeners.
-                 */
-                function initClient() {
-                    gapi.client.init({
-                        discoveryDocs: DISCOVERY_DOCS,
-                        clientId: CLIENT_ID,
-                        scope: SCOPES
-                    }).then(function () {
-                        // Listen for sign-in state changes.
-                        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-                        // Handle the initial sign-in state.
-                        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-                        authorizeButton.onclick = handleAuthClick;
-                        signoutButton.onclick = handleSignoutClick;
-                    });
-                }
-
-                /**
-                 *  Called when the signed in status changes, to update the UI
-                 *  appropriately. After a sign-in, the API is called.
-                 */
-                function updateSigninStatus(isSignedIn) {
-                    if (isSignedIn) {
-                        authorizeButton.style.display = 'none';
-                        signoutButton.style.display = 'block';
-                        listUpcomingEvents();
-                    } else {
-                        authorizeButton.style.display = 'block';
-                        signoutButton.style.display = 'none';
-                    }
-                }
-
-                /**
-                 *  Sign in the user upon button click.
-                 */
-                function handleAuthClick(event) {
-                    gapi.auth2.getAuthInstance().signIn();
-                }
-
-                /**
-                 *  Sign out the user upon button click.
-                 */
-                function handleSignoutClick(event) {
-                    gapi.auth2.getAuthInstance().signOut();
-                }
-
-                /**
-                 * Append a pre element to the body containing the given message
-                 * as its text node. Used to display the results of the API call.
-                 *
-                 * @param {string} message Text to be placed in pre element.
-                 */
-                function appendPre(message) {
-                    var pre = $('#content');
-                    var textContent = document.createTextNode(message + '\n');
-                    pre.appendChild(textContent);
-                }
-                /**
-                 * Print the summary and start datetime/date of the next ten events in
-                 * the authorized user's calendar. If no events are found an
-                 * appropriate message is printed.
-                 */
-                function listUpcomingEvents() {
-                    gapi.client.calendar.events.list({
-                        'calendarId': 'primary',
-                        'timeMin': (new Date()).toISOString(),
-                        'showDeleted': false,
-                        'singleEvents': true,
-                        'maxResults': 10,
-                        'orderBy': 'startTime'
-                    }).then(function(response) {
-                        var events = response.result.items;
-                        appendPre('Upcoming events:');
-
-                        if (events.length > 0) {
-                            for (i = 0; i < events.length; i++) {
-                                var event = events[i];
-                                var when = event.start.dateTime;
-                                if (!when) {
-                                    when = event.start.date;
-                                }
-                                appendPre(event.summary + ' (' + when + ')')
-                            }
-                        } else {
-                            appendPre('No upcoming events found.');
-                        }
-                    });
-                }
+//
+//
+//
+// // =====================================================================
+//         // Adding Event to Google Calendar //
+// // =====================================================================
+//
+//         var calendarId = '801684809525-2vmlj173668rqofkkc1bpmnoahuais2h.apps.googleusercontent.com';
+//         var apiKey = 'AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ';
+//         var scopes = 'https://www.googleapis.com/auth/calendar';
+//         var cDropOffDate = clientInfo.dropOffDate;
+//         var convertedDropOffDate = moment(cDropOffDate).format('YYYY-MM-DD');
+//         var finalDropOffDate = convertedDropOffDate + "T10:00:00.000-07:00";
+//         var cPickUpDate = clientInfo.pickUpDate;
+//         var convertedPickUpDate = moment(cPickUpDate).format('YYYY-MM-DD');
+//         var finalPickUpDate = convertedPickUpDate + "T10:00:00.000-07:00";
+//         var accessToken = user.accessToken;
+//
+//
+//                 // Client ID and API key from the Developer Console
+//                 var CLIENT_ID = calendarId;
+//
+//                 // Array of API discovery doc URLs for APIs used by the quickstart
+//                 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+//
+//                 // Authorization scopes required by the API; multiple scopes can be
+//                 // included, separated by spaces.
+//                 var SCOPES = scopes;
+//
+//                 var authorizeButton = $('#authorize-button');
+//                 var signoutButton = $('#signout-button');
+//                 /**
+//                  *  On load, called to load the auth2 library and API client library.
+//                  */
+//                 function handleClientLoad() {
+//                     gapi.load('client:auth2', initClient);
+//                 }
+//
+//                 /**
+//                  *  Initializes the API client library and sets up sign-in state
+//                  *  listeners.
+//                  */
+//                 function initClient() {
+//                     gapi.client.init({
+//                         discoveryDocs: DISCOVERY_DOCS,
+//                         clientId: CLIENT_ID,
+//                         scope: SCOPES
+//                     }).then(function () {
+//                         // Listen for sign-in state changes.
+//                         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+//                         // Handle the initial sign-in state.
+//                         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+//                         authorizeButton.onclick = handleAuthClick;
+//                         signoutButton.onclick = handleSignoutClick;
+//                     });
+//                 }
+//
+//                 /**
+//                  *  Called when the signed in status changes, to update the UI
+//                  *  appropriately. After a sign-in, the API is called.
+//                  */
+//                 function updateSigninStatus(isSignedIn) {
+//                     if (isSignedIn) {
+//                         authorizeButton.style.display = 'none';
+//                         signoutButton.style.display = 'block';
+//                         listUpcomingEvents();
+//                     } else {
+//                         authorizeButton.style.display = 'block';
+//                         signoutButton.style.display = 'none';
+//                     }
+//                 }
+//
+//                 /**
+//                  *  Sign in the user upon button click.
+//                  */
+//                 function handleAuthClick(event) {
+//                     gapi.auth2.getAuthInstance().signIn();
+//                 }
+//
+//                 /**
+//                  *  Sign out the user upon button click.
+//                  */
+//                 function handleSignoutClick(event) {
+//                     gapi.auth2.getAuthInstance().signOut();
+//                 }
+//
+//                 /**
+//                  * Append a pre element to the body containing the given message
+//                  * as its text node. Used to display the results of the API call.
+//                  *
+//                  * @param {string} message Text to be placed in pre element.
+//                  */
+//                 function appendPre(message) {
+//                     var pre = $('#content');
+//                     var textContent = document.createTextNode(message + '\n');
+//                     pre.appendChild(textContent);
+//                 }
+//                 /**
+//                  * Print the summary and start datetime/date of the next ten events in
+//                  * the authorized user's calendar. If no events are found an
+//                  * appropriate message is printed.
+//                  */
+//                 function listUpcomingEvents() {
+//                     gapi.client.calendar.events.list({
+//                         'calendarId': 'primary',
+//                         'timeMin': (new Date()).toISOString(),
+//                         'showDeleted': false,
+//                         'singleEvents': true,
+//                         'maxResults': 10,
+//                         'orderBy': 'startTime'
+//                     }).then(function(response) {
+//                         var events = response.result.items;
+//                         appendPre('Upcoming events:');
+//
+//                         if (events.length > 0) {
+//                             for (i = 0; i < events.length; i++) {
+//                                 var event = events[i];
+//                                 var when = event.start.dateTime;
+//                                 if (!when) {
+//                                     when = event.start.date;
+//                                 }
+//                                 appendPre(event.summary + ' (' + when + ')')
+//                             }
+//                         } else {
+//                             appendPre('No upcoming events found.');
+//                         }
+//                     });
+//                 }
 
 
         // COMMENTED OUT STUFF FROM YESTERDAY //
@@ -381,7 +381,7 @@ $(document).ready(function(){
         event.preventDefault(event);
         console.log("customer view click");
         $("#dashboard-content").empty();
-/*$('#table').append("<thead>" + "<tr>" + "<th>Client Name</th>" + "<th>Email</th>" + "<th>Phone</th>" + "<th>Address</th>" + "<th>Address</th>" + "<th>City</th>" + "<th>State</th>" + "<th>Zip Code</th>" + "<th>Pet Name</th>" + "<thead>" + "<tr>");*/
+        $('#dashboard-content').append('<table id="table" class="display" width="100%"></table>');
 
         database.ref('/client').on("child_added", function(childSnapshot) {
             console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
@@ -413,7 +413,7 @@ $(document).ready(function(){
         $("#table").append(
             "<tr><td>" + firstName + " " + lastName + "<td><td>" + email + "</td><td>" + phone + "</td><td>" + addr1 + "</td><td>" + addr2 + "</td><td>" + city + "</td><td>" + state + "</td><td>" + petName + "</td></td>");
 
-            
+
             // Handle the errors
         }, function(errorObject) {
             console.log("Errors handled: " + errorObject.code);
