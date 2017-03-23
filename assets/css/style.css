@@ -160,8 +160,8 @@ body {
 }
 /*Map Styles*/
 #map {
-    width: 280px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
      float: left;
 }
 #panel {
@@ -170,10 +170,10 @@ body {
     font-family: Arial; 
     font-size: 16px;
 }
-
+/*
 .mapDiv {
     width: 600px;
-}
+}*/
 
 
 /* Sidebar Styles */
