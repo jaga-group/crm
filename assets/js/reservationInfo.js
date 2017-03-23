@@ -182,7 +182,6 @@ $(document).ready(function () {
         state,
         zip,
         petName,
-        count = 0;
 
 
     $("#customer-view").on("click", function (event) {
@@ -193,7 +192,6 @@ $(document).ready(function () {
 
 
         database.ref('/client').orderByChild('/clientFirst').on("child_added", function (childSnapshot) {
-            count++;
             console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
 
 
@@ -221,6 +219,16 @@ $(document).ready(function () {
 
 
 
+
+        }), // end on child added function
+
+
+            // Handle the errors
+        function (errorObject) {
+            console.log("Errors handled: " + errorObject.code);
+
+        };// end of dataRef //
+
     // This needs to be inside of the .on child_added function, but needs to delay until db is finished loading each child.
         $('#table').DataTable({
         data: clientInfoArray,
@@ -237,19 +245,6 @@ $(document).ready(function () {
             // {title: "Notes"}
             ]
         }); // end render DataTable
-
-        }), // end on child added function
-
-
-
-
-
-            // Handle the errors
-        function (errorObject) {
-            console.log("Errors handled: " + errorObject.code);
-
-        };// end of dataRef //
-
 
 
     }); // end of #customer view on click //
