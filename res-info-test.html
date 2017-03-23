@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Reservations</title>
+
+    <!-- Material Design Bootstrap -->
+    <link href="assets/css/mdb.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!--&lt;!&ndash;Google Maps&ndash;&gt;-->
+    <!--<script async defer-->
+    <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>-->
+
+    <!--DataTables Stylesheet-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
+
+    <!--Local Stylesheet-->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<!--Navbar-->
+<nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <strong>Happy Tails Resort</strong>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Boarding</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Daycare</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Grooming</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Training</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">About</a>
+                </li>
+            </ul>
+            <!--<form class="form-inline waves-effect waves-light">-->
+            <!--<input class="form-control" type="text" placeholder="Search">-->
+            <!--</form>-->
+        </div>
+    </div>
+</nav>
+<!--/.Navbar-->
+
+<!--Carousel Wrapper-->
+<div id="carousel-example-3" class="carousel slide carousel-fade white-text" data-ride="carousel" data-interval="false">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-3" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-3" data-slide-to="1"></li>
+        <li data-target="#carousel-example-3" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+        <!-- First slide -->
+        <div class="carousel-item active view hm-black-light"
+             style="background-image: url('assets/img/dog2 copy.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            <!-- Caption -->
+            <div class="full-bg-img flex-center white-text">
+                <ul class="animated fadeInUp col-md-12">
+                    <li>
+                        <h1 class="h1-responsive"><strong>We Offer Trustworthy Boarding Services</strong></h1>
+                    </li>
+                    <li>
+                        <p>Family-oriented boarding facility owned and operated by loving caregivers</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.Caption -->
+
+        </div>
+        <!--/.First slide-->
+
+        <!-- Second slide -->
+        <div class="carousel-item view hm-black-light"
+             style="background-image: url('assets/img/dog3 copy.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            <!-- Caption -->
+            <div class="full-bg-img flex-center white-text">
+                <ul class="animated fadeInUp col-md-12">
+                    <li>
+                        <h1 class="h1-responsive"><strong>We Provide Comfortable Accommodations</strong></h1>
+                    </li>
+                    <li>
+                        <p>10 acres of lush outdoor play areas and 5 play yards</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.Caption -->
+
+        </div>
+        <!--/.Second slide -->
+
+        <!-- Third slide -->
+        <div class="carousel-item view hm-black-light"
+             style="background-image: url('assets/img/dog1 copy.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            <!-- Caption -->
+            <div class="full-bg-img flex-center white-text">
+                <ul class="animated fadeInUp col-md-12">
+                    <li>
+                        <h1 class="h1-responsive"><strong>We Value Exercise and Companionship</strong></h1></li>
+                    <li>
+                        <p>Supervised fun playtimes and activities customized for your pet</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.Caption -->
+
+        </div>
+        <!--/.Third slide-->
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-3" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-3" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+</div>
+<!--/.Carousel Wrapper-->
+
+<br>
+
+<!--Content-->
+<div class="container">
+    <div class="row" id="res-form-container">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <!--Card-->
+            <div class="card" id="res-card">
+                <div class="card-block" id="res-form">
+                    <!--Optional Header-->
+                    <div class="form-header special-color">
+                        <h2>Reservation Form</h2>
+                    </div>
+                    <form id="res-info" data-parsley-validate="">
+
+
+                        <div class="bs-callout bs-callout-warning">
+                            <h4>Oh snap!</h4>
+                            <p>This form seems to be invalid :(</p>
+                        </div>
+
+                        <div class="bs-callout bs-callout-info">
+                            <h4>Yay!</h4>
+                            <p>Everything seems to be ok :)</p>
+                        </div>
+
+
+                        <!--CLIENT INFO-->
+                        <div class="row">
+                            <div class="col-6">
+                                <fieldset>
+                                    <div class="text-center">
+                                        <h3 class="blue-grey-text">Client Info</h3>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="text" id="client-first" class="form-control" required="">
+                                        <label for="client-first">First name *</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="text" id="client-last" class="form-control" required="">
+                                        <label for="client-last">Last name *</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="email" id="client-email" class="form-control" required="">
+                                        <label for="client-email">Email *</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="text" id="client-phone" class="form-control" required="">
+                                        <label for="client-phone" data-parsley-minlength="10"
+                                               data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">Phone *</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="text" id="client-addr1" class="form-control"
+                                               placeholder="Enter a Location" onclick="geolocate()">
+                                        <label for="client-addr1" id="addr1-label" class="">Address Line 1</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="text" id="client-addr2" class="form-control">
+                                        <label for="client-addr2" id="addr2-label" class="">Address Line 2</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="text" id="client-city" class="form-control">
+                                        <label for="client-city" id="city-label" class="">City</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="text" id="client-state" class="form-control">
+                                        <label for="client-state" id="state-label">State</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="text" id="client-zip" class="form-control">
+                                        <label for="client-zip" id="zip-label">Zip Code</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <!--PET INFO-->
+
+                            <div class="col-6">
+                                <fieldset>
+                                    <div class="text-center">
+                                        <h3 class="blue-grey-text">Pet Info</h3>
+                                    </div>
+                                    <div class="md-form">
+                                        <input type="text" id="pet-name" class="form-control" required="">
+                                        <label for="pet-name" class="">Pet name *</label>
+                                    </div>
+                                    <br>
+                                    <h5>Pet Type *</h5>
+                                    <div class="form-inline">
+                                        <fieldset class="form-group">
+                                            <input name="type" type="radio" id="pet-type-dog">
+                                            <label for="pet-type-dog" required="">Dog</label>
+                                        </fieldset>
+
+                                        <fieldset class="form-group">
+                                            <input name="type" type="radio" id="pet-type-cat">
+                                            <label for="pet-type-cat">Cat</label>
+                                        </fieldset>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <h5>Services Requested *</h5>
+
+                                    <fieldset class="form-group">
+                                        <input type="checkbox" id="service-boarding" data-parsley-mincheck="1">
+                                        <label for="service-boarding">Boarding</label>
+                                    </fieldset>
+
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col-9">
+                                            <div id="drop-board">
+                                                <div class="md-form">
+                                                    <input type="text" id="dropoffDate" class="form-control datepicker">
+                                                    <label for="dropoffDate">Drop-Off Date</label>
+                                                </div>
+                                                <div class="md-form">
+                                                    <input type="text" id="pickupDate" class="form-control datepicker">
+                                                    <label for="pickupDate">Pick-Up Date</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <fieldset class="form-group">
+                                        <input type="checkbox" id="service-grooming">
+                                        <label for="service-grooming">Grooming</label>
+                                    </fieldset>
+
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col-9">
+                                            <div id="drop-groom">
+                                                <fieldset class="form-group">
+                                                    <input type="checkbox" id="mobile-grooming">
+                                                    <label for="mobile-grooming">Mobile Service?</label>
+                                                </fieldset>
+                                                <div class="md-form">
+                                                    <input type="text" id="mobileDate"
+                                                           class="form-control datepicker disabled" disabled>
+                                                    <label for="mobileDate">Mobile Grooming Date</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <fieldset class="form-group">
+                                        <input type="checkbox" id="service-daycare">
+                                        <label for="service-daycare">Daycare</label>
+                                    </fieldset>
+
+                                    <fieldset class="form-group">
+                                        <input type="checkbox" id="service-training">
+                                        <label for="service-training">Training</label>
+                                    </fieldset>
+
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                    <!--Text-->
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-lg btn-blue-grey">Make Reservation</button>
+                        <!--<input type="submit" class="btn btn-lg btn-blue-grey" value="Make Reservation" />-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Blue-grey-->
+    </div>
+    <div class="col-lg-1"></div>
+
+
+
+
+    <div class="row">
+        <div id="firebaseui-auth-container">
+            <button id="admin">Administrator</button>
+        </div> <!-- end firebaseui-auth-container-->
+        <button id="authorize-button" style="display: none;">Authorize</button>
+        <button id="signout-button" style="display: none;">Sign Out</button>
+
+        <pre id="content"></pre>
+    </div> <!-- end admin row-->
+
+
+
+</div>
+<!--/.Content-->
+
+
+
+
+<!--Footer-->
+<footer class="page-footer center-on-small-only">
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 HappyTailsResort.com
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+
+
+<!-- SCRIPTS -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="assets/js/tether.js"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="assets/js/mdb.js"></script>
+
+<!--ParsleyJS Validation-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.js"></script>
+
+<!--Moment.js -->
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+<!--Google Cal Auth-->
+<script async defer src="https://apis.google.com/js/api.js"></script>
+<!--onload="this.onload=function(){};handleClientLoad()"-->
+<!--onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
+
+<!--</script>-->
+<script src="https://apis.google.com/js/api.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+
+<!--Google Places-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+<!--Local JS-->
+<script src="assets/js/firebaseInit.js"></script>
+<script src="assets/js/app2.js"></script>
+<script src="assets/js/reservationInfo.js"></script>
+<script src="assets/js/ui-elements.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+
+</body>
+</html>
