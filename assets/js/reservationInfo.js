@@ -1,4 +1,4 @@
-var clientInfo;
+var clientInfoArray = [];
 $(document).ready(function () {
 
     database = firebase.database();
@@ -165,17 +165,15 @@ $(document).ready(function () {
             });
     }); // end parsley validation wrapper for all functions linked to rsvp button click
 
-    var ref = db.ref("dinosaurs");
-    ref.orderByChild("dimensions/height").on("child_added", function(snapshot) {
-        console.log(snapshot.key + " was " + snapshot.val().height + " meters tall");
-    });
 
 // =====================================================================
     // Dashboard Functions - Customer View //
 // =====================================================================
 
-    var firstName,
+    var clientInfo,
+        firstName,
         lastName,
+        fullName,
         email,
         phone,
         addr1,
@@ -183,8 +181,9 @@ $(document).ready(function () {
         city,
         state,
         zip,
-        petName;
-    var clientInfo = {};
+        petName,
+        count = 0;
+
 
     $("#customer-view").on("click", function (event) {
         event.preventDefault(event);
@@ -194,99 +193,67 @@ $(document).ready(function () {
 
 
         database.ref('/client').orderByChild('/clientFirst').on("child_added", function (childSnapshot) {
+            count++;
             console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
 
 
-            firstName = (childSnapshot.val().clientFirst);
-            lastName = (childSnapshot.val().clientLast);
-            email = (childSnapshot.val().clientEmail);
-            phone = (childSnapshot.val().clientPhone);
-            addr1 = (childSnapshot.val().clientAddr1);
-            addr2 = (childSnapshot.val().clientAddr2);
-            city = (childSnapshot.val().clientCity);
-            state = (childSnapshot.val().clientState);
-            zip = (childSnapshot.val().clientZip);
-            petName = (childSnapshot.val().petName);
-            notes = (childSnapshot.val().notes);
-            if (notes == null) {
-                notes: "No Notes Yet!";
-            }
 
+                firstName = childSnapshot.val().clientFirst,
+                lastName = childSnapshot.val().clientLast,
+                fullName = firstName + " " + lastName,
+                email = childSnapshot.val().clientEmail,
+                phone = childSnapshot.val().clientPhone,
+                addr1 = childSnapshot.val().clientAddr1,
+                addr2 = childSnapshot.val().clientAddr2,
+                city = childSnapshot.val().clientCity,
+                state = childSnapshot.val().clientState,
+                zip = childSnapshot.val().clientZip,
+                petName = childSnapshot.val().petName,
+                // notes: (childSnapshot.val().notes)
+                // if (notes == null) {
+                //     notes: "No Notes Yet!";
+                // }
+            clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
+            clientInfoArray.push(clientInfo);
 
-            // clientInfo =
-            // {
-            //     firstName: (childSnapshot.val().clientFirst),
-            //     lastName: (childSnapshot.val().clientLast),
-            //     email: (childSnapshot.val().clientEmail),
-            //     phone: (childSnapshot.val().clientPhone),
-            //     addr1: (childSnapshot.val().clientAddr1),
-            //     addr2: (childSnapshot.val().clientAddr2),
-            //     city: (childSnapshot.val().clientCity),
-            //     state: (childSnapshot.val().clientState),
-            //     zip: (childSnapshot.val().clientZip),
-            //     petName: (childSnapshot.val().petName)
-            //     // notes: (childSnapshot.val().notes)
-            //     // if (notes == null) {
-            //     //     notes: "No Notes Yet!";
-            //     // }
-            // };
             // Log everything that's coming out of snapshot
-            console.log(clientInfo.firstName);
-            console.log(clientInfo.lastName);
-            console.log(clientInfo.email);
-            console.log(clientInfo.phone);
-            console.log(clientInfo.addr1);
-            console.log(clientInfo.addr2);
-            console.log(clientInfo.city);
-            console.log(clientInfo.state);
-            console.log(clientInfo.zip);
-            console.log(clientInfo.petName);
-            // console.log(notes);
+            console.log(clientInfo);
 
 
-            $("#table").append(
-                "<tr><td>" + firstName + " " + lastName +
-                "</td><td>" + email +
-                "</td><td>" + phone +
-                "</td><td>" + addr1 +
-                "</td><td>" + addr2 +
-                "</td><td>" + city +
-                "</td><td>" + state +
-                "</td><td>" + zip +
-                "</td><td>" + petName +
-                "</td><td>" + notes +
-                "</td></td>");
+
+    // This needs to be inside of the .on child_added function, but needs to delay until db is finished loading each child.
+        $('#table').DataTable({
+        data: clientInfoArray,
+            columns: [
+            {title: "Client Name"},
+            {title: "Email"},
+            {title: "Phone"},
+            {title: "Address"},
+            {title: "Address ext"},
+            {title: "City"},
+            {title: "State"},
+            {title: "Zip Code"},
+            {title: "Pet Name"}
+            // {title: "Notes"}
+            ]
+        }); // end render DataTable
+
+        }), // end on child added function
+
+
+
 
 
             // Handle the errors
-        }, function (errorObject) {
+        function (errorObject) {
             console.log("Errors handled: " + errorObject.code);
 
-        });// end of dataRef //
+        };// end of dataRef //
 
-        $('#table').DataTable({
-            data: clientInfo,
-            columns: [
-                {title: "Client Name"},
-                {title: "Email"},
-                {title: "Phone"},
-                {title: "Address"},
-                {title: "Address ext"},
-                {title: "City"},
-                {title: "State"},
-                {title: "Zip Code"},
-                {title: "Pet Name"},
-                {title: "Notes"}
-            ]
-        }); // end render DataTable
 
 
     }); // end of #customer view on click //
 
-
-    $('td').on('click', function () {
-        console.log(this);
-    });
 
 
 // =====================================================================
