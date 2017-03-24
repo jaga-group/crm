@@ -4,7 +4,8 @@ body {
 }
 
 .navbar {
-    background-color: transparent;
+    /*background-color: transparent;*/
+    background-color: #263238;
 }
 
 .top-nav-collapse {
@@ -54,9 +55,7 @@ footer.page-footer {
     color: #fff;
 }
 
-
-
-
+/*******************************************/
 
 .md-form label.active {
     font-size: .8rem;
@@ -85,275 +84,20 @@ h4 {
     margin-top: 25px;
 }
 
+/*******************************************/
 
-
-
-
-
-/*.jumbotron {*/
-    /*font-family: 'Monoton', cursive;*/
-    /*background: url("../images/dog3.jpg") no-repeat center top/100% auto fixed;*/
-    /*color: #fff;*/
-    /*margin-bottom: 10px;*/
-/*}*/
-
-/*.title {*/
-    /*font-family: 'Monoton', cursive;*/
-    /*font-size: 5vw;*/
-    /*position: relative;*/
-    /*top: 1vw;*/
-    /*left: -5vw;*/
-/*}*/
-
-/*fieldset {*/
-    /*margin-left: 30px;*/
-/*}*/
-
-/*.hide {*/
-    /*display: none;*/
-/*}*/
-
-/*.radio {*/
-    /*display: inline;*/
-/*}*/
-
-/*.sign-in-inputs {*/
-    /*font-size: large;*/
-/*}*/
-
-/*=============================================================*/
-/* Parsley JS Form Validation related styles */
-/*=============================================================*/
-
-input.parsley-success,
-select.parsley-success,
-textarea.parsley-success {
-    color: #468847;
-    background-color: #DFF0D8;
-    border: 1px solid #D6E9C6;
-}
-
-input.parsley-error,
-select.parsley-error,
-textarea.parsley-error {
-    color: #B94A48;
-    background-color: #F2DEDE;
-    border: 1px solid #EED3D7;
-}
-
-.parsley-errors-list {
-    margin: 2px 0 3px;
-    padding: 0;
-    list-style-type: none;
-    font-size: 0.9em;
-    line-height: 0.9em;
-    opacity: 0;
-
-    transition: all .3s ease-in;
-    -o-transition: all .3s ease-in;
-    -moz-transition: all .3s ease-in;
-    -webkit-transition: all .3s ease-in;
-}
-
-.parsley-errors-list.filled {
-    opacity: 1;
-}
-
-.bs-callout {
-    padding: 20px;
-    margin: 20px 0;
-    border-left: 3px solid #eee;
-}
-
-.bs-callout h4 {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-.bs-callout p:last-child {
-    margin-bottom: 0;
-}
-
-.bs-callout code {
-    border-radius: 3px;
-}
-
-.bs-callout-success {
-    border-left-color: #5cb85c;
-}
-
-.bs-callout-success h4 {
-    background-color: #dff0d8;
-    border-color: #5cb85c;
-}
-
-.bs-callout-danger {
-    background-color: #F2DEDE;
-    border-color: #d9534f;
-}
-
-.bs-callout-danger h4 {
-    color: #d9534f;
-}
-
-.bs-callout-warning {
-    background-color: #fcf8f2;
-    border-color: #f0ad4e;
-}
-
-.bs-callout-warning h4 {
-    color: #f0ad4e;
-}
-
-.bs-callout-info {
-    background-color: #f4f8fa;
-    border-color: #5bc0de;
-}
-
-.bs-callout-info h4 {
-    color: #5bc0de;
-}
-
-/*=============================================================*/
-/* Dashboard Sidebar */
-/*=============================================================*/
-
-body {
-    overflow-x: hidden;
-}
-
-/* Toggle Styles */
-
-#wrapper {
-    padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#wrapper.toggled {
-    padding-left: 250px;
-}
-
-#sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    left: 250px;
-    width: 0;
+html {
     height: 100%;
-    margin-left: -250px;
-    overflow-y: auto;
-    background: lightgrey;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+}
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    flex: 1;
 }
 
-#wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-}
-
-#page-content-wrapper {
-    width: 100%;
-    position: absolute;
-    padding: 15px;
-}
-
-#wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
-}
-/*Map Styles*/
-#map {
-    width: 600px;
-    height: 600px;
-     float: left;
-}
-#panel {
-    width: 300px; 
-    float: right;
-    font-size: 16px;
-}
-/*
-.mapDiv {
-    width: 600px;
-}*/
-
-
-/* Sidebar Styles */
-
-.sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
-}
-
-.sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #000;
-}
-
-.sidebar-nav li a:hover {
-    text-decoration: none;
-    color: #fff;
-    background: gray;
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-    color: #000;
-}
-
-.sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
-    background: none;
-}
-
-@media (min-width: 768px) {
-    #wrapper {
-        padding-left: 0;
-    }
-
-    #wrapper.toggled {
-        padding-left: 250px;
-    }
-
-    #sidebar-wrapper {
-        width: 0;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        width: 250px;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
+.dbbutton {
+    margin-left: 2rem;
 }
