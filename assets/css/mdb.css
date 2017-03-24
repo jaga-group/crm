@@ -5939,11 +5939,11 @@ label {
     transition: 0.2s ease-out; }
   .md-form label.active {
     font-size: 0.8rem;
-    -webkit-transform: translateY(-140%);
-    -moz-transform: translateY(-140%);
-    -ms-transform: translateY(-140%);
-    -o-transform: translateY(-140%);
-    transform: translateY(-140%); }
+    -webkit-transform: translateY(-80%);
+    -moz-transform: translateY(-80%);
+    -ms-transform: translateY(-80%);
+    -o-transform: translateY(-80%);
+    transform: translateY(-80%); }
   .md-form .prefix {
     position: absolute;
     width: 3rem;
@@ -10946,7 +10946,8 @@ button.toast-close-button {
       /* please don't change 'position' */
       background-color: #aaa;
       border-radius: 6px;
-      transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+      transition: background-color .2s linear, height .2s linear, width .2s ease-in-out,
+ border-radius .2s ease-in-out;
       bottom: 2px;
       /* there must be 'bottom' for ps-scrollbar-x */
       height: 6px; }
@@ -10966,7 +10967,8 @@ button.toast-close-button {
       /* please don't change 'position' */
       background-color: #aaa;
       border-radius: 6px;
-      transition: background-color .2s linear, height .2s linear, width .2s ease-in-out, border-radius .2s ease-in-out;
+      transition: background-color .2s linear, height .2s linear, width .2s ease-in-out,
+ border-radius .2s ease-in-out;
       right: 2px;
       /* there must be 'right' for ps-scrollbar-y */
       width: 6px; }

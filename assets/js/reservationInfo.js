@@ -5,17 +5,26 @@ var mainData = [];
 
 $(document).ready(function () {
 
+    database = firebase.database();
+
+    getData();
+    console.log(mainData);
 
 
-database = firebase.database();
+    // =====================================================================
+    // Parsley Form Validation //
+    // =====================================================================
 
-getData();
-console.log(mainData);
+    $(function () {
+        $('#res-info').parsley().on('field:validated', function () {
+            var ok = $('.parsley-error').length === 0;
+        })
+            .on('form:submit', function () {
+
+
                 // =====================================================================
                 // Reservation Functions //
                 // =====================================================================
-
-        $("#rsvp").on('click', function () {
 
                 // Preventing the buttons default behavior when clicked (which is submitting a form)
                 event.preventDefault();
@@ -114,8 +123,10 @@ console.log(mainData);
                     firebase.auth().signOut();
                 }); // end #log-out click function
 
-        }); // #rsvp on click function
 
+                return false; // End of
+            });
+    });
 
 
 // =====================================================================
@@ -143,23 +154,22 @@ console.log(mainData);
         $('#dashboard-content').append('<table id="table" class="display" width="100%"></table>');
 
         //TODO check that DataTables is only initilized 1x per page load (global variable)
-    // This needs to be inside of the .on child_added function, but needs to delay until db is finished loading each child.
+        // This needs to be inside of the .on child_added function, but needs to delay until db is finished loading each child.
         $('#table').DataTable({
-        data: clientInfoArray,
+            data: clientInfoArray,
             columns: [
-            {title: "Client Name"},
-            {title: "Email"},
-            {title: "Phone"},
-            {title: "Address"},
-            {title: "Address ext"},
-            {title: "City"},
-            {title: "State"},
-            {title: "Zip Code"},
-            {title: "Pet Name"}
-            // {title: "Notes"}
+                {title: "Client Name"},
+                {title: "Email"},
+                {title: "Phone"},
+                {title: "Address"},
+                {title: "Address ext"},
+                {title: "City"},
+                {title: "State"},
+                {title: "Zip Code"},
+                {title: "Pet Name"}
+                // {title: "Notes"}
             ]
         }); // end render DataTable
-
 
 
     }); // end of #customer view on click //
@@ -169,58 +179,54 @@ console.log(mainData);
     // =====================================================================
 
 
-$('#maps-view').on('click', function (event) {
+    $('#maps-view').on('click', function (event) {
         event.preventDefault(event);
         console.log('maps view click');
         $('#dashboard-content').empty();
         $('#dashboard-content').append('<div id="map">');
 // first example // 
-      var map;
-      var latLong = {lat: 28.455022, lng: -81.438414};
-    var elevator;
-    var myOptions = {
-        zoom: 1,
-        center: latLong,
-        mapTypeId: 'terrain'
-    };
-    map = new google.maps.Map($('#map')[0], myOptions);
+        var map;
+        var latLong = {lat: 28.455022, lng: -81.438414};
+        var elevator;
+        var myOptions = {
+            zoom: 1,
+            center: latLong,
+            mapTypeId: 'terrain'
+        };
+        map = new google.maps.Map($('#map')[0], myOptions);
 
         var marker = new google.maps.Marker({
-          position: latLong,
-          map: map,
-          title: 'Hello World!'
+            position: latLong,
+            map: map,
+            title: 'Hello World!'
         });
         for (var x = 0; x < addressArray.length; x++) {
             console.log("hey");
-        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addressArray[x]+'&sensor=false', null, function (data) {
-            console.log(data);
-            var p = data.results[0].geometry.location
-            var latlng = new google.maps.LatLng(p.lat, p.lng);
-            new google.maps.Marker({
-                position: latlng,
-                map: map
+            $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + addressArray[x] + '&sensor=false', null, function (data) {
+                console.log(data);
+                var p = data.results[0].geometry.location
+                var latlng = new google.maps.LatLng(p.lat, p.lng);
+                new google.maps.Marker({
+                    position: latlng,
+                    map: map
+                });
+
             });
+        }
 
-        });
-    }
+        /*  for (var x = 0; x < addressArray.length; x++) {
+         $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+address.Array[x]+'&sensor=false', null, function (data) {
+         var p = data.results[0].geometry.location
+         var latlng = new google.maps.LatLng(p.lat, p.lng);
+         new google.maps.Marker({
+         position: latlng,
+         map: map
+         });
 
-  /*  for (var x = 0; x < addressArray.length; x++) {
-        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+address.Array[x]+'&sensor=false', null, function (data) {
-            var p = data.results[0].geometry.location
-            var latlng = new google.maps.LatLng(p.lat, p.lng);
-            new google.maps.Marker({
-                position: latlng,
-                map: map
-            });
+         });
+         }*/
 
-        });
-    }*/
-
-});
-
-
-
-
+    });
 
 
 // =====================================================================
@@ -247,30 +253,27 @@ $('#maps-view').on('click', function (event) {
     }); // end of #snapshot-view on click
 
 
-
-
-
-    function getData(){
+    function getData() {
 
 
         database.ref('/client').orderByChild('/clientFirst').on("child_added", function (childSnapshot) {
-           // console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
+            // console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
 
             addr1 = childSnapshot.val().clientAddr1;
             addr2 = childSnapshot.val().clientAddr2;
             city = childSnapshot.val().clientCity;
             state = childSnapshot.val().clientState;
             zip = childSnapshot.val().clientZip;
-                firstName = childSnapshot.val().clientFirst,
+            firstName = childSnapshot.val().clientFirst,
                 lastName = childSnapshot.val().clientLast,
                 fullName = firstName + " " + lastName;
-                email = childSnapshot.val().clientEmail;
-                phone = childSnapshot.val().clientPhone;
-                petName = childSnapshot.val().petName;
-                clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
-                userAddress = [addr1, addr2, city, state, zip];
-                clientInfoArray.push(clientInfo);
-                addressArray.push(userAddress);
+            email = childSnapshot.val().clientEmail;
+            phone = childSnapshot.val().clientPhone;
+            petName = childSnapshot.val().petName;
+            clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
+            userAddress = [addr1, addr2, city, state, zip];
+            clientInfoArray.push(clientInfo);
+            addressArray.push(userAddress);
             var data = {
                 clientInfoArray: clientInfoArray,
                 addressArray: addressArray
@@ -278,12 +281,10 @@ $('#maps-view').on('click', function (event) {
 
 
             // Log everything that's coming out of snapshot
-                mainData.push(data);
-
+            mainData.push(data);
 
 
             //TODO call the DataTable method to "refresh" the DataTable based on the new data.
-
 
 
         }), // end on child added function
@@ -296,16 +297,7 @@ $('#maps-view').on('click', function (event) {
             };// end of dataRef //
 
 
-
-
     }
-
-
-
-
-
-
-
 
 
 }); // end of document ready //
