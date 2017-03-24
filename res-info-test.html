@@ -30,8 +30,7 @@
 
 </head>
 
-<body>
-
+<body class="body-wrap">
 
 <!--Navbar-->
 <nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
@@ -102,7 +101,6 @@
                 </ul>
             </div>
             <!-- /.Caption -->
-
         </div>
         <!--/.First slide-->
 
@@ -174,9 +172,7 @@
                     <div class="form-header special-color">
                         <h2>Reservation Form</h2>
                     </div>
-                    <form id="res-info">
-
-
+                    <form id="res-info" data-parsley-validate="">
 
                         <!--CLIENT INFO-->
                         <div class="row">
@@ -198,7 +194,11 @@
                                         <label for="client-email">Email *</label>
                                     </div>
                                     <div class="md-form">
-                                        <input type="text" id="client-phone" class="form-control" required="">
+                                        <input type="text" id="client-phone" class="form-control" required=""
+                                               data-parsley-minlength="10" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$"
+                                               required="" data-parsley-minlength-message="Value should be at least
+                                               10 digits (include area code)" data-parsley-pattern-message="Only digits
+                                               and special characters allowed">
                                         <label for="client-phone">Phone *</label>
                                     </div>
                                     <div class="md-form">
@@ -240,7 +240,7 @@
                                     <h5>Pet Type *</h5>
                                     <div class="form-inline">
                                         <fieldset class="form-group">
-                                            <input name="type" type="radio" id="pet-type-dog">
+                                            <input name="type" type="radio" id="pet-type-dog" required="">
                                             <label for="pet-type-dog" required="">Dog</label>
                                         </fieldset>
 
@@ -254,7 +254,7 @@
                                     <h5>Services Requested *</h5>
 
                                     <fieldset class="form-group">
-                                        <input type="checkbox" id="service-boarding">
+                                        <input type="checkbox" id="service-boarding" data-parsley-mincheck="2">
                                         <label for="service-boarding">Boarding</label>
                                     </fieldset>
 
@@ -311,22 +311,21 @@
                                 </fieldset>
                             </div>
                         </div>
+                        <div class="text-right">
+                            <!--<button type="submit" class="btn btn-lg btn-blue-grey" id="rsvp" value="validate">-->
+                                <!--MakeReservation-->
+                            <!--</button>-->
+                            <input type="submit" class="btn btn-success" value="Make Reservation">
+                        </div>
                     </form>
                     <!--Text-->
 
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-lg btn-blue-grey" id="rsvp">Make Reservation</button>
-                        <!--<input type="submit" class="btn btn-lg btn-blue-grey" value="Make Reservation" />-->
-                    </div>
                 </div>
             </div>
         </div>
         <!--Blue-grey-->
     </div>
     <div class="col-lg-1"></div>
-
-
-
 
     <div class="row">
         <div id="firebaseui-auth-container">
@@ -338,13 +337,8 @@
         <pre id="content"></pre>
     </div> <!-- end admin row-->
 
-
-
 </div>
 <!--/.Content-->
-
-
-
 
 <!--Footer-->
 <footer class="page-footer center-on-small-only">
@@ -377,6 +371,9 @@
 
 <!--Moment.js -->
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+<!--Parsley-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.min.js"></script>
 
 <!--Google Cal Auth-->
 <script async defer src="https://apis.google.com/js/api.js"></script>

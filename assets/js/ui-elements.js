@@ -147,10 +147,12 @@ function geolocate() {
 }
 
 
+// =====================================================================
+// On Page Load //
+// =====================================================================
+
 // Hide dropoff and pickup date fields on page load
 $('#drop-board').hide();
 $('#drop-groom').hide();
-$('.bs-callout-warning').hide();
-$('.bs-callout-info').hide();
 $('#drop-mobile').hide();
 
