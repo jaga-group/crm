@@ -120,7 +120,9 @@ $(document).ready(function() {
                 }); // end #log-out click function
 
 
-                return false; // End of
+//===================CLOSING PARSLEY STUFF==============================
+                return false; // Don't submit form for this demo
+
             });
     });
 
@@ -196,6 +198,7 @@ $(document).ready(function() {
         console.log('maps view click');
         $('#dashboard-content').empty();
         $('#dashboard-content').append('<div id="map">');
+
         // Sets center point for maps // 
         var map;
         var latLong = {
@@ -215,10 +218,12 @@ $(document).ready(function() {
             map: map,
             title: 'Google Maps'
         });
+
         for (var x = 0; x < addressArray.length; x++) {
             console.log("hey");
 
-            $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + addressArray[x] + '&sensor=false', null, function(data) {
+            $.getJSON('https:maps.googleapis.com/maps/api/geocode/json?address=' + addressArray[x] + '&sensor=false', null, function(data) {
+
 
             
                 console.log(data);
@@ -227,6 +232,7 @@ $(document).ready(function() {
                 new google.maps.Marker({
                     position: latlng,
                     map: map
+                    
                 }); /*End Google maps marker */
 
             }); // End getJSON // 
@@ -235,6 +241,7 @@ $(document).ready(function() {
 
 
     }); // End of Maps on click 
+
 
 
     // =====================================================================
