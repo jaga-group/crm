@@ -86,15 +86,12 @@ h4 {
 
 /*******************************************/
 
-html {
-    height: 100%;
-}
-body {
-    min-height: 100%;
+
+.body-wrap {
     display: flex;
     flex-direction: column;
 }
-.content {
+.content-area {
     flex: 1;
 }
 
