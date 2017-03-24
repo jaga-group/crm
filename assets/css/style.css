@@ -2,6 +2,10 @@ html, body {
     height: 100%;
 }
 
+/* ======================================== */
+/*   Navigation   */
+/* ======================================== */
+
 .navbar {
     background-color: #263238;
 }
@@ -10,7 +14,13 @@ html, body {
     background-color: #263238;
 }
 
-/**********  Sticky Footer  ***********/
+.nav-item {
+    margin-left: 2.5rem;
+}
+
+/* ======================================== */
+/*   Carousel   */
+/* ======================================== */
 
 .carousel {
     height: 50%;
@@ -25,7 +35,9 @@ html, body {
     height: 100%;
 }
 
-/**********  Sticky Footer  ***********/
+/* ======================================== */
+/*   Sticky Footer   */
+/* ======================================== */
 
 footer.page-footer {
     background-color: #263238;
@@ -45,10 +57,12 @@ footer.page-footer {
 }
 
 .squeeze {
-    height: 200px;
+    height: 100px;
 }
 
-/***************  Forms  **************/
+/* ======================================== */
+/*   Forms  */
+/* ======================================== */
 
 .md-form label.active {
     font-size: .8rem;
@@ -76,7 +90,9 @@ h4 {
     margin-top: 25px;
 }
 
-/******** Parsley Validation  *********/
+/* ======================================== */
+/*   Parsley Validation  */
+/* ======================================== */
 
 .parsley-required,
 .parsley-type,
@@ -97,4 +113,39 @@ h4 {
     padding: .25rem;
 }
 
+/* ======================================== */
+/*   Media Queries  */
+/* ======================================== */
 
+/*!* Landscape tablets and medium desktops *!*/
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/*!* Portrait tablets and small desktops *!*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .nav-item {
+        margin-left: .5rem;
+    }
+}
+
+/*!* Landscape phones and portrait tablets *!*/
+@media (min-width: 481px) and (max-width: 767px) {
+    #pet-title {
+        margin-top: 2.5em;
+    }
+    .marquee {
+        width: 75%;
+    }
+
+}
+
+/*!* Portrait phones and smaller *!*/
+@media (max-width: 480px) {
+    #pet-title {
+        margin-top: 2.5em;
+    }
+    .marquee {
+        width: 75%;
+    }
+}
