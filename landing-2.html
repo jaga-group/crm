@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Reservations</title>
+
+    <!-- Material Design Bootstrap -->
+    <link href="assets/css/mdb.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!--&lt;!&ndash;Google Maps&ndash;&gt;-->
+    <!--<script async defer-->
+    <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>-->
+
+    <!--DataTables Stylesheet-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
+
+    <!--Fullcalendar-->
+    <link rel="stylesheet" href="assets/fullcalendar/fullcalendar.css">
+
+    <!--Local Stylesheet-->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+<!--Navbar-->
+<nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+            <strong>Happy Tails Resort</strong>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav1">
+            <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dbbutton">
+                        <a class="nav-link" id="snapshot-view" href="#">Daily Snapshot</a>
+                    </li>
+                    <li class="nav-item dbbutton">
+                        <a class="nav-link" id="customer-view">Customers</a>
+                    </li>
+                    <li class="nav-item dbbutton">
+                        <a class="nav-link" id="maps-view">Google Maps</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--/.Navbar-->
+
+
+<!--Content-->
+<div class="content">
+    <div class="container">
+        <div class="row">
+          <div class="col" id="dashboard-content">
+
+              <!--THIS IS WHERE WE WILL DUMP OUR CONTENT-->
+
+          </div>
+        </div>
+    </div>
+</div>
+<div class="row-centered">
+    <div class="mapDiv">
+        <div id="map"></div>
+        <div id="panel"></div>
+    </div>
+</div>
+
+<!--/.Content-->
+
+
+<!--Footer-->
+<footer class="sticky-footer page-footer center-on-small-only">
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 HappyTailsResort.com
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+
+
+<!-- SCRIPTS -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="assets/js/tether.js"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="assets/js/mdb.js"></script>
+
+<!--Moment.js -->
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+<!--Google Cal Auth-->
+<script async defer src="https://apis.google.com/js/api.js"></script>
+<!--onload="this.onload=function(){};handleClientLoad()"-->
+<!--onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
+
+<!--</script>-->
+<script src="https://apis.google.com/js/api.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+
+<!--Google Places-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ&libraries=places&callback=initAutocomplete"
+        async defer></script>
+<!-- Google Maps -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>
+<!--Fullcalendar-->
+<script src="assets/fullcalendar/fullcalendar.js"></script>
+<!--Google Calendar-->
+<script async defer src="https://apis.google.com/js/api.js"></script>
+<!--onload="this.onload=function(){};handleClientLoad()"-->
+<!--onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
+<!--</script>-->
+<script type='text/javascript' src='assets/fullcalendar/gcal.js'></script>
+<!--Google API-->
+<script src="https://apis.google.com/js/api.js"></script>
+
+
+<!--Local JS-->
+<script src="assets/js/firebaseInit.js"></script>
+<script src="assets/js/app2.js"></script>
+<script src="assets/js/reservationInfo.js"></script>
+<script src="assets/js/ui-elements.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+
+</body>
+</html>
+
+

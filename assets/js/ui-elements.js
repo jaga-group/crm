@@ -146,6 +146,17 @@ function geolocate() {
     }
 }
 
+// =====================================================================
+    // SideNav Initialization //
+// =====================================================================
+
+// SideNav init
+$(".button-collapse").sideNav();
+
+// Custom scrollbar init
+var el = document.querySelector('.custom-scrollbar');
+Ps.initialize(el);
+
 // Hide dropoff and pickup date fields on page load
 $('#drop-board').hide();
 $('#drop-groom').hide();
