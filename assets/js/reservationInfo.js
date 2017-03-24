@@ -257,7 +257,30 @@ $(document).ready(function() {
                 googleCalendarId: '422sm5uub9lo8o7el0cvpogmkc@group.calendar.google.com',
                 eventColor: '#378006'
             },
-            defaultView: 'agendaDay'
+            defaultView: 'agendaDay',
+            eventRender: function (event, element) {
+                if (event.description == "S") {	// Sunday Play & Train
+                    element.css('background-color', '#3BF7C9');
+                } else if (event.description == "B") {	// Boarding
+                    element.css('background-color', '#E80C7A');
+                } else if (event.description == "P") {	// Puppy Training
+                    element.css('background-color', '#21C9FF');
+                } else if (event.description == "D") {	// Day Care
+                    element.css('background-color', '#57E040');
+                } else if (event.description == "I") {	// Intermediate Training
+                    element.css('background-color', '#E8B51F');
+                } else if (event.description == "G") {	// Grooming
+                    element.css('background-color', '#2E4FE8');
+                } else if (event.description == "A") {	// Administrative
+                    element.css('background-color', '#E82C0C');
+                } else if (event.description == "F") {	// First Time Boarding Workshop
+                    element.css('background-color', '#E8E45B');
+                } else if (event.description == "T") {	// Private Training
+                    element.css('background-color', '#57E040');
+                } else {
+                    element.css('background-color', '#B194F5');
+                }
+            }
         });
 
     }); // end of #snapshot-view on click
