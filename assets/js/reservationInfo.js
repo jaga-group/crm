@@ -1,6 +1,7 @@
 var clientInfoArray = [];
 var addressArray = [];
 var userAddress = [];
+var mainData = [];
 
 $(document).ready(function () {
 
@@ -8,25 +9,13 @@ $(document).ready(function () {
 
 database = firebase.database();
 
-
-// =====================================================================
-    // ParsleyJS Validation //
-// =====================================================================
-
-    $(function () {
-        $('#res-info').parsley().on('field:validated', function () {
-            var ok = $('.parsley-error').length === 0;
-            $('.bs-callout-info').show();
-            $('.bs-callout-warning').show();
-        })
-            .on('form:submit', function () {
-
-
-
+getData();
+console.log(mainData);
                 // =====================================================================
                 // Reservation Functions //
                 // =====================================================================
 
+        $("#rsvp").on('click', function () {
 
                 // Preventing the buttons default behavior when clicked (which is submitting a form)
                 event.preventDefault();
@@ -125,14 +114,9 @@ database = firebase.database();
                     firebase.auth().signOut();
                 }); // end #log-out click function
 
+        }); // #rsvp on click function
 
-                
 
-
-//===================CLOSING PARSLEY STUFF==============================
-                return false; // Don't submit form for this demo
-            });
-    }); // end parsley validation wrapper for all functions linked to rsvp button click
 
 // =====================================================================
     // Dashboard Functions - Customer View //
@@ -158,35 +142,7 @@ database = firebase.database();
         $("#dashboard-content").empty();
         $('#dashboard-content').append('<table id="table" class="display" width="100%"></table>');
 
-
-        database.ref('/client').orderByChild('/clientFirst').on("child_added", function (childSnapshot) {
-            console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
-
-
-
-                firstName = childSnapshot.val().clientFirst,
-                lastName = childSnapshot.val().clientLast,
-                fullName = firstName + " " + lastName,
-                email = childSnapshot.val().clientEmail,
-                phone = childSnapshot.val().clientPhone,
-                addr1 = childSnapshot.val().clientAddr1,
-                addr2 = childSnapshot.val().clientAddr2,
-                city = childSnapshot.val().clientCity,
-                state = childSnapshot.val().clientState,
-                zip = childSnapshot.val().clientZip,
-                petName = childSnapshot.val().petName,
-                // notes: (childSnapshot.val().notes)
-                // if (notes == null) {
-                //     notes: "No Notes Yet!";
-                // }
-            clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
-            clientInfoArray.push(clientInfo);
-            userAddress = [addr1, addr2, city, state, zip];
-            addressArray.push(userAddress);
-            // Log everything that's coming out of snapshot
-            console.log(addressArray);
-
-
+        //TODO check that DataTables is only initilized 1x per page load (global variable)
     // This needs to be inside of the .on child_added function, but needs to delay until db is finished loading each child.
         $('#table').DataTable({
         data: clientInfoArray,
@@ -203,16 +159,6 @@ database = firebase.database();
             // {title: "Notes"}
             ]
         }); // end render DataTable
-
-
-        }), // end on child added function
-
-
-            // Handle the errors
-        function (errorObject) {
-            console.log("Errors handled: " + errorObject.code);
-
-        };// end of dataRef //
 
 
 
@@ -276,43 +222,6 @@ $('#maps-view').on('click', function (event) {
 
 
 
-                    // // google maps directions api //
-                    // if (navigator.geolocation) { //Checks if browser supports geolocation
-                    //     navigator.geolocation.getCurrentPosition(function (position) {                                                              //This gets the
-                    //         var latitude = position.coords.latitude;                    //users current
-                    //         var longitude = position.coords.longitude;                 //location
-                    //         var coords = new google.maps.LatLng(latitude, longitude); //Creates variable for map coordinates
-                    //         var directionsService = new google.maps.DirectionsService();
-                    //         var directionsDisplay = new google.maps.DirectionsRenderer();
-                    //         var mapOptions = //Sets map options
-                    //             {
-                    //                 zoom: 15,  //Sets zoom level (0-21)
-                    //                 center: coords, //zoom in on users location
-                    //                 mapTypeControl: true, //allows you to select map type eg. map or satellite
-                    //                 navigationControlOptions: {
-                    //                     style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
-                    //                 },
-                    //                 mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
-                    //             };
-                    //         map = new google.maps.Map(/*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
-                    //         directionsDisplay.setMap(map);
-                    //         directionsDisplay.setPanel(document.getElementById('panel'));
-                    //         var latLong = {lat: 28.455022, lng: -81.438414};
-                    //         var request = {
-                    //             origin: coords,
-                    //             destination: latLong,
-                    //             travelMode: google.maps.DirectionsTravelMode.DRIVING
-                    //         };
-
-                    //         directionsService.route(request, function (response, status) {
-                    //             if (status == google.maps.DirectionsStatus.OK) {
-                    //                 directionsDisplay.setDirections(response);
-                    //             }
-                    //         });
-                    //     });
-                    // }
-                
-
 
 // =====================================================================
     // Dashboard Functions - Snapshot View //
@@ -336,5 +245,67 @@ $('#maps-view').on('click', function (event) {
         });
 
     }); // end of #snapshot-view on click
+
+
+
+
+
+    function getData(){
+
+
+        database.ref('/client').orderByChild('/clientFirst').on("child_added", function (childSnapshot) {
+           // console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
+
+            addr1 = childSnapshot.val().clientAddr1;
+            addr2 = childSnapshot.val().clientAddr2;
+            city = childSnapshot.val().clientCity;
+            state = childSnapshot.val().clientState;
+            zip = childSnapshot.val().clientZip;
+                firstName = childSnapshot.val().clientFirst,
+                lastName = childSnapshot.val().clientLast,
+                fullName = firstName + " " + lastName;
+                email = childSnapshot.val().clientEmail;
+                phone = childSnapshot.val().clientPhone;
+                petName = childSnapshot.val().petName;
+                clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
+                userAddress = [addr1, addr2, city, state, zip];
+                clientInfoArray.push(clientInfo);
+                addressArray.push(userAddress);
+            var data = {
+                clientInfoArray: clientInfoArray,
+                addressArray: addressArray
+            };
+
+
+            // Log everything that's coming out of snapshot
+                mainData.push(data);
+
+
+
+            //TODO call the DataTable method to "refresh" the DataTable based on the new data.
+
+
+
+        }), // end on child added function
+
+
+            // Handle the errors
+            function (errorObject) {
+                console.log("Errors handled: " + errorObject.code);
+
+            };// end of dataRef //
+
+
+
+
+    }
+
+
+
+
+
+
+
+
 
 }); // end of document ready //
