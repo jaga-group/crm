@@ -84,10 +84,19 @@ h4 {
     margin-top: 25px;
 }
 
+<<<<<<< HEAD
 /*******************************************/
 
 
 .body-wrap {
+=======
+/**************************************
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+>>>>>>> master
     display: flex;
     flex-direction: column;
 }
@@ -98,3 +107,4 @@ h4 {
 .dbbutton {
     margin-left: 2rem;
 }
+

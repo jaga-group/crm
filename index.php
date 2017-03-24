@@ -1,0 +1,1 @@
+<?php include_once("res-info-test.html"); ?>
