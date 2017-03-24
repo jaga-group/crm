@@ -174,18 +174,8 @@
                     <div class="form-header special-color">
                         <h2>Reservation Form</h2>
                     </div>
-                    <form id="res-info" data-parsley-validate="">
+                    <form id="res-info">
 
-
-                        <div class="bs-callout bs-callout-warning">
-                            <h4>Oh snap!</h4>
-                            <p>This form seems to be invalid :(</p>
-                        </div>
-
-                        <div class="bs-callout bs-callout-info">
-                            <h4>Yay!</h4>
-                            <p>Everything seems to be ok :)</p>
-                        </div>
 
 
                         <!--CLIENT INFO-->
@@ -209,8 +199,7 @@
                                     </div>
                                     <div class="md-form">
                                         <input type="text" id="client-phone" class="form-control" required="">
-                                        <label for="client-phone" data-parsley-minlength="10"
-                                               data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$">Phone *</label>
+                                        <label for="client-phone">Phone *</label>
                                     </div>
                                     <div class="md-form">
                                         <input type="text" id="client-addr1" class="form-control"
@@ -265,7 +254,7 @@
                                     <h5>Services Requested *</h5>
 
                                     <fieldset class="form-group">
-                                        <input type="checkbox" id="service-boarding" data-parsley-mincheck="1">
+                                        <input type="checkbox" id="service-boarding">
                                         <label for="service-boarding">Boarding</label>
                                     </fieldset>
 
@@ -385,9 +374,6 @@
 
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="assets/js/mdb.js"></script>
-
-<!--ParsleyJS Validation-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.7.0/parsley.js"></script>
 
 <!--Moment.js -->
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>

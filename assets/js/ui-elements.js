@@ -41,12 +41,12 @@ $('#service-grooming').on('change', function () {
 
 $('#mobile-grooming').on('change', function () {
     if ($(this).is(':checked')) {
-        let mobileD = $('#mobileDate');
+        var mobileD = $('#mobileDate');
         mobileD.removeAttr('disabled')
             .removeClass('disabled');
     }
     else {
-        let mobileD = $('#mobileDate');
+        var mobileD = $('#mobileDate');
         mobileD.addClass('disabled');
         mobileD.attr('disabled', 'disabled');
 
@@ -146,16 +146,6 @@ function geolocate() {
     }
 }
 
-// =====================================================================
-    // SideNav Initialization //
-// =====================================================================
-
-// SideNav init
-$(".button-collapse").sideNav();
-
-// Custom scrollbar init
-var el = document.querySelector('.custom-scrollbar');
-Ps.initialize(el);
 
 // Hide dropoff and pickup date fields on page load
 $('#drop-board').hide();
