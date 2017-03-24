@@ -18,10 +18,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
-    <!--&lt;!&ndash;Google Maps&ndash;&gt;-->
-    <!--<script async defer-->
-    <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>-->
-
     <!--DataTables Stylesheet-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
 
@@ -33,7 +29,7 @@
 <body class="body-wrap">
 
 <!--Navbar-->
-<nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
+<nav class="navbar navbar-toggleable-sm navbar-dark fixed-top scrolling-navbar">
     <div class="container">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false"
@@ -46,9 +42,6 @@
         <div class="collapse navbar-collapse" id="navbarNav1">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link">Boarding</a>
                 </li>
                 <li class="nav-item">
@@ -64,9 +57,71 @@
                     <a class="nav-link">About</a>
                 </li>
             </ul>
-            <!--<form class="form-inline waves-effect waves-light">-->
-            <!--<input class="form-control" type="text" placeholder="Search">-->
-            <!--</form>-->
+
+            <div id="firebaseui-auth-container">
+                <button id="admin" class="btn btn-sm  btn-outline-white" data-toggle="modal"
+                        data-target="#modal-login">Team Members</button>
+            </div> <!-- end firebaseui-auth-container-->
+
+
+
+
+            <!-- Modal Login -->
+            <div class="modal fade modal-ext" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h3 class="w-100"><i class="fa fa-user"></i> Login</h3>
+                        </div>
+                        <!--Body-->
+                        <div class="modal-body">
+
+
+                            <button id="authorize-button" style="display: none;">Authorize</button>
+                            <button id="signout-button" style="display: none;">Sign Out</button>
+                            <pre id="content"></pre>
+
+
+
+
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix"></i>
+                                <input type="text" id="form2" class="form-control">
+                                <label for="form2">Your email</label>
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fa fa-lock prefix"></i>
+                                <input type="password" id="form3" class="form-control">
+                                <label for="form3">Your password</label>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary btn-lg">Login</button>
+                            </div>
+                        </div>
+                        <!--Footer-->
+                        <div class="modal-footer">
+                            <div class="options text-right">
+                                <p>Not a member? <a href="#">Sign Up</a></p>
+                                <p>Forgot <a href="#">Password?</a></p>
+                            </div>
+                            <button type="button" class="btn btn-default ml-auto" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!--/.Content-->
+                </div>
+            </div>
+
+
+
+
+
+
         </div>
     </div>
 </nav>
@@ -87,58 +142,41 @@
 
         <!-- First slide -->
         <div class="carousel-item active view hm-black-light"
-             style="background-image: url('assets/img/dog2 copy.jpg'); background-repeat: no-repeat; background-size: cover;">
+             style="background-image: url('assets/img/trustworthy.jpg'); background-repeat: no-repeat; background-size: cover;">
 
-            <!-- Caption -->
             <div class="full-bg-img flex-center white-text">
-                <ul class="animated fadeInUp col-md-12">
-                    <li>
-                        <h1 class="h1-responsive"><strong>We Offer Trustworthy Boarding Services</strong></h1>
-                    </li>
-                    <li>
-                        <p>Family-oriented boarding facility owned and operated by loving caregivers</p>
-                    </li>
-                </ul>
+                <div class="animated fadeInUp col-md-12 text-center marquee">
+                    <h1 class="h1-responsive"><strong>We Offer Trustworthy Boarding Services</strong></h1>
+                    <p>Family-oriented boarding facility owned and operated by loving caregivers</p>
+                </div>
             </div>
-            <!-- /.Caption -->
         </div>
         <!--/.First slide-->
 
         <!-- Second slide -->
         <div class="carousel-item view hm-black-light"
-             style="background-image: url('assets/img/dog3 copy.jpg'); background-repeat: no-repeat; background-size: cover;">
+             style="background-image: url('assets/img/comfortable.jpg'); background-repeat: no-repeat; background-size: cover;">
 
-            <!-- Caption -->
             <div class="full-bg-img flex-center white-text">
-                <ul class="animated fadeInUp col-md-12">
-                    <li>
-                        <h1 class="h1-responsive"><strong>We Provide Comfortable Accommodations</strong></h1>
-                    </li>
-                    <li>
-                        <p>10 acres of lush outdoor play areas and 5 play yards</p>
-                    </li>
-                </ul>
+                <div class="animated fadeInUp col-md-12 text-center marquee">
+                    <h1 class="h1-responsive"><strong>We Provide Comfortable Accommodations</strong></h1>
+                    <p>10 acres of lush outdoor play areas and 5 play yards</p>
+                </div>
             </div>
-            <!-- /.Caption -->
 
         </div>
         <!--/.Second slide -->
 
         <!-- Third slide -->
         <div class="carousel-item view hm-black-light"
-             style="background-image: url('assets/img/dog1 copy.jpg'); background-repeat: no-repeat; background-size: cover;">
+             style="background-image: url('assets/img/excercise.jpg'); background-repeat: no-repeat; background-size: cover;">
 
-            <!-- Caption -->
             <div class="full-bg-img flex-center white-text">
-                <ul class="animated fadeInUp col-md-12">
-                    <li>
-                        <h1 class="h1-responsive"><strong>We Value Exercise and Companionship</strong></h1></li>
-                    <li>
-                        <p>Supervised fun playtimes and activities customized for your pet</p>
-                    </li>
-                </ul>
+                <div class="animated fadeInUp col-md-12 text-center marquee">
+                    <h1 class="h1-responsive"><strong>We Value Exercise and Companionship</strong></h1></li>
+                    <p>Supervised fun playtimes and activities customized for your pet</p>
+                </div>
             </div>
-            <!-- /.Caption -->
 
         </div>
         <!--/.Third slide-->
@@ -161,7 +199,7 @@
 <br>
 
 <!--Content-->
-<div class="container">
+<div class="container content-area">
     <div class="row" id="res-form-container">
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
@@ -176,7 +214,7 @@
 
                         <!--CLIENT INFO-->
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <fieldset>
                                     <div class="text-center">
                                         <h3 class="blue-grey-text">Client Info</h3>
@@ -227,10 +265,10 @@
 
                             <!--PET INFO-->
 
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <fieldset>
                                     <div class="text-center">
-                                        <h3 class="blue-grey-text">Pet Info</h3>
+                                        <h3 id="pet-title" class="blue-grey-text">Pet Info</h3>
                                     </div>
                                     <div class="md-form">
                                         <input type="text" id="pet-name" class="form-control" required="">
@@ -311,32 +349,18 @@
                                 </fieldset>
                             </div>
                         </div>
+
                         <div class="text-right">
-                            <!--<button type="submit" class="btn btn-lg btn-blue-grey" id="rsvp" value="validate">-->
-                                <!--MakeReservation-->
-                            <!--</button>-->
                             <input type="submit" class="btn btn-success" value="Make Reservation">
                         </div>
+
                     </form>
-                    <!--Text-->
 
                 </div>
             </div>
         </div>
-        <!--Blue-grey-->
     </div>
     <div class="col-lg-1"></div>
-
-    <div class="row">
-        <div id="firebaseui-auth-container">
-            <button id="admin">Administrator</button>
-        </div> <!-- end firebaseui-auth-container-->
-        <button id="authorize-button" style="display: none;">Authorize</button>
-        <button id="signout-button" style="display: none;">Sign Out</button>
-
-        <pre id="content"></pre>
-    </div> <!-- end admin row-->
-
 </div>
 <!--/.Content-->
 
@@ -358,7 +382,7 @@
 <!-- SCRIPTS -->
 
 <!-- JQuery -->
-<script type="text/javascript" src="assets/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
 
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="assets/js/tether.js"></script>
