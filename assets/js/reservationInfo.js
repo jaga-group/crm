@@ -217,7 +217,10 @@ $(document).ready(function() {
         });
         for (var x = 0; x < addressArray.length; x++) {
             console.log("hey");
+
             $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + addressArray[x] + '&sensor=false', null, function(data) {
+
+            
                 console.log(data);
                 var p = data.results[0].geometry.location
                 var latlng = new google.maps.LatLng(p.lat, p.lng);
@@ -251,8 +254,10 @@ $(document).ready(function() {
                 right: 'month,agendaWeek,agendaDay'
             },
             events: {
-                googleCalendarId: '422sm5uub9lo8o7el0cvpogmkc@group.calendar.google.com'
-            }
+                googleCalendarId: '422sm5uub9lo8o7el0cvpogmkc@group.calendar.google.com',
+                eventColor: '#378006'
+            },
+            defaultView: 'agendaDay'
         });
 
     }); // end of #snapshot-view on click
