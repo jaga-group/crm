@@ -84,19 +84,8 @@ h4 {
     margin-top: 25px;
 }
 
-<<<<<<< HEAD
-/*******************************************/
-
 
 .body-wrap {
-=======
-/**************************************
-html {
-    height: 100%;
-}
-body {
-    min-height: 100%;
->>>>>>> master
     display: flex;
     flex-direction: column;
 }
@@ -108,3 +97,6 @@ body {
     margin-left: 2rem;
 }
 
+.squeeze {
+    height: 200px;
+}
