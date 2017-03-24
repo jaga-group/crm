@@ -3,7 +3,7 @@ var addressArray = [];
 var userAddress = [];
 var mainData = [];
 
-$(document).ready(function () {
+$(document).ready(function() {
 
     database = firebase.database();
 
@@ -15,11 +15,11 @@ $(document).ready(function () {
     // Parsley Form Validation //
     // =====================================================================
 
-    $(function () {
-        $('#res-info').parsley().on('field:validated', function () {
-            var ok = $('.parsley-error').length === 0;
-        })
-            .on('form:submit', function () {
+    $(function() {
+        $('#res-info').parsley().on('field:validated', function() {
+                var ok = $('.parsley-error').length === 0;
+            })
+            .on('form:submit', function() {
 
 
                 // =====================================================================
@@ -28,7 +28,7 @@ $(document).ready(function () {
 
                 // Preventing the buttons default behavior when clicked (which is submitting a form)
                 event.preventDefault();
-
+                // Grabbing input on res info page // 
                 var clientFirst = $("#client-first").val().trim();
                 var clientLast = $("#client-last").val().trim();
                 var clientEmail = $("#client-email").val().trim();
@@ -55,29 +55,25 @@ $(document).ready(function () {
                     $('#service-boarding').val();
                     dropOffDate = $('#dropoffDate').val();
                     pickUpDate = $('#pickupDate').val();
-                }
-                ;
+                };
 
                 var serviceGrooming = $('#service-grooming').is(':checked');
                 if (serviceGrooming === true) {
                     service = 'Grooming';
                     $('#service-grooming').val();
-                }
-                ;
+                };
 
                 var serviceDayCare = $('#service-daycare').is(':checked');
                 if (serviceDayCare === true) {
                     service = 'Day Care';
                     $('#service-daycare').val();
-                }
-                ;
+                };
 
                 var serviceTraining = $('#service-training').is(':checked');
                 if (serviceTraining === true) {
                     service = 'Training';
                     $('#service-training').val();
-                }
-                ;
+                };
 
 
                 clientInfo = {
@@ -117,7 +113,7 @@ $(document).ready(function () {
                 // adds log out button
                 $('<button id="log-out">').appendTo('#res-form').text("Log Out");
                 // on click of #log-out, user is signed out of firebase
-                $('#log-out').on('click', function (event) {
+                $('#log-out').on('click', function(event) {
                     event.preventDefault(event);
                     $('#res-form').html("You have logged out.");
                     firebase.auth().signOut();
@@ -129,9 +125,9 @@ $(document).ready(function () {
     });
 
 
-// =====================================================================
+    // =====================================================================
     // Dashboard Functions - Customer View //
-// =====================================================================
+    // =====================================================================
 
     var clientInfo,
         firstName,
@@ -147,7 +143,7 @@ $(document).ready(function () {
         petName;
 
 
-    $("#customer-view").on("click", function (event) {
+    $("#customer-view").on("click", function(event) {
         event.preventDefault(event);
         console.log("customer view click");
         $("#dashboard-content").empty();
@@ -157,16 +153,33 @@ $(document).ready(function () {
         // This needs to be inside of the .on child_added function, but needs to delay until db is finished loading each child.
         $('#table').DataTable({
             data: clientInfoArray,
-            columns: [
-                {title: "Client Name"},
-                {title: "Email"},
-                {title: "Phone"},
-                {title: "Address"},
-                {title: "Address ext"},
-                {title: "City"},
-                {title: "State"},
-                {title: "Zip Code"},
-                {title: "Pet Name"}
+            columns: [{
+                    title: "Client Name"
+                },
+                {
+                    title: "Email"
+                },
+                {
+                    title: "Phone"
+                },
+                {
+                    title: "Address"
+                },
+                {
+                    title: "Address ext"
+                },
+                {
+                    title: "City"
+                },
+                {
+                    title: "State"
+                },
+                {
+                    title: "Zip Code"
+                },
+                {
+                    title: "Pet Name"
+                }
                 // {title: "Notes"}
             ]
         }); // end render DataTable
@@ -175,21 +188,23 @@ $(document).ready(function () {
     }); // end of #customer view on click //
 
     // =====================================================================
-    // Dashboard Functions - Snapshot View //
+    // Dashboard Functions - Maps View //
     // =====================================================================
-
-
-    $('#maps-view').on('click', function (event) {
+    // Google Maps on click function // 
+    $('#maps-view').on('click', function(event) {
         event.preventDefault(event);
         console.log('maps view click');
         $('#dashboard-content').empty();
         $('#dashboard-content').append('<div id="map">');
-// first example // 
+        // Sets center point for maps // 
         var map;
-        var latLong = {lat: 28.455022, lng: -81.438414};
+        var latLong = {
+            lat: 28.455022,
+            lng: -81.438414
+        };
         var elevator;
         var myOptions = {
-            zoom: 1,
+            zoom: 10,
             center: latLong,
             mapTypeId: 'terrain'
         };
@@ -198,42 +213,32 @@ $(document).ready(function () {
         var marker = new google.maps.Marker({
             position: latLong,
             map: map,
-            title: 'Hello World!'
+            title: 'Google Maps'
         });
         for (var x = 0; x < addressArray.length; x++) {
             console.log("hey");
-            $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + addressArray[x] + '&sensor=false', null, function (data) {
+            $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + addressArray[x] + '&sensor=false', null, function(data) {
                 console.log(data);
                 var p = data.results[0].geometry.location
                 var latlng = new google.maps.LatLng(p.lat, p.lng);
                 new google.maps.Marker({
                     position: latlng,
                     map: map
-                });
+                }); /*End Google maps marker */
 
-            });
-        }
+            }); // End getJSON // 
 
-        /*  for (var x = 0; x < addressArray.length; x++) {
-         $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+address.Array[x]+'&sensor=false', null, function (data) {
-         var p = data.results[0].geometry.location
-         var latlng = new google.maps.LatLng(p.lat, p.lng);
-         new google.maps.Marker({
-         position: latlng,
-         map: map
-         });
-
-         });
-         }*/
-
-    });
+        } // End of for loop // 
 
 
-// =====================================================================
+    }); // End of Maps on click 
+
+
+    // =====================================================================
     // Dashboard Functions - Snapshot View //
-// =====================================================================
+    // =====================================================================
 
-    $('#snapshot-view').on('click', function (event) {
+    $('#snapshot-view').on('click', function(event) {
         event.preventDefault(event);
         console.log('snapshot view click');
         $('#dashboard-content').empty();
@@ -256,45 +261,45 @@ $(document).ready(function () {
     function getData() {
 
 
-        database.ref('/client').orderByChild('/clientFirst').on("child_added", function (childSnapshot) {
-            // console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
+        database.ref('/client').orderByChild('/clientFirst').on("child_added", function(childSnapshot) {
+                // console.log("snapshot: " + JSON.stringify(childSnapshot.val()));
 
-            addr1 = childSnapshot.val().clientAddr1;
-            addr2 = childSnapshot.val().clientAddr2;
-            city = childSnapshot.val().clientCity;
-            state = childSnapshot.val().clientState;
-            zip = childSnapshot.val().clientZip;
-            firstName = childSnapshot.val().clientFirst,
-                lastName = childSnapshot.val().clientLast,
-                fullName = firstName + " " + lastName;
-            email = childSnapshot.val().clientEmail;
-            phone = childSnapshot.val().clientPhone;
-            petName = childSnapshot.val().petName;
-            clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
-            userAddress = [addr1, addr2, city, state, zip];
-            clientInfoArray.push(clientInfo);
-            addressArray.push(userAddress);
-            var data = {
-                clientInfoArray: clientInfoArray,
-                addressArray: addressArray
-            };
-
-
-            // Log everything that's coming out of snapshot
-            mainData.push(data);
+                addr1 = childSnapshot.val().clientAddr1;
+                addr2 = childSnapshot.val().clientAddr2;
+                city = childSnapshot.val().clientCity;
+                state = childSnapshot.val().clientState;
+                zip = childSnapshot.val().clientZip;
+                firstName = childSnapshot.val().clientFirst,
+                    lastName = childSnapshot.val().clientLast,
+                    fullName = firstName + " " + lastName;
+                email = childSnapshot.val().clientEmail;
+                phone = childSnapshot.val().clientPhone;
+                petName = childSnapshot.val().petName;
+                clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
+                userAddress = [addr1, addr2, city, state, zip];
+                clientInfoArray.push(clientInfo);
+                addressArray.push(userAddress);
+                var data = {
+                    clientInfoArray: clientInfoArray,
+                    addressArray: addressArray
+                };
 
 
-            //TODO call the DataTable method to "refresh" the DataTable based on the new data.
+                // Log everything that's coming out of snapshot
+                mainData.push(data);
 
 
-        }), // end on child added function
+                //TODO call the DataTable method to "refresh" the DataTable based on the new data.
+
+
+            }), // end on child added function
 
 
             // Handle the errors
-            function (errorObject) {
+            function(errorObject) {
                 console.log("Errors handled: " + errorObject.code);
 
-            };// end of dataRef //
+            }; // end of dataRef //
 
 
     }

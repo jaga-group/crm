@@ -1,13 +1,13 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-    $('#admin').on('click', function (event) {
+    $('#admin').on('click', function(event) {
         event.preventDefault(event);
         $('#res-form-container').hide();
         $('#admin').hide();
-    // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    // The start method will wait until the DOM is loaded.
-    ui.start('#firebaseui-auth-container', uiConfig);
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
 
         initApp()
     });
@@ -33,21 +33,21 @@ $(document).ready(function(){
                 var providerData = user.providerData;
                 user.getToken().then(
                     function(accessToken) {
-                    document.getElementById('sign-in-status').textContent = 'Signed in';
-                    document.getElementById('sign-in').textContent = 'Sign out';
-                    document.getElementById('account-details').textContent = JSON.stringify({
-                        displayName: displayName,
-                        email: email,
-                        emailVerified: emailVerified,
-                        photoURL: photoURL,
-                        uid: uid,
-                        accessToken: accessToken,
-                        providerData: providerData
-                    }, null, '  ');
-            console.log(JSON.stringify(user));
-            console.log('access token: ' + user.accessToken);
-            var nAccessToken = user.accessToken;
-                });
+                        document.getElementById('sign-in-status').textContent = 'Signed in';
+                        document.getElementById('sign-in').textContent = 'Sign out';
+                        document.getElementById('account-details').textContent = JSON.stringify({
+                            displayName: displayName,
+                            email: email,
+                            emailVerified: emailVerified,
+                            photoURL: photoURL,
+                            uid: uid,
+                            accessToken: accessToken,
+                            providerData: providerData
+                        }, null, '  ');
+                        console.log(JSON.stringify(user));
+                        console.log('access token: ' + user.accessToken);
+                        var nAccessToken = user.accessToken;
+                    });
             } else {
                 // User is signed out.
                 document.getElementById('sign-in-status').textContent = 'Signed out';

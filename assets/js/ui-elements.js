@@ -1,23 +1,20 @@
 /**
  * Created by joel on 3/17/17.
  */
-
 // =====================================================================
-    // Daterange controls for Dropoff / Pickup inputs //
+// Daterange controls for Dropoff / Pickup inputs //
 // =====================================================================
-
 // Data Picker Initialization
 $('.datepicker').pickadate();
 
 // =====================================================================
-    // Show date range inputs if Boarding is checked //
+// Show date range inputs if Boarding is checked //
 // =====================================================================
 
-$('#service-boarding').on('change', function () {
+$('#service-boarding').on('change', function() {
     if ($(this).is(':checked')) {
         $("#drop-board").slideDown(500);
-    }
-    else {
+    } else {
         $("#drop-board").slideUp(500);
     }
 });
@@ -26,11 +23,10 @@ $('#service-boarding').on('change', function () {
 // Show option for Mobile Service if Grooming is checked //
 // =====================================================================
 
-$('#service-grooming').on('change', function () {
+$('#service-grooming').on('change', function() {
     if ($(this).is(':checked')) {
         $("#drop-groom").slideDown(500);
-    }
-    else {
+    } else {
         $("#drop-groom").slideUp(500);
     }
 });
@@ -39,13 +35,12 @@ $('#service-grooming').on('change', function () {
 // Show date range inputs if Mobile is checked //
 // =====================================================================
 
-$('#mobile-grooming').on('change', function () {
+$('#mobile-grooming').on('change', function() {
     if ($(this).is(':checked')) {
         var mobileD = $('#mobileDate');
         mobileD.removeAttr('disabled')
             .removeClass('disabled');
-    }
-    else {
+    } else {
         var mobileD = $('#mobileDate');
         mobileD.addClass('disabled');
         mobileD.attr('disabled', 'disabled');
@@ -54,10 +49,10 @@ $('#mobile-grooming').on('change', function () {
 });
 
 // =====================================================================
-    // Sidebar Toggle //
+// Sidebar Toggle //
 // =====================================================================
 
-$("#menu-toggle").click(function (e) {
+$("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
@@ -73,8 +68,10 @@ function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical
     // location types.
     autocomplete = new google.maps.places.Autocomplete(
-        /** @type {!HTMLInputElement} */(document.getElementById('client-addr1')),
-        {types: ['geocode']});
+        /** @type {!HTMLInputElement} */
+        (document.getElementById('client-addr1')), {
+            types: ['geocode']
+        });
 
     // When the user selects an address from the dropdown, populate the address
     // fields in the form.
@@ -108,20 +105,16 @@ function fillInAddress() {
 
         if (componentType === 'street_number') {
             addy1.val(component.short_name);
-        }
-        else if (componentType === 'route') {
+        } else if (componentType === 'route') {
             addy1.val(addy1.val() + ' ' + component.long_name);
             $('#addr1-label').addClass('active');
-        }
-        else if (componentType === 'locality') {
+        } else if (componentType === 'locality') {
             city.val(component.long_name);
             $('#city-label').addClass('active');
-        }
-        else if (componentType === 'administrative_area_level_1') {
+        } else if (componentType === 'administrative_area_level_1') {
             state.val(component.short_name);
             $('#state-label').addClass('active');
-        }
-        else if (componentType === 'postal_code') {
+        } else if (componentType === 'postal_code') {
             zip.val(component.short_name);
             $('#zip-label').addClass('active');
         }
@@ -132,7 +125,7 @@ function fillInAddress() {
 // as supplied by the browser's 'navigator.geolocation' object.
 function geolocate() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition(function(position) {
             var geolocation = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -155,4 +148,3 @@ function geolocate() {
 $('#drop-board').hide();
 $('#drop-groom').hide();
 $('#drop-mobile').hide();
-
