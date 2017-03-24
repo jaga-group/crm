@@ -109,16 +109,11 @@ $(document).ready(function() {
                 // clears res form after user presses submit //
                 $('#res-form').empty();
                 $('<div id="thanks">').appendTo('#res-form');
-                $('#thanks').html("Hi " + clientInfo.clientFirst + "! " + clientInfo.petName + " is scheduled for " + clientInfo.service + ". One of our team members will contact you soon!");
-                // adds log out button
-                $('<button id="log-out">').appendTo('#res-form').text("Log Out");
-                // on click of #log-out, user is signed out of firebase
-                $('#log-out').on('click', function(event) {
-                    event.preventDefault(event);
-                    $('#res-form').html("You have logged out.");
+                $('#thanks').html("Hi " + clientFirst + "! " + petName + " is scheduled for " + service + ". One of our team members will contact you soon!");
+               
                     firebase.auth().signOut();
-                }); // end #log-out click function
-
+           
+                    
 
                 return false; // End of
             });
@@ -217,7 +212,10 @@ $(document).ready(function() {
         });
         for (var x = 0; x < addressArray.length; x++) {
             console.log("hey");
-            $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address=' + addressArray[x] + '&sensor=false', null, function(data) {
+
+
+            $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address=' + addressArray[x] + '&sensor=false', null, function (data) {
+
                 console.log(data);
                 var p = data.results[0].geometry.location
                 var latlng = new google.maps.LatLng(p.lat, p.lng);
@@ -251,8 +249,10 @@ $(document).ready(function() {
                 right: 'month,agendaWeek,agendaDay'
             },
             events: {
-                googleCalendarId: '422sm5uub9lo8o7el0cvpogmkc@group.calendar.google.com'
-            }
+                googleCalendarId: '422sm5uub9lo8o7el0cvpogmkc@group.calendar.google.com',
+                eventColor: '#378006'
+            },
+            defaultView: 'agendaDay'
         });
 
     }); // end of #snapshot-view on click
@@ -270,8 +270,8 @@ $(document).ready(function() {
                 state = childSnapshot.val().clientState;
                 zip = childSnapshot.val().clientZip;
                 firstName = childSnapshot.val().clientFirst,
-                    lastName = childSnapshot.val().clientLast,
-                    fullName = firstName + " " + lastName;
+                lastName = childSnapshot.val().clientLast,
+                fullName = firstName + " " + lastName;
                 email = childSnapshot.val().clientEmail;
                 phone = childSnapshot.val().clientPhone;
                 petName = childSnapshot.val().petName;
@@ -302,7 +302,7 @@ $(document).ready(function() {
             }; // end of dataRef //
 
 
-    }
+    } // end of getData // 
 
 
 }); // end of document ready //
