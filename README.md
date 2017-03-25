@@ -27,6 +27,7 @@ Team Member | Primary Duties
 **Ariel**  | Back-End Development
 &nbsp;     | Management / Organizer
 &nbsp;     | Calendar functionality
+&nbsp;     | DataTables functionality
 **Glen**   | Back-End Development
 &nbsp;     | Map integrations
 &nbsp;     | Firebase
