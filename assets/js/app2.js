@@ -3,7 +3,6 @@ $(document).ready(function() {
     $('#admin').on('click', function(event) {
         event.preventDefault(event);
         $('#res-form-container').hide();
-        $('#admin').hide();
         // Initialize the FirebaseUI Widget using Firebase.
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
         // The start method will wait until the DOM is loaded.
