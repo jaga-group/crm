@@ -59,6 +59,7 @@ footer.page-footer {
 .squeeze {
     height: 100px;
 }
+
 /* ======================================== */
 /*   Map  */
 /* ======================================== */
@@ -70,7 +71,6 @@ footer.page-footer {
 /* ======================================== */
 /*   Forms  */
 /* ======================================== */
-
 
 .md-form label.active {
     font-size: .8rem;
@@ -142,6 +142,7 @@ h4 {
     #pet-title {
         margin-top: 2.5em;
     }
+
     .marquee {
         width: 75%;
     }
@@ -153,7 +154,21 @@ h4 {
     #pet-title {
         margin-top: 2.5em;
     }
+
     .marquee {
         width: 75%;
     }
+}
+
+/* ======================================== */
+/*   DASHBOARD SPECIFIC */
+/* ======================================== */
+
+#dashboard-nav {
+
+}
+
+.db-function {
+    position: relative;
+    top: 15vh;
 }

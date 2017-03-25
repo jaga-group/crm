@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Reservations</title>
+    <title>Wag Dashboard</title>
 
     <!-- Material Design Bootstrap -->
     <link href="assets/css/mdb.css" rel="stylesheet">
@@ -19,10 +19,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 
     <!--DataTables Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
 
     <!--Fullcalendar-->
     <link rel="stylesheet" href="assets/fullcalendar/fullcalendar.css">
+
+    <!--FontAwesome-->
+    <script src="https://use.fontawesome.com/8eb4ed0827.js"></script>
 
     <!--Local Stylesheet-->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -32,123 +35,156 @@
 <body class="body-wrap">
 
 
-    <!--Navbar-->
-    <nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
-        <div class="container">
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+<!--NAVBAR-->
+
+<nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarNav1">
             <span class="navbar-toggler-icon"></span>
         </button>
-            <a class="navbar-brand">
-                <strong>Happy Tails Resort</strong>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarNav1">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dbbutton">
-                        <a class="nav-link" id="snapshot-view">Daily Snapshot</a>
-                    </li>
-                    <li class="nav-item dbbutton">
-                        <a class="nav-link" id="customer-view">Customers</a>
-                    </li>
-                    <li class="nav-item dbbutton">
-                        <a class="nav-link" id="maps-view">Google Maps</a>
-                    </li>
-                </ul>
-            </div>
+        <a class="navbar-brand" href="landing-2.html">
+            <strong>Wag Pet Resort</strong>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav" id="dashboard-nav">
+                <li class="nav-item dbbutton">
+                    <a class="nav-link snapshot-view"><i class="fa fa-calendar" aria-hidden="true"></i>
+                        DailySnapshot</a>
+                </li>
+                <li class="nav-item dbbutton">
+                    <a class="nav-link customer-view"><i class="fa fa-users" aria-hidden="true"></i> Client
+                        List</a>
+                </li>
+                <li class="nav-item dbbutton">
+                    <a class="nav-link maps-view"><i class="fa fa-map-marker" aria-hidden="true"></i> Mobile
+                        Service</a>
+                </li>
+            </ul>
         </div>
-    </nav>
-    <!--/.Navbar-->
+    </div>
+</nav>
+<!--end NAVBAR-->
 
 
-    <!--Content-->
-    <div class="content-area">
-        <div class="container">
-            <div class="row squeeze"></div>
-            <div class="row">
-                <div class="col" id="dashboard-content">
+<!--CONTENT-->
+<div class="content-area">
+    <div class="container">
+        <div class="row squeeze"></div>
+        <div class="row">
+            <div class="col" id="dashboard-content">
 
-                    <!--THIS IS WHERE WE WILL DUMP OUR CONTENT-->
+                <!--THIS IS WHERE WE WILL DUMP OUR CONTENT-->
 
+                <div class="row">
+                    <div class="col">
+                        <a class="snapshot-view">
+                            <div class="card card-block text-center db-function z-depth-2">
+                                <h1 class="card-title display-1"><i class="fa fa-calendar" aria-hidden="true"></i></h1>
+                                <h2 class="card-title">Daily Snapshot</h2>
+                                <br>
+                                <p class="card-text text-left">Quickly see your your upcoming appointments and
+                                    reservations in Month, Week or Daily views.</p>
+                        </a>
+                    </div>
                 </div>
-                <div class="row squeeze"></div>
+
+                <div class="col">
+                    <a class="customer-view">
+                        <div class="card card-block text-center db-function z-depth-2">
+                            <h1 class="card-title display-1"><i class="fa fa-users" aria-hidden="true"></i></h1>
+                            <h2 class="card-title">Client List</h2>
+                            <br>
+                            <p class="card-text text-left">Full clientele listing where you can update records, take
+                                notes, and track your correspondence</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a class="maps-view">
+                        <div class="card card-block text-center db-function z-depth-2">
+                            <h1 class="card-title display-1"><i class="fa fa-map-marker" aria-hidden="true"></i></h1>
+                            <h2 class="card-title">Mobile Service</h2>
+                            <br>
+                            <p class="card-text text-left">Mobile Service clientele locations. Get detailed directions
+                                to your clientele by clicking their name to the right.</p>
+                        </div>
+                    </a>
+                </div>
+
             </div>
+
         </div>
     </div>
-    <!--/.Content-->
-    
-    <!-- Google Maps -->
-    <div class="row-centered">
-        <div class="mapDiv">
-            <div id="map"></div>
+    <div class="row squeeze"></div>
+</div>
+</div>
+<!--END CONTENT-->
+
+<!--FOOTER-->
+<footer class="sticky-footer page-footer center-on-small-only">
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            2017 WagPetResort.com
         </div>
     </div>
+</footer>
+<!--END FOOTER-->
 
 
-    <!--Footer-->
-    <footer class="sticky-footer page-footer center-on-small-only">
+<!-- SCRIPTS -->
 
-        <!--Copyright-->
-        <div class="footer-copyright">
-            <div class="container-fluid">
-                © 2017 HappyTailsResort.com
-            </div>
-        </div>
-        <!--/.Copyright-->
+<!-- JQuery -->
+<script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
 
-    </footer>
-    <!--/.Footer-->
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="assets/js/tether.js"></script>
 
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 
-    <!-- SCRIPTS -->
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="assets/js/mdb.js"></script>
 
-    <!-- JQuery -->
-    <script type="text/javascript" src="assets/js/jquery-3.1.1.min.js"></script>
+<!--Moment.js -->
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="assets/js/tether.js"></script>
+<!--Google Cal Auth-->
+<script async defer src="https://apis.google.com/js/api.js"></script>
+<!--onload="this.onload=function(){};handleClientLoad()"-->
+<!--onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
 
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+<!--</script>-->
+<script src="https://apis.google.com/js/api.js"></script>
 
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="assets/js/mdb.js"></script>
-
-    <!--Moment.js -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
-    <!--Google Cal Auth-->
-    <script async defer src="https://apis.google.com/js/api.js"></script>
-    <!--onload="this.onload=function(){};handleClientLoad()"-->
-    <!--onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
-
-    <!--</script>-->
-    <script src="https://apis.google.com/js/api.js"></script>
-
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
 
 
-    <!-- Google Maps -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>
-    <!--Fullcalendar-->
-    <script src="assets/fullcalendar/fullcalendar.js"></script>
-    <!--Google Calendar-->
-    <script async defer src="https://apis.google.com/js/api.js"></script>
-    <!--onload="this.onload=function(){};handleClientLoad()"-->
-    <!--onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
-    <!--</script>-->
-    <script type='text/javascript' src='assets/fullcalendar/gcal.js'></script>
-    <!--Google API-->
-    <script src="https://apis.google.com/js/api.js"></script>
+<!-- Google Maps -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCevUUOwKBB5xPrEyig2d5x3tcmHioGOLY&callback=initMap"></script>
+<!--Fullcalendar-->
+<script src="assets/fullcalendar/fullcalendar.js"></script>
+<!--Google Calendar-->
+<script async defer src="https://apis.google.com/js/api.js"></script>
+<!--onload="this.onload=function(){};handleClientLoad()"-->
+<!--onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
+<!--</script>-->
+<script type='text/javascript' src='assets/fullcalendar/gcal.js'></script>
+<!--Google API-->
+<script src="https://apis.google.com/js/api.js"></script>
 
 
-    <!--Local JS-->
-    <script src="assets/js/firebaseInit.js"></script>
-    <script src="assets/js/app2.js"></script>
-    <script src="assets/js/reservationInfo.js"></script>
-    <script src="assets/js/ui-elements.js"></script>
-    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+<!--Local JS-->
+<script src="assets/js/firebaseInit.js"></script>
+<script src="assets/js/app2.js"></script>
+<script src="assets/js/reservationInfo.js"></script>
+<script src="assets/js/ui-elements.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
 
 </body>
 
