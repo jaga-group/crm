@@ -1,4 +1,4 @@
-# Wag Pet Resort   :dog:
+# [Wag Pet Resort   :dog:](https://wag-project.herokuapp.com/)
 
 ## Built by:  Team **JAG** (Joel, Ariel, Glen)
 
@@ -58,3 +58,4 @@ Team Member | Primary Duties
   - Further Map Integrations wishlist
     - Listing of clients for calendar date providing their appt times and driving routes
     - Numbered pins on Calendar for clients in order of schedule time
+
