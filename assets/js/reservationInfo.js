@@ -1,6 +1,5 @@
 var clientInfoArray = [];
 var addressArray = [];
-var addressArray2 = [];
 var userAddress = [];
 var mainData = [];
 
@@ -193,8 +192,7 @@ $(document).ready(function() {
         event.preventDefault(event);
         console.log('maps view click');
         $('#dashboard-content').empty();
-        $('#dashboard-content').append('<div class="row"><div class="col-md-7"><div id="map"></div><div class="col-md-4" id="dir-div"></div></div></div>').addClass('white');
-        $('#dir-div').append('<div id="directions">');
+        $('#dashboard-content').append('<div id="map">').addClass('white');
         $('#directions').append('<table id="directionsTable">');
 
         // Sets center point for maps // 
@@ -236,30 +234,8 @@ $(document).ready(function() {
 
             }); // End getJSON // 
 
-        } // End of for loop // 
+        }; // End of for loop //
 
-
-        $('#directionsTable').DataTable({
-            data: addressArray2,
-            columns: [{
-                title: "Client Name"
-                },
-                {
-                    title: "Address"
-                },
-                {
-                    title: "Address ext"
-                },
-                {
-                    title: "City"
-                },
-                {
-                    title: "State"
-                },
-                {
-                    title: "Zip Code"
-                }]
-        }); // end render DataTable
 
     }); // End of Maps on click 
 
@@ -333,10 +309,8 @@ $(document).ready(function() {
                 petName = childSnapshot.val().petName;
                 clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
                 userAddress = [addr1, addr2, city, state, zip];
-                userAddress2 = [fullName, addr1, addr2, city, state, zip];
                 clientInfoArray.push(clientInfo);
                 addressArray.push(userAddress);
-                addressArray2.push(userAddress2);
                 var data = {
                     clientInfoArray: clientInfoArray,
                     addressArray: addressArray,
