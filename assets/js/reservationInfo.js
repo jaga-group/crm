@@ -146,8 +146,7 @@ $(document).ready(function() {
         $("#dashboard-content").empty();
         $('#dashboard-content').append('<table id="table" class="display" width="100%"></table>');
 
-        //TODO check that DataTables is only initilized 1x per page load (global variable)
-        // This needs to be inside of the .on child_added function, but needs to delay until db is finished loading each child.
+
         $('#table').DataTable({
             data: clientInfoArray,
             columns: [{
