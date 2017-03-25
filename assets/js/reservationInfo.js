@@ -140,7 +140,7 @@ $(document).ready(function() {
         petName;
 
 
-    $("#customer-view").on("click", function(event) {
+    $(".customer-view").on("click", function(event) {
         event.preventDefault(event);
         console.log("customer view click");
         $("#dashboard-content").empty();
@@ -188,7 +188,7 @@ $(document).ready(function() {
     // Dashboard Functions - Maps View //
     // =====================================================================
     // Google Maps on click function // 
-    $('#maps-view').on('click', function(event) {
+    $('.maps-view').on('click', function(event) {
         event.preventDefault(event);
         console.log('maps view click');
         $('#dashboard-content').empty();
@@ -244,7 +244,7 @@ $(document).ready(function() {
     // Dashboard Functions - Snapshot View //
     // =====================================================================
 
-    $('#snapshot-view').on('click', function(event) {
+    $('.snapshot-view').on('click', function(event) {
         event.preventDefault(event);
         console.log('snapshot view click');
         $('#dashboard-content').empty();
