@@ -28,7 +28,7 @@
 
 <body class="body-wrap">
 
-<!--Navbar-->
+<!--NAVBAR-->
 <nav class="navbar navbar-toggleable-sm navbar-dark fixed-top scrolling-navbar">
     <div class="container">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -59,71 +59,40 @@
             </ul>
 
             <!--<div id="firebaseui-auth-container">-->
-                <button id="admin" class="btn btn-sm  btn-outline-white" data-toggle="modal" data-target="#modal-login">
-                    Team Members
-                </button>
-            <!--</div>-->
+            <button id="admin" class="btn btn-sm  btn-outline-white" data-toggle="modal" data-target="#modal-login">
+                Team Members
+            </button>
             <!-- end firebaseui-auth-container-->
 
         </div>
     </div>
 </nav>
-        <!--end navbar-->
+<!--END NAVBAR-->
 
 
-
-        <!-- Modal Login -->
-        <div class="modal fade modal-ext" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <!--Content-->
+<!-- Modal Login -->
+<div class="modal fade modal-ext" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-        <!--Header-->
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-        <h3 class="w-100"><i class="fa fa-user"></i> Login</h3>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="w-100"><i class="fa fa-user"></i> Login</h3>
+            </div>
+            <div class="modal-body" id="firebaseui-auth-container">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default ml-auto" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <!--Body-->
-        <div class="modal-body" id="firebaseui-auth-container">
-
-
-        <!--<button id="authorize-button" style="display: none;">Authorize</button>-->
-        <!--<button id="signout-button" style="display: none;">Sign Out</button>-->
-        <!--<pre id="content"></pre>-->
-
-
-        <!--<div class="md-form">-->
-        <!--<i class="fa fa-envelope prefix"></i>-->
-        <!--<input type="text" id="form2" class="form-control">-->
-        <!--<label for="form2">Your email</label>-->
-        <!--</div>-->
-
-        <!--<div class="md-form">-->
-        <!--<i class="fa fa-lock prefix"></i>-->
-        <!--<input type="password" id="form3" class="form-control">-->
-        <!--<label for="form3">Your password</label>-->
-        <!--</div>-->
-        <!--<div class="text-center">-->
-        <!--<button class="btn btn-primary btn-lg">Login</button>-->
-        <!--</div>-->
-        </div> <!-- end .modal-body-->
-        <!--Footer-->
-        <div class="modal-footer">
-        <!--<div class="options text-right">-->
-        <!--<p>Not a member? <a href="#">Sign Up</a></p>-->
-        <!--<p>Forgot <a href="#">Password?</a></p>-->
-        <!--</div>-->
-        <button type="button" class="btn btn-default ml-auto" data-dismiss="modal">Close</button>
-        </div>
-        </div> <!-- end .modal-content-->
-        </div>
-        </div>
-
     </div>
-<!--/.Navbar-->
+</div>
 
-<!--Carousel Wrapper-->
+
+<!--CAROUSEL-->
 <div id="carousel-example-3" class="carousel slide carousel-fade white-text" data-ride="carousel" data-interval="false">
     <!--Indicators-->
     <ol class="carousel-indicators">
@@ -131,9 +100,7 @@
         <li data-target="#carousel-example-3" data-slide-to="1"></li>
         <li data-target="#carousel-example-3" data-slide-to="2"></li>
     </ol>
-    <!--/.Indicators-->
 
-    <!--Slides-->
     <div class="carousel-inner" role="listbox">
 
         <!-- First slide -->
@@ -147,7 +114,6 @@
                 </div>
             </div>
         </div>
-        <!--/.First slide-->
 
         <!-- Second slide -->
         <div class="carousel-item view hm-black-light"
@@ -161,7 +127,6 @@
             </div>
 
         </div>
-        <!--/.Second slide -->
 
         <!-- Third slide -->
         <div class="carousel-item view hm-black-light"
@@ -170,15 +135,11 @@
             <div class="full-bg-img flex-center white-text">
                 <div class="animated fadeInUp col-md-12 text-center marquee">
                     <h1 class="h1-responsive"><strong>We Value Exercise and Companionship</strong></h1>
-                    </li>
                     <p>Supervised fun playtimes and activities customized for your pet</p>
                 </div>
             </div>
-
         </div>
-        <!--/.Third slide-->
     </div>
-    <!--/.Slides-->
 
     <!--Controls-->
     <a class="carousel-control-prev" href="#carousel-example-3" role="button" data-slide="prev">
@@ -189,21 +150,18 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-    <!--/.Controls-->
 </div>
-<!--/.Carousel Wrapper-->
+<!--END CAROUSEL-->
 
 <br>
 
-<!--Content-->
+<!--CONTENT-->
 <div class="container content-area">
     <div class="row" id="res-form-container">
         <div class="col-lg-1"></div>
         <div class="col-lg-10">
-            <!--Card-->
             <div class="card" id="res-card">
                 <div class="card-block" id="res-form">
-                    <!--Optional Header-->
                     <div class="form-header special-color">
                         <h2>Reservation Form</h2>
                     </div>
@@ -231,7 +189,7 @@
                                     <div class="md-form">
                                         <input type="text" id="client-phone" class="form-control" required=""
                                                data-parsley-minlength="10" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$"
-                                               required="" data-parsley-minlength-message="Value should be at least
+                                               data-parsley-minlength-message="Value should be at least
                                                10 digits (include area code)" data-parsley-pattern-message="Only digits
                                                and special characters allowed">
                                         <label for="client-phone">Phone *</label>
@@ -359,15 +317,16 @@
     </div>
     <div class="col-lg-1"></div>
 </div>
-<!--/.Content-->
+<!--END CONTENT-->
 
 <!--FOOTER-->
 <footer class="sticky-footer page-footer center-on-small-only">
     <div class="footer-copyright">
         <a id="pres-link" href="presentation.html">
-        <div class="container-fluid">
-            2017 WagPetResort.com
-        </div> </a>
+            <div class="container-fluid">
+                2017 WagPetResort.com
+            </div>
+        </a>
     </div>
 </footer>
 <!--END FOOTER-->
@@ -395,8 +354,6 @@
 
 <!--Google Cal Auth-->
 <script async defer src="https://apis.google.com/js/api.js"></script>
-<!--onload="this.onload=function(){};handleClientLoad()"-->
-<!--onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
 
 <!--</script>-->
 <script src="https://apis.google.com/js/api.js"></script>

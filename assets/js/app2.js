@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 
     var uiConfig = {
-        signInSuccessUrl: 'landing-2.html',
+        signInSuccessUrl: 'admin-dashboard.html',
         signInOptions: [
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         ]
