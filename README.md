@@ -1,52 +1,60 @@
-# Project Title (We need a title!)
+# Wag Pet Resort   :dog:
 
-### *Built by: Ariel Costa (Back End), Glen Turner (Back End), Joel Roberts (Front End), Adam?*
-*{ We will all likely contribue to the functionality of the program }*
+## Built by:  Team **JAG** (Joel, Ariel, Glen)
+
+While we really all shared in the overall responsibility for all pieces, the primary division of labor was as follows:
+
+Team Member | Primary Duties
+----------- | --------------
+**Joel**   | Front-End Development
+&nbsp;     | Address Autocompleter
+&nbsp;     | Form Validation
+**Ariel**  | Back-End Development
+&nbsp;     | Management / Organizer
+&nbsp;     | Calendar functionality
+**Glen**   | Back-End Development
+&nbsp;     | Map integrations
+&nbsp;     | Firebase
+  
 
 ## Project Description: 
-**V.I.Pet Resort Customer Relationship Management Tool.**  
- - Landing page for customers to create a profile, 
- - log in for existing customers to view messages and book appointments.
- - Business dashboard side to manage appointment calendar, 
- - view/manage customers, 
- - communicate (marketing blasts?), 
- - and eventually collect payments.
-
-## Sketch of Final Product: 
->
->
->
->
-
-
-## APIs to be Used:
-Google Maps - to create pick up and delivery routes, mobile grooming routes.
-Twilio - to send daily updates (pictures) or marketing bites to customers.
-Sift Science - (learn more about this) account abuse, payment fraud.
-Chec.io // Apple Pay // PayPal - eventually to collect payments
+**Customer Relationship Management Tool for a fictitious pet resort (Wag)**  
+ - Form page on companies website for customers to book a reservation 
+ - Business Dashboard where Team Members can:
+   - See upcoming schedule, manage appointment calendar
+   - View / Manage clientele info
+   - Map to clienteles adressess for those requesting Mobile Services
+ 
+## APIs Used:
+- Google Places - for address autocompletion in Reservation form
+- Google Maps - for mapping clients addresses
+- Google Calendar API - for scheduling appointments both on users calendar and businesses calendar
+- DataTables API - for table lookups and organization 
 
 ## Libraries:
-- Parsley.js / Approve.js / Validate.js - some sort of form validation library
-- Awesomeplete - js completer
-- Commerce.js - works in tandem w/ Chec.io
+- Parsley.js - for form validation library
+- Moment.js - for time capture and conversion
+- Fullcalendar.js - for calendar display
 
-## Style:
-- Bootstrap to start, may utilize Foundation or Materialize
+## Front-End Framework:
+- Material Design for Bootstrap (MDB)
 
-## Rough Breakdown of Tasks:
-- [ ] Create customer sign-up/sign-in page - user creates login/pw // Firebase authentication, fraud prevention
-- [ ] Create customer questionaire/collect data about customer and pets // form validation
-- [ ] Create customer landing page:
-  - [ ] Display account information, profile picture, upcoming appointments, messages
-  - [ ] Form to request appointment or additional services
-- [ ] Create owner dashboard:
-  - [ ] Display table of customer data
-  - [ ] Appointment calendar
-    - [ ] Daily flash of - arrivals, departures, deliveries, pick ups, employees working?
-  - [ ] Map / route generator 
 
-## Coding Standards:
-- Tabs
-- Front-end variables: user-name
-- Back-end variables: camelCase
-
+## Future Wish-List
+- Customer Dashboard, where they can:
+  - Sign-Up / Sign-In modal 
+  - Display account Info
+  - Create a profile picture of their pet(s)
+  - See upcoming Appts
+  - See tailored messages, and alerts from business
+  - Schedule additional services
+- Business Dashboard additions:
+  - Plug-in for communicating marketing blasts to clientele (SMS)
+  - Method for payment collection
+  - Further client list functions
+    - Modal where client data can be viewed/modified when clicked within table
+    - Specific Driving directions to customers having requested Mobile Service
+    - Area where targeted messages including pictures of pet can be sent to client
+  - Further Map Integrations wishlist
+    - Listing of clients for calendar date providing their appt times and driving routes
+    - Numbered pins on Calendar for clients in order of schedule time
