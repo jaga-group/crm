@@ -164,11 +164,19 @@ h4 {
 /*   DASHBOARD SPECIFIC */
 /* ======================================== */
 
-#dashboard-nav {
-
+#dashboard-content {
+    padding:15px;
 }
 
 .db-function {
     position: relative;
     top: 15vh;
+}
+
+footer.page-footer {
+    margin-top: 0px;
+}
+
+.landing {
+    background-color: #90a4ae;
 }
