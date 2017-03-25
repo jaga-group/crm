@@ -1,5 +1,6 @@
 var clientInfoArray = [];
 var addressArray = [];
+var addressArray2 = [];
 var userAddress = [];
 var mainData = [];
 
@@ -192,7 +193,9 @@ $(document).ready(function() {
         event.preventDefault(event);
         console.log('maps view click');
         $('#dashboard-content').empty();
-        $('#dashboard-content').append('<div id="map">').addClass('white');
+        $('#dashboard-content').append('<div class="row"><div class="col-md-7"><div id="map"></div><div class="col-md-4" id="dir-div"></div></div></div>').addClass('white');
+        $('#dir-div').append('<div id="directions">');
+        $('#directions').append('<table id="directionsTable">');
 
         // Sets center point for maps // 
         var map;
@@ -235,6 +238,28 @@ $(document).ready(function() {
 
         } // End of for loop // 
 
+
+        $('#directionsTable').DataTable({
+            data: addressArray2,
+            columns: [{
+                title: "Client Name"
+                },
+                {
+                    title: "Address"
+                },
+                {
+                    title: "Address ext"
+                },
+                {
+                    title: "City"
+                },
+                {
+                    title: "State"
+                },
+                {
+                    title: "Zip Code"
+                }]
+        }); // end render DataTable
 
     }); // End of Maps on click 
 
@@ -300,27 +325,28 @@ $(document).ready(function() {
                 city = childSnapshot.val().clientCity;
                 state = childSnapshot.val().clientState;
                 zip = childSnapshot.val().clientZip;
-                firstName = childSnapshot.val().clientFirst,
-                lastName = childSnapshot.val().clientLast,
+                firstName = childSnapshot.val().clientFirst;
+                lastName = childSnapshot.val().clientLast;
                 fullName = firstName + " " + lastName;
                 email = childSnapshot.val().clientEmail;
                 phone = childSnapshot.val().clientPhone;
                 petName = childSnapshot.val().petName;
                 clientInfo = [fullName, email, phone, addr1, addr2, city, state, zip, petName];
                 userAddress = [addr1, addr2, city, state, zip];
+                userAddress2 = [fullName, addr1, addr2, city, state, zip];
                 clientInfoArray.push(clientInfo);
                 addressArray.push(userAddress);
+                addressArray2.push(userAddress2);
                 var data = {
                     clientInfoArray: clientInfoArray,
-                    addressArray: addressArray
+                    addressArray: addressArray,
+                    addressArray2: addressArray2
                 };
 
 
                 // Log everything that's coming out of snapshot
                 mainData.push(data);
 
-
-                //TODO call the DataTable method to "refresh" the DataTable based on the new data.
 
 
             }), // end on child added function
