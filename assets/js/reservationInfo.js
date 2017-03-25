@@ -144,7 +144,8 @@ $(document).ready(function() {
         event.preventDefault(event);
         console.log("customer view click");
         $("#dashboard-content").empty();
-        $('#dashboard-content').append('<table id="table" class="display" width="100%"></table>');
+        $('#dashboard-content').append('<table id="table" class="display" width="100%"></table>')
+            .addClass('white');
 
 
         $('#table').DataTable({
@@ -191,7 +192,7 @@ $(document).ready(function() {
         event.preventDefault(event);
         console.log('maps view click');
         $('#dashboard-content').empty();
-        $('#dashboard-content').append('<div id="map">');
+        $('#dashboard-content').append('<div id="map">').addClass('white');
 
         // Sets center point for maps // 
         var map;
@@ -247,7 +248,7 @@ $(document).ready(function() {
         event.preventDefault(event);
         console.log('snapshot view click');
         $('#dashboard-content').empty();
-        $('#dashboard-content').append('<div id="calendar">');
+        $('#dashboard-content').append('<div id="calendar">').addClass('white');
         $('#calendar').fullCalendar({
             googleCalendarApiKey: 'AIzaSyAn4byZIT2w3D6KYLFGPw6XNTDZQjbGrXQ',
             header: {
