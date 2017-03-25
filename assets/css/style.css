@@ -18,6 +18,10 @@ html, body {
     margin-left: 2.5rem;
 }
 
+#pres-link {
+    text-decoration: none;
+}
+
 /* ======================================== */
 /*   Carousel   */
 /* ======================================== */
