@@ -1,17 +1,14 @@
 # [Wag Pet Resort   :dog:](https://wag-project.herokuapp.com/)
 
 ### *Couple quick things to note upon clicking on link above*
- > When you first land on our Heroku page you are first directed to our [Presentation](https://wag-project.herokuapp.com/) pages. To go to the [Project](https://wag-project.herokuapp.com/res-info-test.html), please click the project name (Wag Pet Resert) in the upper left (or click [here](https://wag-project.herokuapp.com/res-info-test.html))
+ > When you first land on our Heroku page you are first directed to our [Project](https://wag-project.herokuapp.com/res-info-test.html) page. To go to the Presentation pages (and we encourage you to do so - because they are awesome) please click the title in the footer of the project pages, or click [here](https://wag-project.herokuapp.com/presentation.html).  From the presentation pages, you can click the project name (Wag Pet Resert) in the upper left to return to the Project pages.
  
  
- > All navigation in Presentation is clicking the element you want to see and then clicking it again to return to the initial page
+ > All navigation in Presentation is done by clicking the element you want to see and then clicking it again to return to the initial page
  
  
  > In order to get to the Business [Dashboard](https://wag-project.herokuapp.com/landing-2.html) you must click the "Team Members" button in the upper right (we had some authentication problems, so after clicking the Google button, please click the "Team Memebers" button a second time to redirect
  
- 
- > Finally, if you want to return to the [Presentation](https://wag-project.herokuapp.com/) pages, please click the footer within the project.
-
 <br>
 <br>
 
