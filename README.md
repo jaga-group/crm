@@ -1,7 +1,7 @@
 # [Wag Pet Resort   :dog:](https://wag-project.herokuapp.com/)
 
 ### *Couple quick things to note upon clicking on link above*
- > When you first land on our Heroku page you are first directed to our [Project](https://wag-project.herokuapp.com/res-info-test.html) page. To go to the Presentation pages (and we encourage you to do so - because they are awesome) please click the name in the footer, or click [here](https://wag-project.herokuapp.com/presentation.html).  From the presentation pages, you can click the project name (Wag Pet Resert) in the upper left to return to the Project pages.
+ > When you first land on our Heroku project you are first directed to our [Project](https://wag-project.herokuapp.com/res-info-test.html) page. To go to the Presentation pages (and we encourage you to do so - because they are awesome) please click the name in the footer, or click [here](https://wag-project.herokuapp.com/presentation.html).  From the presentation pages, you can click the project name (Wag Pet Resert) in the upper left to return to the Project pages.
  
  
  > All navigation in Presentation is done by clicking the element you want to see and then clicking it again to return to the initial page
