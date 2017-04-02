@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 
     var uiConfig = {
-        signInSuccessUrl: 'admin-dashboard.html',
+        signInSuccessUrl: 'https://wag-pet-resort-project.herokuapp.com/admin-dashboard.html',
         signInOptions: [
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         ]
