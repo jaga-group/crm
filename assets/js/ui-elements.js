@@ -48,15 +48,6 @@ $('#mobile-grooming').on('change', function() {
     }
 });
 
-// =====================================================================
-// Sidebar Toggle //
-// =====================================================================
-
-$("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-});
-
 
 // =====================================================================
 // Autocomplete Controls //
@@ -143,6 +134,46 @@ function geolocate() {
 
 $('#modal-login').on('shown.bs.modal', function () {
     $('.modal-content').focus()
+});
+
+// =====================================================================
+// Dashboard Controls //
+// =====================================================================
+
+$('#cal-item').on('click', function() {
+    $(this).addClass('active');
+    $('#client-item').removeClass('active');
+    $('#map-item').removeClass('active');
+});
+
+$('.snapshot-view').on('click', function() {
+    $('#cal-item').addClass('active');
+    $('#client-item').removeClass('active');
+    $('#map-item').removeClass('active');
+});
+
+$('#client-item').on('click', function() {
+    $(this).addClass('active');
+    $('#cal-item').removeClass('active');
+    $('#map-item').removeClass('active');
+});
+
+$('.customer-view').on('click', function() {
+    $('#client-item').addClass('active');
+    $('#cal-item').removeClass('active');
+    $('#map-item').removeClass('active');
+});
+
+$('#map-item').on('click', function() {
+    $(this).addClass('active');
+    $('#cal-item').removeClass('active');
+    $('#client-item').removeClass('active');
+});
+
+$('.maps-view').on('click', function() {
+    $('#map-item').addClass('active');
+    $('#cal-item').removeClass('active');
+    $('#client-item').removeClass('active');
 });
 
 

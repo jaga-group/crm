@@ -36,28 +36,27 @@
 
 
 <!--NAVBAR-->
-
-<nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
+<nav class="navbar navbar-toggleable-sm navbar-dark fixed-top">
     <div class="container">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarNav1">
+                data-target="#navbar-primary">
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="admin-dashboard.html">
             <strong>Wag Pet Resort</strong>
         </a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav" id="dashboard-nav">
-                <li class="nav-item dbbutton">
-                    <a class="nav-link snapshot-view"><i class="fa fa-calendar" aria-hidden="true"></i>
+        <div class="collapse navbar-collapse" id="navbar-primary">
+            <ul class="navbar-nav mr-auto">
+                <li id=cal-item class="nav-item dbbutton">
+                    <a class="nav-link snapshot-view"><i class="fa fa-calendar"></i>
                         Daily Snapshot</a>
                 </li>
-                <li class="nav-item dbbutton">
-                    <a class="nav-link customer-view"><i class="fa fa-users" aria-hidden="true"></i> Client
+                <li id=client-item class="nav-item dbbutton">
+                    <a class="nav-link customer-view"><i class="fa fa-users"></i> Client
                         List</a>
                 </li>
-                <li class="nav-item dbbutton">
-                    <a class="nav-link maps-view"><i class="fa fa-map-marker" aria-hidden="true"></i> Mobile
+                <li id=map-item class="nav-item dbbutton">
+                    <a class="nav-link maps-view"><i class="fa fa-map-marker"></i> Mobile
                         Service</a>
                 </li>
             </ul>
@@ -80,7 +79,7 @@
                     <div class="col">
                         <a class="snapshot-view">
                             <div class="card card-block text-center db-function z-depth-2">
-                                <h1 class="card-title display-1"><i class="fa fa-calendar" aria-hidden="true"></i></h1>
+                                <h1 class="card-title display-1"><i class="fa fa-calendar"></i></h1>
                                 <h2 class="card-title">Daily Snapshot</h2>
                                 <br>
                                 <p class="card-text text-left">Quickly see your your upcoming appointments and
@@ -92,7 +91,7 @@
                     <div class="col">
                         <a class="customer-view">
                             <div class="card card-block text-center db-function z-depth-2">
-                                <h1 class="card-title display-1"><i class="fa fa-users" aria-hidden="true"></i></h1>
+                                <h1 class="card-title display-1"><i class="fa fa-users"></i></h1>
                                 <h2 class="card-title">Client List</h2>
                                 <br>
                                 <p class="card-text text-left">Full clientele listing where you can update records, take
@@ -104,13 +103,12 @@
                     <div class="col">
                         <a class="maps-view">
                             <div class="card card-block text-center db-function z-depth-2">
-                                <h1 class="card-title display-1"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <h1 class="card-title display-1"><i class="fa fa-map-marker"></i>
                                 </h1>
                                 <h2 class="card-title">Mobile Service</h2>
                                 <br>
                                 <p class="card-text text-left">Mobile Service clientele locations. Get detailed
-                                    directions
-                                    to your clientele by clicking their name to the right.</p>
+                                    directions to your clientele by clicking their name to the right.</p>
                             </div>
                         </a>
                     </div>
